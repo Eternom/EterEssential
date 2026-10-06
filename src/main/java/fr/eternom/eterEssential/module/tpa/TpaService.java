@@ -210,7 +210,7 @@ public class TpaService {
         Component deny = messages.get(target, "tpa.button.deny")
                 .clickEvent(ClickEvent.runCommand("/tpdeny " + requesterName))
                 .hoverEvent(HoverEvent.showText(messages.get(target, "tpa.button.deny-hover", "player", requesterName)));
-        target.sendMessage(messages.get(target, "prefix").append(accept).append(Component.space()).append(deny));
+        target.sendMessage(messages.prefix().append(accept).append(Component.space()).append(deny));
         target.playSound(target, Sound.BLOCK_NOTE_BLOCK_PLING, 0.6f, 1.6f);
     }
 }

@@ -3,9 +3,8 @@
 #   <info> = texte courant gris clair, <accent> = mots importants en orange.
 # Les valeurs entre <> comme <player> sont remplies par le plugin. Pour afficher un "<", écrire \< entre 'guillemets simples'.
 # Une clé absente reprend le texte intégré au plugin : tu peux ne garder que les lignes que tu modifies.
+# Le préfixe des messages (« Core ») est commun à tous les plugins : EterLib/config.yml > language.prefix.
 # Les messages de téléportation (attente, délai, combat) sont dans EterLib/lang/.
-
-prefix: "<gradient:#FF7A00:#FFB347><bold>EterEssential</bold></gradient> <dark_gray>» "
 
 command:
   players-only: "<error>Commande réservée aux joueurs."
