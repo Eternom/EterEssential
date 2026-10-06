@@ -50,7 +50,7 @@ serveur. `/broadcast` lit le texte en MiniMessage (commande réservée au staff)
 | `/tpahere` | `eteressential.tpahere` | tous |
 | `/back` | `eteressential.back` (+ `eteressential.back.death` pour la mort) | op |
 | `/rtp` (`wild`) | `eteressential.rtp` | tous |
-| `/list`, `/find`, `/seen` | `eteressential.list`, `.find`, `.seen` | tous |
+| `/list`, `/find`, `/seen` | `eteressential.list`, `.find`, `.seen` | op |
 | `/money [joueur]` (`bal`), `/pay` | `eteressential.money`, `.pay` ; autre joueur : `eteressential.others.money` | tous / op |
 | `/gm`, `/gmc`, `/gms`, `/gma`, `/gmsp`, `/fly`, `/heal`, `/feed`, `/speed`, `/clear` | `eteressential.<commande>` (`gamemode` pour /gm) ; sur un autre : `eteressential.others.<commande>` | op |
 | `/tp`, `/tphere`, `/invsee`, `/endersee`, `/broadcast` (`bc`) | `eteressential.<commande>` | op |
