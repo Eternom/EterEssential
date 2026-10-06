@@ -113,6 +113,14 @@ pay:
   sent: "<info>Tu as donné <accent><amount></accent> à <accent><player></accent>."
   received: "<accent><player></accent> <info>t'a donné <accent><amount></accent>."
 
+eco:
+  usage: '<error>Utilisation : <accent>/eco \<give|take|set|reset> \<joueur> [montant]'
+  give: "<info>Tu as donné <accent><amount></accent> à <accent><player></accent>. <dark_gray>(solde : <balance>)"
+  take: "<info>Tu as retiré <accent><amount></accent> à <accent><player></accent>. <dark_gray>(solde : <balance>)"
+  set: "<info>Solde de <accent><player></accent> fixé à <accent><balance></accent>."
+  reset: "<info>Solde de <accent><player></accent> remis à <accent><balance></accent>."
+  not-enough: "<error><accent><player></accent> n'a pas assez d'argent : rien n'a été retiré."
+
 staff:
   no-permission-others: "<error>Tu n'as pas la permission de faire ça sur un autre joueur."
   console-needs-player: "<error>Depuis la console, précise un joueur."

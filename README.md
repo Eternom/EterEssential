@@ -10,9 +10,8 @@ Document développeur, à tenir à jour avec le code.
   (attente, délai commun, combat, départ vers un autre serveur).
 - **Redis facultatif.** Avec lui, `/tpa`, `/tp`, `/tphere`, `/broadcast` et les messages de `/pay` traversent les
   serveurs ; sans lui, ils restent sur le serveur où l'on est (rien n'est cassé).
-- **Vault + EterEconomy** pour `/money` et `/pay` (sinon : « économie indisponible »). En multi-serveur, EterEconomy
-  doit être en `storage.type: redis` avec `information_storage.format: mysql` sur tous les serveurs : en mode `local`,
-  chaque serveur garde les soldes en mémoire, et un paiement vers un joueur connecté ailleurs serait écrasé.
+- **Vault + EterEconomy 2.0+** pour `/money`, `/pay` et `/eco` (sinon : « économie indisponible »). EterEconomy garde les
+  soldes en base, mouvements atomiques : rien à régler pour le multi-serveur.
 
 ## Fonctionnement
 
@@ -52,6 +51,7 @@ serveur. `/broadcast` lit le texte en MiniMessage (commande réservée au staff)
 | `/rtp` (`wild`) | `eteressential.rtp` | tous |
 | `/list`, `/find`, `/seen` | `eteressential.list`, `.find`, `.seen` | op |
 | `/money [joueur]` (`bal`), `/pay` | `eteressential.money`, `.pay` ; autre joueur : `eteressential.others.money` | tous / op |
+| `/eco give\|take\|set\|reset <joueur> [montant]` (aussi depuis la console) | `eteressential.eco` | op |
 | `/gm`, `/gmc`, `/gms`, `/gma`, `/gmsp`, `/fly`, `/heal`, `/feed`, `/speed`, `/clear` | `eteressential.<commande>` (`gamemode` pour /gm) ; sur un autre : `eteressential.others.<commande>` | op |
 | `/tp`, `/tphere`, `/invsee`, `/endersee`, `/broadcast` (`bc`) | `eteressential.<commande>` | op |
 

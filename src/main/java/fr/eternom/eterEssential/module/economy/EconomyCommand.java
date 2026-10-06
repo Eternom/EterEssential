@@ -23,9 +23,6 @@ import java.util.List;
 /**
  * /money [joueur] et /pay <joueur> <montant>, par Vault (EterEconomy). Le destinataire peut être hors ligne ou sur un
  * autre serveur : il est prévenu s'il est connecté quelque part. Les appels à l'économie se font en tâche de fond.
- *
- * Multi-serveur : EterEconomy doit garder les soldes dans Redis (storage.type: redis), sinon un paiement vers un joueur
- * connecté ailleurs serait écrasé par la copie en mémoire de son serveur.
  */
 public class EconomyCommand implements TabExecutor {
 
@@ -134,7 +131,7 @@ public class EconomyCommand implements TabExecutor {
     }
 
     /** "12,5" ou "12.5", arrondi aux décimales de la monnaie ; 0 si invalide. */
-    private static double parseAmount(String text, int fractionalDigits) {
+    static double parseAmount(String text, int fractionalDigits) {
         try {
             BigDecimal value = new BigDecimal(text.replace(',', '.'));
             if (fractionalDigits >= 0) {

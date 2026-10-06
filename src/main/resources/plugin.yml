@@ -72,6 +72,11 @@ commands:
     description: Donner de l'argent à un joueur, même hors ligne ou sur un autre serveur.
     usage: /pay <joueur> <montant>
     permission: eteressential.pay
+  eco:
+    description: Gérer le solde d'un joueur (staff, aussi depuis la console).
+    usage: /eco <give|take|set|reset> <joueur> [montant]
+    aliases: [economy]
+    permission: eteressential.eco
 
   # Staff
   gm:
@@ -188,6 +193,9 @@ permissions:
     default: op
   eteressential.broadcast:
     default: op
+  eteressential.eco:
+    description: /eco give, take, set, reset.
+    default: op
 
   # Sur un autre joueur
   eteressential.others.*:
@@ -236,5 +244,6 @@ permissions:
       eteressential.invsee: true
       eteressential.endersee: true
       eteressential.broadcast: true
+      eteressential.eco: true
       eteressential.others.*: true
       eteressential.bypass.*: true

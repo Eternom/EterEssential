@@ -2,6 +2,7 @@ package fr.eternom.eterEssential.listeners;
 
 import fr.eternom.eterEssential.Main;
 import fr.eternom.eterEssential.module.back.BackCommand;
+import fr.eternom.eterEssential.module.economy.EcoCommand;
 import fr.eternom.eterEssential.module.economy.EconomyCommand;
 import fr.eternom.eterEssential.module.info.InfoCommand;
 import fr.eternom.eterEssential.module.rtp.RtpCommand;
@@ -49,6 +50,7 @@ public class Commands {
         // Économie (Vault -> EterEconomy)
         register(main, "money", new EconomyCommand(main, main.getLookup(), main.getBus(), names, messages, EconomyCommand.Action.MONEY));
         register(main, "pay", new EconomyCommand(main, main.getLookup(), main.getBus(), names, messages, EconomyCommand.Action.PAY));
+        register(main, "eco", new EcoCommand(main, lib.getPlayers(), names, messages));
 
         // Staff
         register(main, "gm", new PlayerActionCommand(messages, PlayerActionCommand.Action.GAMEMODE, null));

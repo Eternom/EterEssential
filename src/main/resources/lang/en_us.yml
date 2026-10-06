@@ -113,6 +113,14 @@ pay:
   sent: "<info>You gave <accent><amount></accent> to <accent><player></accent>."
   received: "<accent><player></accent> <info>gave you <accent><amount></accent>."
 
+eco:
+  usage: '<error>Usage: <accent>/eco \<give|take|set|reset> \<player> [amount]'
+  give: "<info>You gave <accent><amount></accent> to <accent><player></accent>. <dark_gray>(balance: <balance>)"
+  take: "<info>You took <accent><amount></accent> from <accent><player></accent>. <dark_gray>(balance: <balance>)"
+  set: "<info>Balance of <accent><player></accent> set to <accent><balance></accent>."
+  reset: "<info>Balance of <accent><player></accent> reset to <accent><balance></accent>."
+  not-enough: "<error><accent><player></accent> doesn't have enough money: nothing was taken."
+
 staff:
   no-permission-others: "<error>You don't have permission to do this to another player."
   console-needs-player: "<error>From the console, specify a player."
