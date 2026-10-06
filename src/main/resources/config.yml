@@ -1,0 +1,38 @@
+# ============================================================
+#  EterEssential
+# ============================================================
+#
+#  Les règles de téléportation communes (attente, délai, combat) se règlent
+#  dans EterLib/config.yml > teleport : elles s'appliquent aussi à /tpa, /back et /rtp.
+#  Avec Redis (EterLib/config.yml > cache), /tpa, /tp, /tphere, /broadcast et les
+#  messages de /pay traversent les serveurs ; sans Redis, ils restent sur ce serveur.
+#  Les textes sont dans lang/. Toute modification nécessite un redémarrage du serveur.
+
+tpa:
+  # Durée de vie d'une demande, en secondes.
+  expire-seconds: 60
+
+rtp:
+  # Délai entre deux /rtp, en secondes, valable sur tout le réseau (1800 = 30 minutes).
+  # 0 le désactive. La permission eteressential.bypass.rtp en dispense.
+  cooldown: 1800
+
+  # Nombre d'endroits essayés au hasard avant d'abandonner (eau, lave, vide...).
+  attempts: 10
+
+  # Mondes de CE serveur proposés dans le menu (4 au maximum), avec leur icône et la
+  # distance d'arrivée autour du point d'apparition du monde, en blocs.
+  # Le nom affiché se règle dans lang/ (rtp.worlds.<monde>).
+  worlds:
+    world:
+      icon: GRASS_BLOCK
+      min-radius: 500
+      max-radius: 5000
+    world_nether:
+      icon: NETHERRACK
+      min-radius: 200
+      max-radius: 1000
+    world_the_end:
+      icon: END_STONE
+      min-radius: 1000
+      max-radius: 3000

@@ -1,0 +1,178 @@
+# EterEssential messages, MiniMessage format: https://docs.advntr.dev/minimessage/format
+# Palette tags (EterLib/config.yml > language.colors): <primary> <accent> <info> <error> <success>
+#   <info> = normal light gray text, <accent> = important words in orange.
+# Values between <> such as <player> are filled in by the plugin. To show a literal "<", write \< inside 'single quotes'.
+# A missing key falls back to the plugin's built-in text: you only need to keep the lines you change.
+# Teleport messages (warmup, cooldown, combat) are in EterLib/lang/.
+
+prefix: "<gradient:#FF7A00:#FFB347><bold>EterEssential</bold></gradient> <dark_gray>» "
+
+command:
+  players-only: "<error>This command can only be used by players."
+
+error:
+  generic: "<error>Something went wrong, please try again later."
+
+network:
+  failed: "<error>The link between servers is down: try again in a moment."
+
+player:
+  offline: "<error><accent><player></accent> is not online."
+  unknown: "<error>Unknown player: <accent><player></accent>."
+  not-here: "<error><accent><player></accent> is not on this server."
+
+state:
+  enabled: "enabled"
+  disabled: "disabled"
+
+time:
+  days-hours: "<days>d <hours>h"
+  hours-minutes: "<hours>h <minutes>min"
+  minutes-seconds: "<minutes>min <seconds>s"
+  seconds: "<seconds>s"
+
+tpa:
+  usage: '<error>Usage: <accent>/tpa \<player>'
+  usage-here: '<error>Usage: <accent>/tpahere \<player>'
+  self: "<error>You can't send a request to yourself."
+  disabled: "<error><accent><player></accent> doesn't accept teleport requests."
+  sent: "<info>Request sent to <accent><player></accent> to go to them. <dark_gray>(<accent><seconds>s</accent>, <accent>/tpacancel</accent> to cancel)"
+  sent-here: "<info>Request sent to <accent><player></accent> to bring them to you. <dark_gray>(<accent><seconds>s</accent>, <accent>/tpacancel</accent> to cancel)"
+  received: "<accent><player></accent> <info>wants to teleport <accent>to you</accent>. <dark_gray>(<seconds>s)"
+  received-here: "<accent><player></accent> <info>asks you to come <accent>to them</accent>. <dark_gray>(<seconds>s)"
+  button:
+    accept: "<success><bold>[Accept]</bold></success>"
+    accept-hover: "<info>Accept the request from <accent><player>"
+    deny: "<error><bold>[Deny]</bold></error>"
+    deny-hover: "<info>Deny the request from <accent><player>"
+  none: "<error>You have no pending teleport request."
+  none-from: "<error>No pending request from <accent><player></accent>."
+  requester-gone: "<error><accent><player></accent> is no longer online."
+  accepted-target: "<info>Request from <accent><player></accent> accepted."
+  accepted: "<accent><player></accent> <info>accepted your teleport request."
+  denied-target: "<info>Request from <accent><player></accent> denied."
+  denied: "<accent><player></accent> <info>denied your teleport request."
+  nothing-sent: "<error>You haven't sent any request."
+  cancelled: "<info>Your teleport request is cancelled."
+  cancelled-target: "<accent><player></accent> <info>cancelled their teleport request."
+  toggle:
+    enabled: "<info>Teleport requests <success>accepted</success>."
+    disabled: "<info>Teleport requests <error>blocked</error>: nobody can send you one anymore."
+
+back:
+  label: "Last location"
+  none: "<error>No location to go back to."
+
+rtp:
+  label: "Unknown destination"
+  no-world: "<error>No world is available for /rtp on this server."
+  world-missing: "<error>The world <accent><world></accent> doesn't exist on this server."
+  already-searching: "<error>Already looking for a spot…"
+  cooldown: "<error>Next <accent>/rtp</accent> available in <accent><time></accent>."
+  searching: "<info>Looking for a safe spot…"
+  failed: "<error>No safe spot found this time: try again."
+  worlds:
+    world: "Overworld"
+    world_nether: "Nether"
+    world_the_end: "The End"
+  menu:
+    title: "<primary>Random teleport"
+    player: "<accent><player>"
+    ready: "<success>● <info>Ready to go"
+    cooldown: "<error>● <info>Next trip in <accent><time>"
+    world: "<accent><world>"
+    radius: "<dark_gray>▸ <info>Between <accent><min></accent> and <accent><max></accent> blocks from spawn"
+    click: "<accent>Click <dark_gray>· <info>go on an adventure"
+
+list:
+  header: "<info>Players online: <accent><count>"
+  server: "<dark_gray>▸ <accent><server></accent> <dark_gray>(<count>)</dark_gray> <info><players>"
+
+find:
+  usage: '<error>Usage: <accent>/find \<player>'
+  online: "<accent><player></accent> <info>is on <accent><server></accent>."
+  offline: "<accent><player></accent> <info>is not online <dark_gray>(seen <time> ago)"
+
+seen:
+  usage: '<error>Usage: <accent>/seen \<player>'
+  online: "<accent><player></accent> <info>is <success>online</success> on <accent><server></accent>."
+  offline: "<accent><player></accent> <info>was last seen <accent><time></accent> ago."
+
+economy:
+  unavailable: "<error>The economy is not available on this server."
+
+money:
+  self: "<info>Your balance: <accent><amount>"
+  other: "<info>Balance of <accent><player></accent>: <accent><amount>"
+
+pay:
+  usage: '<error>Usage: <accent>/pay \<player> \<amount>'
+  invalid-amount: "<error>Invalid amount: <accent><amount></accent>."
+  self: "<error>You can't pay yourself."
+  not-enough: "<error>You don't have enough money to give <accent><amount></accent>."
+  failed: "<error>The payment could not be made, nothing was taken."
+  sent: "<info>You gave <accent><amount></accent> to <accent><player></accent>."
+  received: "<accent><player></accent> <info>gave you <accent><amount></accent>."
+
+staff:
+  no-permission-others: "<error>You don't have permission to do this to another player."
+  console-needs-player: "<error>From the console, specify a player."
+
+gamemode:
+  usage: '<error>Usage: <accent>/gm \<survival|creative|adventure|spectator> [player]'
+  survival: "survival"
+  creative: "creative"
+  adventure: "adventure"
+  spectator: "spectator"
+  done: "<info>Game mode: <accent><value></accent>."
+  done-other: "<info>Game mode of <accent><player></accent>: <accent><value></accent>."
+  done-by: "<accent><player></accent> <info>set your game mode to <accent><value></accent>."
+
+fly:
+  done: "<info>Flight <accent><value></accent>."
+  done-other: "<info>Flight <accent><value></accent> for <accent><player></accent>."
+  done-by: "<accent><player></accent> <info>set your flight to <accent><value></accent>."
+
+heal:
+  done: "<info>You are healed."
+  done-other: "<accent><player></accent> <info>is healed."
+  done-by: "<accent><player></accent> <info>healed you."
+
+feed:
+  done: "<info>You are fed."
+  done-other: "<accent><player></accent> <info>is fed."
+  done-by: "<accent><player></accent> <info>fed you."
+
+clear:
+  done: "<info>Inventory cleared."
+  done-other: "<info>Inventory of <accent><player></accent> cleared."
+  done-by: "<accent><player></accent> <info>cleared your inventory."
+
+speed:
+  usage: '<error>Usage: <accent>/speed \<1-10> [player]'
+  walk: "<info>Walk speed: <accent><value></accent>."
+  fly: "<info>Fly speed: <accent><value></accent>."
+  walk-other: "<info>Walk speed of <accent><player></accent>: <accent><value></accent>."
+  fly-other: "<info>Fly speed of <accent><player></accent>: <accent><value></accent>."
+  walk-by: "<accent><player></accent> <info>set your walk speed to <accent><value></accent>."
+  fly-by: "<accent><player></accent> <info>set your fly speed to <accent><value></accent>."
+
+tp:
+  usage: '<error>Usage: <accent>/tp \<player></accent> or <accent>/tp \<x> \<y> \<z>'
+  self: "<error>You are already there."
+  done: "<info>Teleporting to <accent><player></accent>."
+
+tphere:
+  usage: '<error>Usage: <accent>/tphere \<player>'
+  done: "<accent><player></accent> <info>is coming to you."
+  by: "<accent><player></accent> <info>brought you to them."
+
+invsee:
+  usage: '<error>Usage: <accent>/invsee \<player>'
+
+endersee:
+  usage: '<error>Usage: <accent>/endersee \<player>'
+
+broadcast:
+  usage: '<error>Usage: <accent>/broadcast \<message>'
+  format: "<primary><bold>Announcement</bold></primary> <dark_gray>» <white><message>"

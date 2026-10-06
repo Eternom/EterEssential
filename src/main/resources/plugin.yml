@@ -1,0 +1,235 @@
+name: EterEssential
+version: '${version}'
+
+main: fr.eternom.eterEssential.Main
+api-version: '26.2'
+load: POSTWORLD
+authors: [ NadTum ]
+description: Commandes essentielles du réseau (tpa, back, rtp, infos, argent, staff).
+depend: [EterLib]
+softdepend: [Vault, EterEconomy]
+
+commands:
+  # Téléportation entre joueurs
+  tpa:
+    description: Demander à se téléporter vers un joueur, même sur un autre serveur.
+    usage: /tpa <joueur>
+    permission: eteressential.tpa
+  tpahere:
+    description: Demander à un joueur de venir vers toi.
+    usage: /tpahere <joueur>
+    permission: eteressential.tpahere
+  tpaccept:
+    description: Accepter une demande de téléportation.
+    usage: /tpaccept [joueur]
+    aliases: [tpyes]
+    permission: eteressential.tpa
+  tpdeny:
+    description: Refuser une demande de téléportation.
+    usage: /tpdeny [joueur]
+    aliases: [tpno]
+    permission: eteressential.tpa
+  tpacancel:
+    description: Annuler la demande que tu as envoyée.
+    usage: /tpacancel
+    permission: eteressential.tpa
+  tptoggle:
+    description: Refuser (ou accepter de nouveau) toutes les demandes de téléportation.
+    usage: /tptoggle
+    permission: eteressential.tpa
+  back:
+    description: Revenir à ta dernière position.
+    usage: /back
+    permission: eteressential.back
+  rtp:
+    description: Partir au hasard dans un monde de ce serveur.
+    usage: /rtp
+    aliases: [randomtp, wild]
+    permission: eteressential.rtp
+
+  # Informations
+  list:
+    description: Joueurs en ligne, par serveur.
+    usage: /list
+    aliases: [online, who]
+    permission: eteressential.list
+  find:
+    description: Sur quel serveur est un joueur.
+    usage: /find <joueur>
+    permission: eteressential.find
+  seen:
+    description: Dernière connexion d'un joueur.
+    usage: /seen <joueur>
+    permission: eteressential.seen
+
+  # Économie (Vault -> EterEconomy)
+  money:
+    description: Ton solde (ou celui d'un joueur, staff).
+    usage: /money [joueur]
+    aliases: [balance, bal]
+    permission: eteressential.money
+  pay:
+    description: Donner de l'argent à un joueur, même hors ligne ou sur un autre serveur.
+    usage: /pay <joueur> <montant>
+    permission: eteressential.pay
+
+  # Staff
+  gm:
+    description: Changer de mode de jeu.
+    usage: /gm <mode> [joueur]
+    permission: eteressential.gamemode
+  gmc:
+    description: Mode créatif.
+    usage: /gmc [joueur]
+    permission: eteressential.gamemode
+  gms:
+    description: Mode survie.
+    usage: /gms [joueur]
+    permission: eteressential.gamemode
+  gma:
+    description: Mode aventure.
+    usage: /gma [joueur]
+    permission: eteressential.gamemode
+  gmsp:
+    description: Mode spectateur.
+    usage: /gmsp [joueur]
+    permission: eteressential.gamemode
+  fly:
+    description: Activer ou couper le vol.
+    usage: /fly [joueur]
+    permission: eteressential.fly
+  heal:
+    description: Soigner (vie, feu, effets).
+    usage: /heal [joueur]
+    permission: eteressential.heal
+  feed:
+    description: Rassasier.
+    usage: /feed [joueur]
+    permission: eteressential.feed
+  speed:
+    description: Vitesse de marche ou de vol (selon si tu voles), de 1 à 10.
+    usage: /speed <1-10> [joueur]
+    permission: eteressential.speed
+  clear:
+    description: Vider un inventaire.
+    usage: /clear [joueur]
+    permission: eteressential.clear
+  tp:
+    description: Aller vers un joueur (tout le réseau) ou à des coordonnées, sans attente.
+    usage: /tp <joueur> | /tp <x> <y> <z>
+    permission: eteressential.tp
+  tphere:
+    description: Faire venir un joueur (tout le réseau), sans attente.
+    usage: /tphere <joueur>
+    permission: eteressential.tphere
+  invsee:
+    description: Ouvrir l'inventaire d'un joueur de ce serveur.
+    usage: /invsee <joueur>
+    permission: eteressential.invsee
+  endersee:
+    description: Ouvrir le coffre de l'Ender d'un joueur de ce serveur.
+    usage: /endersee <joueur>
+    permission: eteressential.endersee
+  broadcast:
+    description: Annonce sur tout le réseau (MiniMessage accepté).
+    usage: /broadcast <message>
+    aliases: [bc]
+    permission: eteressential.broadcast
+
+permissions:
+  # Joueurs (accordées à tous)
+  eteressential.tpa:
+    default: true
+  eteressential.tpahere:
+    default: true
+  eteressential.rtp:
+    default: true
+  eteressential.list:
+    default: true
+  eteressential.find:
+    default: true
+  eteressential.seen:
+    default: true
+  eteressential.money:
+    default: true
+  eteressential.pay:
+    default: true
+
+  # Retour arrière : à accorder par grade (personne par défaut)
+  eteressential.back:
+    description: /back après une téléportation.
+    default: op
+  eteressential.back.death:
+    description: /back ramène aussi au lieu de la mort.
+    default: op
+
+  # Staff
+  eteressential.gamemode:
+    default: op
+  eteressential.fly:
+    default: op
+  eteressential.heal:
+    default: op
+  eteressential.feed:
+    default: op
+  eteressential.speed:
+    default: op
+  eteressential.clear:
+    default: op
+  eteressential.tp:
+    default: op
+  eteressential.tphere:
+    default: op
+  eteressential.invsee:
+    default: op
+  eteressential.endersee:
+    default: op
+  eteressential.broadcast:
+    default: op
+
+  # Sur un autre joueur
+  eteressential.others.*:
+    description: Utiliser les commandes du staff sur un autre joueur, voir le solde des autres.
+    default: op
+    children:
+      eteressential.others.gamemode: true
+      eteressential.others.fly: true
+      eteressential.others.heal: true
+      eteressential.others.feed: true
+      eteressential.others.speed: true
+      eteressential.others.clear: true
+      eteressential.others.money: true
+
+  # Dispenses
+  eteressential.bypass.*:
+    description: Toutes les dispenses d'EterEssential.
+    default: op
+    children:
+      eteressential.bypass.tptoggle: true
+      eteressential.bypass.rtp: true
+  eteressential.bypass.tptoggle:
+    description: Envoyer une demande de tpa même à un joueur qui les refuse.
+    default: op
+  eteressential.bypass.rtp:
+    description: Pas de délai entre deux /rtp.
+    default: op
+
+  eteressential.admin:
+    description: Toutes les permissions d'EterEssential.
+    default: op
+    children:
+      eteressential.back: true
+      eteressential.back.death: true
+      eteressential.gamemode: true
+      eteressential.fly: true
+      eteressential.heal: true
+      eteressential.feed: true
+      eteressential.speed: true
+      eteressential.clear: true
+      eteressential.tp: true
+      eteressential.tphere: true
+      eteressential.invsee: true
+      eteressential.endersee: true
+      eteressential.broadcast: true
+      eteressential.others.*: true
+      eteressential.bypass.*: true

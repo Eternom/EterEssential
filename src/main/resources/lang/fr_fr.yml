@@ -1,0 +1,178 @@
+# Messages d'EterEssential, format MiniMessage : https://docs.advntr.dev/minimessage/format
+# Balises de la palette (EterLib/config.yml > language.colors) : <primary> <accent> <info> <error> <success>
+#   <info> = texte courant gris clair, <accent> = mots importants en orange.
+# Les valeurs entre <> comme <player> sont remplies par le plugin. Pour afficher un "<", écrire \< entre 'guillemets simples'.
+# Une clé absente reprend le texte intégré au plugin : tu peux ne garder que les lignes que tu modifies.
+# Les messages de téléportation (attente, délai, combat) sont dans EterLib/lang/.
+
+prefix: "<gradient:#FF7A00:#FFB347><bold>EterEssential</bold></gradient> <dark_gray>» "
+
+command:
+  players-only: "<error>Commande réservée aux joueurs."
+
+error:
+  generic: "<error>Une erreur est survenue, réessaie plus tard."
+
+network:
+  failed: "<error>La liaison entre les serveurs est coupée : réessaie dans un instant."
+
+player:
+  offline: "<error><accent><player></accent> n'est pas connecté."
+  unknown: "<error>Joueur inconnu : <accent><player></accent>."
+  not-here: "<error><accent><player></accent> n'est pas sur ce serveur."
+
+state:
+  enabled: "activé"
+  disabled: "désactivé"
+
+time:
+  days-hours: "<days> j <hours> h"
+  hours-minutes: "<hours> h <minutes> min"
+  minutes-seconds: "<minutes> min <seconds> s"
+  seconds: "<seconds> s"
+
+tpa:
+  usage: '<error>Utilisation : <accent>/tpa \<joueur>'
+  usage-here: '<error>Utilisation : <accent>/tpahere \<joueur>'
+  self: "<error>Tu ne peux pas t'envoyer une demande à toi-même."
+  disabled: "<error><accent><player></accent> n'accepte pas les demandes de téléportation."
+  sent: "<info>Demande envoyée à <accent><player></accent> pour aller vers lui. <dark_gray>(<accent><seconds> s</accent>, <accent>/tpacancel</accent> pour annuler)"
+  sent-here: "<info>Demande envoyée à <accent><player></accent> pour qu'il vienne vers toi. <dark_gray>(<accent><seconds> s</accent>, <accent>/tpacancel</accent> pour annuler)"
+  received: "<accent><player></accent> <info>veut se téléporter <accent>vers toi</accent>. <dark_gray>(<seconds> s)"
+  received-here: "<accent><player></accent> <info>te demande de venir <accent>vers lui</accent>. <dark_gray>(<seconds> s)"
+  button:
+    accept: "<success><bold>[Accepter]</bold></success>"
+    accept-hover: "<info>Accepter la demande de <accent><player>"
+    deny: "<error><bold>[Refuser]</bold></error>"
+    deny-hover: "<info>Refuser la demande de <accent><player>"
+  none: "<error>Tu n'as aucune demande de téléportation en cours."
+  none-from: "<error>Aucune demande de <accent><player></accent> en cours."
+  requester-gone: "<error><accent><player></accent> n'est plus connecté."
+  accepted-target: "<info>Demande de <accent><player></accent> acceptée."
+  accepted: "<accent><player></accent> <info>a accepté ta demande de téléportation."
+  denied-target: "<info>Demande de <accent><player></accent> refusée."
+  denied: "<accent><player></accent> <info>a refusé ta demande de téléportation."
+  nothing-sent: "<error>Tu n'as envoyé aucune demande."
+  cancelled: "<info>Ta demande de téléportation est annulée."
+  cancelled-target: "<accent><player></accent> <info>a annulé sa demande de téléportation."
+  toggle:
+    enabled: "<info>Demandes de téléportation <success>acceptées</success>."
+    disabled: "<info>Demandes de téléportation <error>refusées</error> : plus personne ne peut t'en envoyer."
+
+back:
+  label: "Dernière position"
+  none: "<error>Aucune position où revenir."
+
+rtp:
+  label: "Destination inconnue"
+  no-world: "<error>Aucun monde n'est proposé pour /rtp sur ce serveur."
+  world-missing: "<error>Le monde <accent><world></accent> n'existe pas sur ce serveur."
+  already-searching: "<error>Recherche d'un endroit déjà en cours…"
+  cooldown: "<error>Prochain <accent>/rtp</accent> possible dans <accent><time></accent>."
+  searching: "<info>Recherche d'un endroit sûr…"
+  failed: "<error>Aucun endroit sûr trouvé cette fois : réessaie."
+  worlds:
+    world: "Monde"
+    world_nether: "Nether"
+    world_the_end: "End"
+  menu:
+    title: "<primary>Téléportation aléatoire"
+    player: "<accent><player>"
+    ready: "<success>● <info>Prêt à partir"
+    cooldown: "<error>● <info>Prochain départ dans <accent><time>"
+    world: "<accent><world>"
+    radius: "<dark_gray>▸ <info>Entre <accent><min></accent> et <accent><max></accent> blocs du spawn"
+    click: "<accent>Clic <dark_gray>· <info>partir à l'aventure"
+
+list:
+  header: "<info>Joueurs en ligne : <accent><count>"
+  server: "<dark_gray>▸ <accent><server></accent> <dark_gray>(<count>)</dark_gray> <info><players>"
+
+find:
+  usage: '<error>Utilisation : <accent>/find \<joueur>'
+  online: "<accent><player></accent> <info>est sur <accent><server></accent>."
+  offline: "<accent><player></accent> <info>n'est pas connecté <dark_gray>(vu il y a <time>)"
+
+seen:
+  usage: '<error>Utilisation : <accent>/seen \<joueur>'
+  online: "<accent><player></accent> <info>est <success>en ligne</success> sur <accent><server></accent>."
+  offline: "<accent><player></accent> <info>a été vu pour la dernière fois il y a <accent><time></accent>."
+
+economy:
+  unavailable: "<error>L'économie n'est pas disponible sur ce serveur."
+
+money:
+  self: "<info>Ton solde : <accent><amount>"
+  other: "<info>Solde de <accent><player></accent> : <accent><amount>"
+
+pay:
+  usage: '<error>Utilisation : <accent>/pay \<joueur> \<montant>'
+  invalid-amount: "<error>Montant invalide : <accent><amount></accent>."
+  self: "<error>Tu ne peux pas te payer toi-même."
+  not-enough: "<error>Tu n'as pas assez d'argent pour donner <accent><amount></accent>."
+  failed: "<error>Le paiement n'a pas pu être fait, rien n'a été retiré."
+  sent: "<info>Tu as donné <accent><amount></accent> à <accent><player></accent>."
+  received: "<accent><player></accent> <info>t'a donné <accent><amount></accent>."
+
+staff:
+  no-permission-others: "<error>Tu n'as pas la permission de faire ça sur un autre joueur."
+  console-needs-player: "<error>Depuis la console, précise un joueur."
+
+gamemode:
+  usage: '<error>Utilisation : <accent>/gm \<survival|creative|adventure|spectator> [joueur]'
+  survival: "survie"
+  creative: "créatif"
+  adventure: "aventure"
+  spectator: "spectateur"
+  done: "<info>Mode de jeu : <accent><value></accent>."
+  done-other: "<info>Mode de jeu de <accent><player></accent> : <accent><value></accent>."
+  done-by: "<accent><player></accent> <info>t'a mis en mode <accent><value></accent>."
+
+fly:
+  done: "<info>Vol <accent><value></accent>."
+  done-other: "<info>Vol <accent><value></accent> pour <accent><player></accent>."
+  done-by: "<accent><player></accent> <info>a <accent><value></accent> ton vol."
+
+heal:
+  done: "<info>Tu es soigné."
+  done-other: "<accent><player></accent> <info>est soigné."
+  done-by: "<accent><player></accent> <info>t'a soigné."
+
+feed:
+  done: "<info>Tu es rassasié."
+  done-other: "<accent><player></accent> <info>est rassasié."
+  done-by: "<accent><player></accent> <info>t'a rassasié."
+
+clear:
+  done: "<info>Inventaire vidé."
+  done-other: "<info>Inventaire de <accent><player></accent> vidé."
+  done-by: "<accent><player></accent> <info>a vidé ton inventaire."
+
+speed:
+  usage: '<error>Utilisation : <accent>/speed \<1-10> [joueur]'
+  walk: "<info>Vitesse de marche : <accent><value></accent>."
+  fly: "<info>Vitesse de vol : <accent><value></accent>."
+  walk-other: "<info>Vitesse de marche de <accent><player></accent> : <accent><value></accent>."
+  fly-other: "<info>Vitesse de vol de <accent><player></accent> : <accent><value></accent>."
+  walk-by: "<accent><player></accent> <info>a réglé ta vitesse de marche à <accent><value></accent>."
+  fly-by: "<accent><player></accent> <info>a réglé ta vitesse de vol à <accent><value></accent>."
+
+tp:
+  usage: '<error>Utilisation : <accent>/tp \<joueur></accent> ou <accent>/tp \<x> \<y> \<z>'
+  self: "<error>Tu es déjà là."
+  done: "<info>Téléportation vers <accent><player></accent>."
+
+tphere:
+  usage: '<error>Utilisation : <accent>/tphere \<joueur>'
+  done: "<accent><player></accent> <info>arrive vers toi."
+  by: "<accent><player></accent> <info>t'a fait venir."
+
+invsee:
+  usage: '<error>Utilisation : <accent>/invsee \<joueur>'
+
+endersee:
+  usage: '<error>Utilisation : <accent>/endersee \<joueur>'
+
+broadcast:
+  usage: '<error>Utilisation : <accent>/broadcast \<message>'
+  format: "<primary><bold>Annonce</bold></primary> <dark_gray>» <white><message>"
