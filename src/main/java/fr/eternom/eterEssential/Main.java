@@ -21,8 +21,8 @@ import java.time.Duration;
 
 public final class Main extends JavaPlugin {
 
-    /** Version minimale d'EterLib : EterTeleportEvent, teleportNow et OnlineNames arrivent en 1.5.0. */
-    private static final String REQUIRED_ETERLIB = "1.5.0";
+    /** Version minimale d'EterLib : bouton Retour/Fermer des menus et durées lisibles depuis 1.5.1. */
+    private static final String REQUIRED_ETERLIB = "1.5.1";
 
     /** Préfixe des tables d'EterEssential dans la base commune : eteressential_players... */
     private static final String TABLE_PREFIX = "eteressential_";
