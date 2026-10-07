@@ -92,7 +92,7 @@ public class InfoCommand implements TabExecutor {
         }
         long seconds = Math.max(0, (System.currentTimeMillis() - target.lastSeen()) / 1000);
         messages.send(player, action == Action.FIND ? "find.offline" : "seen.offline", "player", target.name(),
-                "time", TimeFormat.format(messages, player, seconds));
+                "time", EterLib.get().formatDuration(player, seconds));
     }
 
     @Override

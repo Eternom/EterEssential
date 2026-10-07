@@ -24,12 +24,6 @@ state:
   enabled: "activé"
   disabled: "désactivé"
 
-time:
-  days-hours: "<days> j <hours> h"
-  hours-minutes: "<hours> h <minutes> min"
-  minutes-seconds: "<minutes> min <seconds> s"
-  seconds: "<seconds> s"
-
 tpa:
   usage: '<error>Utilisation : <accent>/tpa \<joueur>'
   usage-here: '<error>Utilisation : <accent>/tpahere \<joueur>'

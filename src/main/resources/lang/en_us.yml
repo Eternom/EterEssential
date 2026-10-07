@@ -24,12 +24,6 @@ state:
   enabled: "enabled"
   disabled: "disabled"
 
-time:
-  days-hours: "<days>d <hours>h"
-  hours-minutes: "<hours>h <minutes>min"
-  minutes-seconds: "<minutes>min <seconds>s"
-  seconds: "<seconds>s"
-
 tpa:
   usage: '<error>Usage: <accent>/tpa \<player>'
   usage-here: '<error>Usage: <accent>/tpahere \<player>'

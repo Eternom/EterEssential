@@ -1,6 +1,6 @@
 package fr.eternom.eterEssential.module.rtp;
 
-import fr.eternom.eterEssential.module.info.TimeFormat;
+import fr.eternom.eterLib.EterLib;
 import fr.eternom.eterLib.helper.gui.Items;
 import fr.eternom.eterLib.helper.gui.Menu;
 import fr.eternom.eterLib.helper.gui.Sounds;
@@ -111,7 +111,7 @@ class RtpMenu implements Menu {
         long remaining = remainingSeconds();
         List<Component> lore = new ArrayList<>();
         lore.add(remaining > 0
-                ? text("rtp.menu.cooldown", "time", TimeFormat.format(messages, viewer, remaining))
+                ? text("rtp.menu.cooldown", "time", EterLib.get().formatDuration(viewer, remaining))
                 : text("rtp.menu.ready"));
         inventory.setItem(INFO, Items.head(viewer.getPlayerProfile(), text("rtp.menu.player", "player", viewer.getName()), lore));
     }

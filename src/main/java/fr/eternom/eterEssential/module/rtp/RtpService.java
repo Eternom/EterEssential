@@ -1,6 +1,6 @@
 package fr.eternom.eterEssential.module.rtp;
 
-import fr.eternom.eterEssential.module.info.TimeFormat;
+import fr.eternom.eterLib.EterLib;
 import fr.eternom.eterLib.helper.gui.BackButton;
 import fr.eternom.eterLib.helper.message.Messages;
 import fr.eternom.eterLib.helper.task.Tasks;
@@ -97,7 +97,7 @@ public class RtpService {
         Tasks.async(plugin, player, () -> remainingSeconds(player), remaining -> {
             if (remaining > 0) {
                 searching.remove(player.getUniqueId());
-                messages.send(player, "rtp.cooldown", "time", TimeFormat.format(messages, player, remaining));
+                messages.send(player, "rtp.cooldown", "time", EterLib.get().formatDuration(player, remaining));
                 return;
             }
             messages.actionBar(player, "rtp.searching");
