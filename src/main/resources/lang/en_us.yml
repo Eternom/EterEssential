@@ -4,20 +4,14 @@
 # Values between <> such as <player> are filled in by the plugin. To show a literal "<", write \< inside 'single quotes'.
 # A missing key falls back to the plugin's built-in text: you only need to keep the lines you change.
 # The message prefix ("Core") is shared by all plugins: EterLib/config.yml > language.prefix.
+# Shared texts ("Cancel", "Unknown player", "players only"...): in EterLib/lang/, for every plugin.
 # Teleport messages (warmup, cooldown, combat) are in EterLib/lang/.
-
-command:
-  players-only: "<error>This command can only be used by players."
-
-error:
-  generic: "<error>Something went wrong, please try again later."
 
 network:
   failed: "<error>The link between servers is down: try again in a moment."
 
 player:
   offline: "<error><accent><player></accent> is not online."
-  unknown: "<error>Unknown player: <accent><player></accent>."
   not-here: "<error><accent><player></accent> is not on this server."
 
 state:
@@ -90,9 +84,6 @@ seen:
   usage: '<error>Usage: <accent>/seen \<player>'
   online: "<accent><player></accent> <info>is <success>online</success> on <accent><server></accent>."
   offline: "<accent><player></accent> <info>was last seen <accent><time></accent> ago."
-
-economy:
-  unavailable: "<error>The economy is not available on this server."
 
 money:
   self: "<info>Your balance: <accent><amount>"

@@ -1,7 +1,7 @@
 package fr.eternom.eterEssential.module.staff;
 
 import com.google.gson.JsonObject;
-import fr.eternom.eterEssential.module.network.NetworkBus;
+import fr.eternom.eterLib.helper.cache.NetworkBus;
 import fr.eternom.eterEssential.module.network.PlayerLookup;
 import fr.eternom.eterLib.helper.message.Messages;
 import fr.eternom.eterLib.module.player.OnlineNames;

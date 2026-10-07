@@ -1,5 +1,6 @@
 package fr.eternom.eterEssential.module.economy;
 
+import fr.eternom.eterLib.helper.economy.Money;
 import fr.eternom.eterLib.helper.message.Messages;
 import fr.eternom.eterLib.module.player.OnlineNames;
 import fr.eternom.eterLib.module.player.PlayerDirectory;
@@ -10,7 +11,6 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
-import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
@@ -47,12 +47,11 @@ public class EcoCommand implements TabExecutor {
             messages.send(sender, "eco.usage");
             return true;
         }
-        RegisteredServiceProvider<Economy> provider = Bukkit.getServicesManager().getRegistration(Economy.class);
-        if (provider == null) {
+        Economy economy = Money.economy();
+        if (economy == null) {
             messages.send(sender, "economy.unavailable");
             return true;
         }
-        Economy economy = provider.getProvider();
         double amount = needsAmount ? EconomyCommand.parseAmount(args[2], economy.fractionalDigits()) : 0;
         if (needsAmount && amount <= 0 && !(action.equals("set") && args[2].equals("0"))) {
             messages.send(sender, "pay.invalid-amount", "amount", args[2]);

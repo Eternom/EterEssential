@@ -6,7 +6,7 @@ Document développeur, à tenir à jour avec le code.
 
 ## Prérequis
 
-- **EterLib 1.5.0+** (`depend`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
+- **EterLib 1.6.0+** (`depend`, textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
   (attente, délai commun, combat, départ vers un autre serveur).
 - **Redis facultatif.** Avec lui, `/tpa`, `/tp`, `/tphere`, `/broadcast` et les messages de `/pay` traversent les
   serveurs ; sans lui, ils restent sur le serveur où l'on est (rien n'est cassé).
@@ -15,7 +15,7 @@ Document développeur, à tenir à jour avec le code.
 
 ## Fonctionnement
 
-**Messages entre serveurs** (`module/network/NetworkBus`) : un canal Redis `eteressential`, un type par message
+**Messages entre serveurs** (`NetworkBus` d'EterLib, `lib.network`) : un canal Redis `eteressential`, un type par message
 (`tpa-request`, `tpa-teleport`, `staff-tphere`, `broadcast`, `notify`). Le serveur d'origine ignore le sien.
 `notify` envoie un message de langue à un joueur où qu'il soit (accepté, refusé, argent reçu...).
 `PlayerLookup` trouve un joueur sur ce serveur puis dans `eter_players`.

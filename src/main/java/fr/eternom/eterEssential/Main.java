@@ -3,7 +3,7 @@ package fr.eternom.eterEssential;
 import fr.eternom.eterEssential.listeners.Commands;
 import fr.eternom.eterEssential.listeners.Events;
 import fr.eternom.eterEssential.module.back.BackStore;
-import fr.eternom.eterEssential.module.network.NetworkBus;
+import fr.eternom.eterLib.helper.cache.NetworkBus;
 import fr.eternom.eterEssential.module.network.PlayerLookup;
 import fr.eternom.eterEssential.module.rtp.RtpCooldown;
 import fr.eternom.eterEssential.module.rtp.RtpService;
@@ -21,8 +21,8 @@ import java.time.Duration;
 
 public final class Main extends JavaPlugin {
 
-    /** Version minimale d'EterLib : bouton Retour/Fermer des menus et durées lisibles depuis 1.5.1. */
-    private static final String REQUIRED_ETERLIB = "1.5.1";
+    /** Version minimale d'EterLib : textes communs et outils partagés (Frame, Money, NetworkBus) depuis 1.6.0. */
+    private static final String REQUIRED_ETERLIB = "1.6.0";
 
     /** Préfixe des tables d'EterEssential dans la base commune : eteressential_players... */
     private static final String TABLE_PREFIX = "eteressential_";
@@ -52,8 +52,7 @@ public final class Main extends JavaPlugin {
         Database database = lib.database(TABLE_PREFIX);
         RedisCache redis = lib.getRedis();
 
-        bus = new NetworkBus(this, lib.getMessenger(), messages, lib.getServerName());
-        bus.start();
+        bus = lib.network(this, "eteressential", messages);
         lookup = new PlayerLookup(this, lib.getPlayers(), messages, lib.getServerName(), bus.isNetworked());
 
         TpaRequests requests = new TpaRequests(redis, Duration.ofSeconds(Math.max(10, getConfig().getInt("tpa.expire-seconds", 60))));

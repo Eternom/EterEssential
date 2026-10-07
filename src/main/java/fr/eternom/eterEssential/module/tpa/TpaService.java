@@ -1,7 +1,7 @@
 package fr.eternom.eterEssential.module.tpa;
 
 import com.google.gson.JsonObject;
-import fr.eternom.eterEssential.module.network.NetworkBus;
+import fr.eternom.eterLib.helper.cache.NetworkBus;
 import fr.eternom.eterEssential.module.network.PlayerLookup;
 import fr.eternom.eterEssential.module.network.PlayerLookup.OnlinePlayer;
 import fr.eternom.eterEssential.module.tpa.TpaRequests.Request;

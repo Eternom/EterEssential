@@ -1,7 +1,8 @@
 package fr.eternom.eterEssential.module.economy;
 
-import fr.eternom.eterEssential.module.network.NetworkBus;
+import fr.eternom.eterLib.helper.cache.NetworkBus;
 import fr.eternom.eterEssential.module.network.PlayerLookup;
+import fr.eternom.eterLib.helper.economy.Money;
 import fr.eternom.eterLib.helper.message.Messages;
 import fr.eternom.eterLib.helper.task.Tasks;
 import fr.eternom.eterLib.module.player.OnlineNames;
@@ -13,7 +14,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.math.BigDecimal;
@@ -56,12 +56,11 @@ public class EconomyCommand implements TabExecutor {
             return true;
         }
         // Lu à chaque fois : EterEconomy peut être chargé après nous ou rechargé
-        RegisteredServiceProvider<Economy> provider = Bukkit.getServicesManager().getRegistration(Economy.class);
-        if (provider == null) {
+        Economy economy = Money.economy();
+        if (economy == null) {
             messages.send(player, "economy.unavailable");
             return true;
         }
-        Economy economy = provider.getProvider();
         if (action == Action.MONEY) {
             money(player, economy, args);
         } else {

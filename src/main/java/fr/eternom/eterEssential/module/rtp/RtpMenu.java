@@ -1,6 +1,7 @@
 package fr.eternom.eterEssential.module.rtp;
 
 import fr.eternom.eterLib.EterLib;
+import fr.eternom.eterLib.helper.gui.Frame;
 import fr.eternom.eterLib.helper.gui.Items;
 import fr.eternom.eterLib.helper.gui.Menu;
 import fr.eternom.eterLib.helper.gui.Sounds;
@@ -12,14 +13,12 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Menu /rtp, 3 lignes :
@@ -33,7 +32,6 @@ class RtpMenu implements Menu {
 
     private static final int INFO = 4;
     private static final int BACK = 22;
-    private static final Set<Integer> ACCENT_FRAME = Set.of(0, 1, 7, 8, 9, 17, 18, 19, 25, 26);
     /** Emplacements des mondes selon leur nombre (1 à 4), centrés sur la ligne du milieu. */
     private static final List<List<Integer>> LAYOUTS = List.of(List.of(13), List.of(11, 15), List.of(11, 13, 15),
             List.of(10, 12, 14, 16));
@@ -82,13 +80,7 @@ class RtpMenu implements Menu {
     }
 
     private void render() {
-        ItemStack accent = Items.pane(Material.ORANGE_STAINED_GLASS_PANE);
-        ItemStack neutral = Items.pane(Material.GRAY_STAINED_GLASS_PANE);
-        for (int slot = 0; slot < inventory.getSize(); slot++) {
-            if (slot / 9 != 1 || slot % 9 == 0 || slot % 9 == 8) {
-                inventory.setItem(slot, ACCENT_FRAME.contains(slot) ? accent : neutral);
-            }
-        }
+        Frame.draw(inventory, Material.ORANGE_STAINED_GLASS_PANE);
         List<RtpWorld> worlds = service.worlds();
         List<Integer> slots = LAYOUTS.get(Math.min(worlds.size(), LAYOUTS.size()) - 1);
         for (int i = 0; i < slots.size(); i++) {
