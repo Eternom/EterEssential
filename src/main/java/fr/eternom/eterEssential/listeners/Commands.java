@@ -5,7 +5,6 @@ import fr.eternom.eterEssential.module.back.BackCommand;
 import fr.eternom.eterEssential.module.economy.EcoCommand;
 import fr.eternom.eterEssential.module.economy.EconomyCommand;
 import fr.eternom.eterEssential.module.info.InfoCommand;
-import fr.eternom.eterEssential.module.rtp.RtpCommand;
 import fr.eternom.eterEssential.module.staff.BroadcastCommand;
 import fr.eternom.eterEssential.module.staff.InventoryCommand;
 import fr.eternom.eterEssential.module.staff.PlayerActionCommand;
@@ -32,7 +31,7 @@ public class Commands {
         TeleportService teleports = lib.getTeleports();
         boolean networked = main.getBus().isNetworked();
 
-        // Téléportation entre joueurs, /back, /rtp
+        // Téléportation entre joueurs, /back
         register(main, "tpa", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.TPA));
         register(main, "tpahere", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.TPAHERE));
         register(main, "tpaccept", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.ACCEPT));
@@ -40,7 +39,6 @@ public class Commands {
         register(main, "tpacancel", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.CANCEL));
         register(main, "tptoggle", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.TOGGLE));
         register(main, "back", new BackCommand(main, main.getBack(), teleports, messages));
-        register(main, "rtp", new RtpCommand(main.getRtp(), messages));
 
         // Informations
         register(main, "list", new InfoCommand(main, lib.getPlayers(), main.getLookup(), names, messages, networked, InfoCommand.Action.LIST));

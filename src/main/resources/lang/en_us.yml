@@ -50,27 +50,6 @@ back:
   label: "Last location"
   none: "<error>No location to go back to."
 
-rtp:
-  label: "Unknown destination"
-  no-world: "<error>No world is available for /rtp on this server."
-  world-missing: "<error>The world <accent><world></accent> doesn't exist on this server."
-  already-searching: "<error>Already looking for a spot…"
-  cooldown: "<error>Next <accent>/rtp</accent> available in <accent><time></accent>."
-  searching: "<info>Looking for a safe spot…"
-  failed: "<error>No safe spot found this time: try again."
-  worlds:
-    world: "Overworld"
-    world_nether: "Nether"
-    world_the_end: "The End"
-  menu:
-    title: "<primary>Random teleport"
-    player: "<accent><player>"
-    ready: "<success>● <info>Ready to go"
-    cooldown: "<error>● <info>Next trip in <accent><time>"
-    world: "<accent><world>"
-    radius: "<dark_gray>▸ <info>Between <accent><min></accent> and <accent><max></accent> blocks from spawn"
-    click: "<accent>Click <dark_gray>· <info>go on an adventure"
-
 list:
   header: "<info>Players online: <accent><count>"
   server: "<dark_gray>▸ <accent><server></accent> <dark_gray>(<count>)</dark_gray> <info><players>"

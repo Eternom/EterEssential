@@ -5,9 +5,6 @@ import fr.eternom.eterEssential.listeners.Events;
 import fr.eternom.eterEssential.module.back.BackStore;
 import fr.eternom.eterLib.helper.cache.NetworkBus;
 import fr.eternom.eterEssential.module.network.PlayerLookup;
-import fr.eternom.eterEssential.module.rtp.RtpCooldown;
-import fr.eternom.eterEssential.module.rtp.RtpService;
-import fr.eternom.eterEssential.module.rtp.RtpWorld;
 import fr.eternom.eterEssential.module.tpa.TpaRequests;
 import fr.eternom.eterEssential.module.tpa.TpaService;
 import fr.eternom.eterEssential.module.tpa.TpaSettings;
@@ -32,7 +29,6 @@ public final class Main extends JavaPlugin {
     private PlayerLookup lookup;
     private TpaService tpa;
     private BackStore back;
-    private RtpService rtp;
 
     @Override
     public void onEnable() {
@@ -58,10 +54,8 @@ public final class Main extends JavaPlugin {
         TpaRequests requests = new TpaRequests(redis, Duration.ofSeconds(Math.max(10, getConfig().getInt("tpa.expire-seconds", 60))));
         tpa = new TpaService(this, lib.getTeleports(), bus, lookup, requests, new TpaSettings(database), messages);
         back = new BackStore(database, redis);
-        RtpCooldown rtpCooldown = new RtpCooldown(database, redis, Duration.ofSeconds(Math.max(0, getConfig().getInt("rtp.cooldown", 1800))));
-        rtp = new RtpService(this, rtpCooldown, lib.getTeleports(), messages, lib.getServerName(),
-                RtpWorld.load(getConfig().getConfigurationSection("rtp.worlds"), getLogger()), getConfig().getInt("rtp.attempts", 10),
-                lib.backButton(getConfig().getString("menus.rtp.back-command", "")));
+        // /rtp est maintenant le plugin EterRtp : sa table d'avant est retirée (pas de table morte)
+        database.execute("DROP TABLE IF EXISTS " + database.table("rtp"));
 
         new Commands(this);
         new Events(this);
@@ -88,9 +82,5 @@ public final class Main extends JavaPlugin {
 
     public BackStore getBack() {
         return back;
-    }
-
-    public RtpService getRtp() {
-        return rtp;
     }
 }

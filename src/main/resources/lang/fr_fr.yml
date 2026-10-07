@@ -50,27 +50,6 @@ back:
   label: "Dernière position"
   none: "<error>Aucune position où revenir."
 
-rtp:
-  label: "Destination inconnue"
-  no-world: "<error>Aucun monde n'est proposé pour /rtp sur ce serveur."
-  world-missing: "<error>Le monde <accent><world></accent> n'existe pas sur ce serveur."
-  already-searching: "<error>Recherche d'un endroit déjà en cours…"
-  cooldown: "<error>Prochain <accent>/rtp</accent> possible dans <accent><time></accent>."
-  searching: "<info>Recherche d'un endroit sûr…"
-  failed: "<error>Aucun endroit sûr trouvé cette fois : réessaie."
-  worlds:
-    world: "Monde"
-    world_nether: "Nether"
-    world_the_end: "End"
-  menu:
-    title: "<primary>Téléportation aléatoire"
-    player: "<accent><player>"
-    ready: "<success>● <info>Prêt à partir"
-    cooldown: "<error>● <info>Prochain départ dans <accent><time>"
-    world: "<accent><world>"
-    radius: "<dark_gray>▸ <info>Entre <accent><min></accent> et <accent><max></accent> blocs du spawn"
-    click: "<accent>Clic <dark_gray>· <info>partir à l'aventure"
-
 list:
   header: "<info>Joueurs en ligne : <accent><count>"
   server: "<dark_gray>▸ <accent><server></accent> <dark_gray>(<count>)</dark_gray> <info><players>"

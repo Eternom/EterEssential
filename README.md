@@ -1,7 +1,7 @@
 # EterEssential
 
-Les commandes essentielles du réseau : téléportation entre joueurs, `/back`, `/rtp`, informations, argent et outils du
-staff. Ailleurs : `/spawn` et `/lobby` (EterHub, EterVelocityLobby), messages d'arrivée et de départ du réseau
+Les commandes essentielles du réseau : téléportation entre joueurs, `/back`, informations, argent et outils du
+staff. Ailleurs : `/rtp` (EterRtp, seulement sur les serveurs de survie), `/spawn` et `/lobby` (EterHub, EterVelocityLobby), messages d'arrivée et de départ du réseau
 (EterVelocityLobby) ; pas de kit de départ.
 Document développeur, à tenir à jour avec le code.
 
@@ -32,11 +32,6 @@ serveur ; `BackListener` y retient la position quittée, et le lieu de la mort a
 Stockage commun au réseau : Redis (`back:<uuid>`, 1 jour), sinon la table `eteressential_back`. **Jamais en mémoire** :
 chaque serveur aurait sa copie, et on pourrait faire plusieurs `/back` en changeant de serveur.
 
-**/rtp** (`module/rtp`) : menu des mondes de **ce** serveur (`rtp.worlds`, 4 au plus). Délai propre au rtp
-(`rtp.cooldown`, Redis sinon table `eteressential_rtp`, même raison que `/back`), en plus du délai commun ; il ne
-démarre que si le joueur part vraiment (`TeleportService#teleport(joueur, destination, auDépart)`). Recherche d'un
-endroit : chunk chargé en tâche de fond par Paper, point au hasard dans l'anneau `min-radius`-`max-radius` autour du
-spawn du monde, sol solide sans danger, pieds et tête libres, sous le plafond dans le Nether ; `rtp.attempts` essais.
 
 **Staff** (`module/staff`) : `/tp` et `/tphere` utilisent `teleportNow` d'EterLib (immédiat, sans règles) et
 fonctionnent sur tout le réseau. `/invsee` et `/endersee` ouvrent l'inventaire réel (modifiable) d'un joueur de **ce**
@@ -49,17 +44,16 @@ serveur. `/broadcast` lit le texte en MiniMessage (commande réservée au staff)
 | `/tpa`, `/tpaccept` (`tpyes`), `/tpdeny` (`tpno`), `/tpacancel`, `/tptoggle` | `eteressential.tpa` | tous |
 | `/tpahere` | `eteressential.tpahere` | tous |
 | `/back` | `eteressential.back` (+ `eteressential.back.death` pour la mort) | op |
-| `/rtp` (`wild`) | `eteressential.rtp` | tous |
 | `/list`, `/find`, `/seen` | `eteressential.list`, `.find`, `.seen` | op |
 | `/money [joueur]` (`bal`), `/pay` | `eteressential.money`, `.pay` ; autre joueur : `eteressential.others.money` | tous / op |
 | `/eco give\|take\|set\|reset <joueur> [montant]` (aussi depuis la console) | `eteressential.eco` | op |
 | `/gm`, `/gmc`, `/gms`, `/gma`, `/gmsp`, `/fly`, `/heal`, `/feed`, `/speed`, `/clear` | `eteressential.<commande>` (`gamemode` pour /gm) ; sur un autre : `eteressential.others.<commande>` | op |
 | `/tp`, `/tphere`, `/invsee`, `/endersee`, `/broadcast` (`bc`) | `eteressential.<commande>` | op |
 
-Dispenses : `eteressential.bypass.tptoggle`, `eteressential.bypass.rtp` (sous `eteressential.bypass.*`).
+Dispense : `eteressential.bypass.tptoggle` (sous `eteressential.bypass.*`).
 `eteressential.admin` regroupe tout.
 
 ## Données
 
 - `eteressential_players` : `uuid`, `tpa_disabled`.
-- Sans Redis seulement : `eteressential_back` (dernière position) et `eteressential_rtp` (fin du délai, nettoyée au démarrage).
+- Sans Redis seulement : `eteressential_back` (dernière position).

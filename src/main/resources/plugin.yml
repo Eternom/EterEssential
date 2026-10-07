@@ -5,7 +5,7 @@ main: fr.eternom.eterEssential.Main
 api-version: '26.2'
 load: POSTWORLD
 authors: [ NadTum ]
-description: Commandes essentielles du réseau (tpa, back, rtp, infos, argent, staff).
+description: Commandes essentielles du réseau (tpa, back, infos, argent, staff).
 depend: [EterLib]
 softdepend: [Vault, EterEconomy]
 
@@ -41,11 +41,6 @@ commands:
     description: Revenir à ta dernière position.
     usage: /back
     permission: eteressential.back
-  rtp:
-    description: Partir au hasard dans un monde de ce serveur.
-    usage: /rtp
-    aliases: [randomtp, wild]
-    permission: eteressential.rtp
 
   # Informations
   list:
@@ -147,8 +142,6 @@ permissions:
     default: true
   eteressential.tpahere:
     default: true
-  eteressential.rtp:
-    default: true
   eteressential.money:
     default: true
   eteressential.pay:
@@ -216,12 +209,8 @@ permissions:
     default: op
     children:
       eteressential.bypass.tptoggle: true
-      eteressential.bypass.rtp: true
   eteressential.bypass.tptoggle:
     description: Envoyer une demande de tpa même à un joueur qui les refuse.
-    default: op
-  eteressential.bypass.rtp:
-    description: Pas de délai entre deux /rtp.
     default: op
 
   eteressential.admin:
