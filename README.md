@@ -1,7 +1,8 @@
 # EterEssential
 
 Les commandes essentielles du réseau : téléportation entre joueurs, `/back`, `/rtp`, informations, argent et outils du
-staff. Pas de `/spawn` (futur serveur lobby), de kit de départ ni de messages de connexion (plugins dédiés à venir).
+staff. Ailleurs : `/spawn` et `/lobby` (EterHub, EterVelocityLobby), messages d'arrivée et de départ du réseau
+(EterVelocityLobby) ; pas de kit de départ.
 Document développeur, à tenir à jour avec le code.
 
 ## Prérequis
