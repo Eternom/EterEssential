@@ -26,12 +26,13 @@ import java.util.Set;
  * <pre>
  *  ▣ ▣ ▢ ▢ ☺ ▢ ▢ ▣ ▣     ☺ = joueur (délai restant, en direct)
  *  ▣ · ◆ · ◆ · ◆ · ▣     ◆ = mondes de ce serveur (config.yml > rtp.worlds), jusqu'à 4
- *  ▣ ▣ ▢ ▢ ▢ ▢ ▢ ▣ ▣
+ *  ▣ ▣ ▢ ▢ « ▢ ▢ ▣ ▣     « = retour (commande de la config) ou fermer
  * </pre>
  */
 class RtpMenu implements Menu {
 
     private static final int INFO = 4;
+    private static final int BACK = 22;
     private static final Set<Integer> ACCENT_FRAME = Set.of(0, 1, 7, 8, 9, 17, 18, 19, 25, 26);
     /** Emplacements des mondes selon leur nombre (1 à 4), centrés sur la ligne du milieu. */
     private static final List<List<Integer>> LAYOUTS = List.of(List.of(13), List.of(11, 15), List.of(11, 13, 15),
@@ -58,6 +59,10 @@ class RtpMenu implements Menu {
 
     @Override
     public void onClick(Player player, int slot, ClickType click) {
+        if (slot == BACK) {
+            service.backButton().click(player);
+            return;
+        }
         RtpWorld world = worldAtSlot.get(slot);
         if (world == null) {
             return;
@@ -94,6 +99,7 @@ class RtpMenu implements Menu {
                     Component.empty(),
                     text("rtp.menu.click"))));
         }
+        inventory.setItem(BACK, service.backButton().item(viewer));
         refreshInfo();
     }
 

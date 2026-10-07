@@ -36,3 +36,9 @@ rtp:
       icon: END_STONE
       min-radius: 1000
       max-radius: 3000
+
+# Menus : bouton en bas du menu. Avec une commande (sans le /), il la lance pour le joueur et relie
+# les menus entre eux (ex : "profile" pour revenir au menu du profil) ; vide, il ferme le menu.
+menus:
+  rtp:
+    back-command: ""

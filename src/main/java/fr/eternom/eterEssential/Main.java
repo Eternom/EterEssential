@@ -61,7 +61,8 @@ public final class Main extends JavaPlugin {
         back = new BackStore(database, redis);
         RtpCooldown rtpCooldown = new RtpCooldown(database, redis, Duration.ofSeconds(Math.max(0, getConfig().getInt("rtp.cooldown", 1800))));
         rtp = new RtpService(this, rtpCooldown, lib.getTeleports(), messages, lib.getServerName(),
-                RtpWorld.load(getConfig().getConfigurationSection("rtp.worlds"), getLogger()), getConfig().getInt("rtp.attempts", 10));
+                RtpWorld.load(getConfig().getConfigurationSection("rtp.worlds"), getLogger()), getConfig().getInt("rtp.attempts", 10),
+                lib.backButton(getConfig().getString("menus.rtp.back-command", "")));
 
         new Commands(this);
         new Events(this);

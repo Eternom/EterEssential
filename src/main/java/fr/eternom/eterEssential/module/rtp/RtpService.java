@@ -1,6 +1,7 @@
 package fr.eternom.eterEssential.module.rtp;
 
 import fr.eternom.eterEssential.module.info.TimeFormat;
+import fr.eternom.eterLib.helper.gui.BackButton;
 import fr.eternom.eterLib.helper.message.Messages;
 import fr.eternom.eterLib.helper.task.Tasks;
 import fr.eternom.eterLib.module.teleport.Destination;
@@ -43,11 +44,12 @@ public class RtpService {
     private final String serverName;
     private final List<RtpWorld> worlds;
     private final int attempts;
+    private final BackButton backButton;
     /** Joueurs dont la recherche est en cours : un seul /rtp à la fois. */
     private final Set<UUID> searching = ConcurrentHashMap.newKeySet();
 
     public RtpService(JavaPlugin plugin, RtpCooldown cooldown, TeleportService teleports, Messages messages, String serverName,
-                      List<RtpWorld> worlds, int attempts) {
+                      List<RtpWorld> worlds, int attempts, BackButton backButton) {
         this.plugin = plugin;
         this.cooldown = cooldown;
         this.teleports = teleports;
@@ -55,10 +57,15 @@ public class RtpService {
         this.serverName = serverName;
         this.worlds = worlds;
         this.attempts = Math.max(1, attempts);
+        this.backButton = backButton;
     }
 
     JavaPlugin plugin() {
         return plugin;
+    }
+
+    BackButton backButton() {
+        return backButton;
     }
 
     public List<RtpWorld> worlds() {
