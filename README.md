@@ -9,7 +9,7 @@ Document développeur, à tenir à jour avec le code.
 
 - **EterLib 1.8.0+** (`depend`, textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
   (attente, délai commun, combat, départ vers un autre serveur).
-- **Redis** (obligatoire, via EterLib) : `/tpa`, `/tp`, `/tphere`, `/broadcast` et les messages de `/pay` traversent les
+- **Redis** (obligatoire, via EterLib) : `/tpa`, `/tp`, `/tphere` et les messages de `/pay` traversent les
   serveurs.
 - **Vault + EterEconomy 2.0+** pour `/money`, `/pay` et `/eco` (sinon : « économie indisponible »). EterEconomy garde les
   soldes en base, mouvements atomiques : rien à régler pour le multi-serveur.
@@ -17,7 +17,7 @@ Document développeur, à tenir à jour avec le code.
 ## Fonctionnement
 
 **Messages entre serveurs** (`NetworkBus` d'EterLib, `lib.network`) : un canal Redis `eteressential`, un type par message
-(`tpa-request`, `tpa-teleport`, `staff-tphere`, `broadcast`, `notify`). Le serveur d'origine ignore le sien.
+(`tpa-request`, `tpa-teleport`, `staff-tphere`, `notify`). Le serveur d'origine ignore le sien.
 `notify` envoie un message de langue à un joueur où qu'il soit (accepté, refusé, argent reçu...).
 `PlayerLookup` trouve un joueur sur ce serveur puis dans `eter_players`.
 
@@ -35,7 +35,7 @@ chaque serveur aurait sa copie, et on pourrait faire plusieurs `/back` en change
 
 **Staff** (`module/staff`) : `/tp` et `/tphere` utilisent `teleportNow` d'EterLib (immédiat, sans règles) et
 fonctionnent sur tout le réseau. `/invsee` et `/endersee` ouvrent l'inventaire réel (modifiable) d'un joueur de **ce**
-serveur. `/broadcast` lit le texte en MiniMessage (commande réservée au staff).
+serveur. Les annonces (`/broadcast`) sont sur le proxy : EterVelocityBroadcast.
 
 ## Commandes et permissions
 
@@ -48,7 +48,7 @@ serveur. `/broadcast` lit le texte en MiniMessage (commande réservée au staff)
 | `/money [joueur]` (`bal`), `/pay` | `eteressential.money`, `.pay` ; autre joueur : `eteressential.others.money` | tous / op |
 | `/eco give\|take\|set\|reset <joueur> [montant]` (aussi depuis la console) | `eteressential.eco` | op |
 | `/gm`, `/gmc`, `/gms`, `/gma`, `/gmsp`, `/fly`, `/heal`, `/feed`, `/speed`, `/clear` | `eteressential.<commande>` (`gamemode` pour /gm) ; sur un autre : `eteressential.others.<commande>` | op |
-| `/tp`, `/tphere`, `/invsee`, `/endersee`, `/broadcast` (`bc`) | `eteressential.<commande>` | op |
+| `/tp`, `/tphere`, `/invsee`, `/endersee` | `eteressential.<commande>` | op |
 
 Dispense : `eteressential.bypass.tptoggle` (sous `eteressential.bypass.*`).
 `eteressential.admin` regroupe tout.

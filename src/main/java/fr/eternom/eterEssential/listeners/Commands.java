@@ -5,7 +5,6 @@ import fr.eternom.eterEssential.module.back.BackCommand;
 import fr.eternom.eterEssential.module.economy.EcoCommand;
 import fr.eternom.eterEssential.module.economy.EconomyCommand;
 import fr.eternom.eterEssential.module.info.InfoCommand;
-import fr.eternom.eterEssential.module.staff.BroadcastCommand;
 import fr.eternom.eterEssential.module.staff.InventoryCommand;
 import fr.eternom.eterEssential.module.staff.PlayerActionCommand;
 import fr.eternom.eterEssential.module.staff.StaffTeleportCommand;
@@ -64,7 +63,6 @@ public class Commands {
         register(main, "tphere", new StaffTeleportCommand(teleports, main.getLookup(), main.getBus(), names, messages, StaffTeleportCommand.Action.TPHERE));
         register(main, "invsee", new InventoryCommand(messages, InventoryCommand.Action.INVSEE));
         register(main, "endersee", new InventoryCommand(messages, InventoryCommand.Action.ENDERSEE));
-        register(main, "broadcast", new BroadcastCommand(main.getBus(), messages));
     }
 
     private void register(Main main, String name, CommandExecutor executor) {

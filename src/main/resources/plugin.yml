@@ -130,11 +130,6 @@ commands:
     description: Ouvrir le coffre de l'Ender d'un joueur de ce serveur.
     usage: /endersee <joueur>
     permission: eteressential.endersee
-  broadcast:
-    description: Annonce sur tout le réseau (MiniMessage accepté).
-    usage: /broadcast <message>
-    aliases: [bc]
-    permission: eteressential.broadcast
 
 permissions:
   # Joueurs (accordées à tous)
@@ -184,8 +179,6 @@ permissions:
     default: op
   eteressential.endersee:
     default: op
-  eteressential.broadcast:
-    default: op
   eteressential.eco:
     description: /eco give, take, set, reset.
     default: op
@@ -232,7 +225,6 @@ permissions:
       eteressential.tphere: true
       eteressential.invsee: true
       eteressential.endersee: true
-      eteressential.broadcast: true
       eteressential.eco: true
       eteressential.others.*: true
       eteressential.bypass.*: true

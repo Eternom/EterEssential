@@ -144,6 +144,3 @@ invsee:
 endersee:
   usage: '<error>Utilisation : <accent>/endersee \<joueur>'
 
-broadcast:
-  usage: '<error>Utilisation : <accent>/broadcast \<message>'
-  format: "<primary><bold>Annonce</bold></primary> <dark_gray>» <white><message>"
