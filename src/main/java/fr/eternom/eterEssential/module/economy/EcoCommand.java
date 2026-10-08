@@ -114,6 +114,6 @@ public class EcoCommand implements TabExecutor {
         if (args.length == 1) {
             return ACTIONS.stream().filter(action -> action.startsWith(args[0].toLowerCase(Locale.ROOT))).toList();
         }
-        return args.length == 2 ? names.complete(args[1], true) : List.of();
+        return args.length == 2 ? names.complete(args[1]) : List.of();
     }
 }

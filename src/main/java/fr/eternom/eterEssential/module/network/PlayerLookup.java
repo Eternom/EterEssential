@@ -26,28 +26,21 @@ public class PlayerLookup {
     private final PlayerDirectory directory;
     private final Messages messages;
     private final String serverName;
-    private final boolean networked;
 
-    public PlayerLookup(JavaPlugin plugin, PlayerDirectory directory, Messages messages, String serverName, boolean networked) {
+    public PlayerLookup(JavaPlugin plugin, PlayerDirectory directory, Messages messages, String serverName) {
         this.plugin = plugin;
         this.directory = directory;
         this.messages = messages;
         this.serverName = serverName;
-        this.networked = networked;
     }
 
     /**
-     * Joueur connecté : sur ce serveur, ou (avec Redis) sur un autre serveur. Sans Redis, on ne peut rien faire avec
-     * un joueur d'un autre serveur : il est considéré comme absent.
+     * Joueur connecté, sur ce serveur ou sur un autre.
      */
     public void findOnline(Player asker, String name, Consumer<Optional<OnlinePlayer>> then) {
         Player local = Bukkit.getPlayerExact(name);
         if (local != null) {
             then.accept(Optional.of(new OnlinePlayer(local.getUniqueId(), local.getName(), serverName)));
-            return;
-        }
-        if (!networked) {
-            then.accept(Optional.empty());
             return;
         }
         Tasks.async(plugin, asker, () -> directory.find(name).filter(NetworkPlayer::isOnline)

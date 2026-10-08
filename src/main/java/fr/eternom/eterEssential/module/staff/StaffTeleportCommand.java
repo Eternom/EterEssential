@@ -125,6 +125,6 @@ public class StaffTeleportCommand implements TabExecutor {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        return args.length == 1 ? names.complete(args[0], bus.isNetworked()) : List.of();
+        return args.length == 1 ? names.complete(args[0]) : List.of();
     }
 }

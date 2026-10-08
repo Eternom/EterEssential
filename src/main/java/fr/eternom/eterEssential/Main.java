@@ -19,7 +19,7 @@ import java.time.Duration;
 public final class Main extends JavaPlugin {
 
     /** Version minimale d'EterLib : textes communs et outils partagés (Frame, Money, NetworkBus) depuis 1.6.0. */
-    private static final String REQUIRED_ETERLIB = "1.6.0";
+    private static final String REQUIRED_ETERLIB = "1.8.0";
 
     /** Préfixe des tables d'EterEssential dans la base commune : eteressential_players... */
     private static final String TABLE_PREFIX = "eteressential_";
@@ -49,19 +49,16 @@ public final class Main extends JavaPlugin {
         RedisCache redis = lib.getRedis();
 
         bus = lib.network(this, "eteressential", messages);
-        lookup = new PlayerLookup(this, lib.getPlayers(), messages, lib.getServerName(), bus.isNetworked());
+        lookup = new PlayerLookup(this, lib.getPlayers(), messages, lib.getServerName());
 
         TpaRequests requests = new TpaRequests(redis, Duration.ofSeconds(Math.max(10, getConfig().getInt("tpa.expire-seconds", 60))));
         tpa = new TpaService(this, lib.getTeleports(), bus, lookup, requests, new TpaSettings(database), messages);
-        back = new BackStore(database, redis);
-        // /rtp est maintenant le plugin EterRtp : sa table d'avant est retirée (pas de table morte)
-        database.execute("DROP TABLE IF EXISTS " + database.table("rtp"));
+        back = new BackStore(redis);
+        // Tables retirées : /rtp (maintenant EterRtp) et le /back sans Redis (Redis obligatoire) : pas de table morte
+        database.execute("DROP TABLE IF EXISTS " + database.table("rtp") + ", " + database.table("back"));
 
         new Commands(this);
         new Events(this);
-        getLogger().info(bus.isNetworked()
-                ? "Commandes reliées à tout le réseau (Redis)"
-                : "Redis désactivé : tpa, /tp et messages limités à ce serveur");
     }
 
     public Messages getMessages() {

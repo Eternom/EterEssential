@@ -7,10 +7,10 @@ Document développeur, à tenir à jour avec le code.
 
 ## Prérequis
 
-- **EterLib 1.6.0+** (`depend`, textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
+- **EterLib 1.8.0+** (`depend`, textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
   (attente, délai commun, combat, départ vers un autre serveur).
-- **Redis facultatif.** Avec lui, `/tpa`, `/tp`, `/tphere`, `/broadcast` et les messages de `/pay` traversent les
-  serveurs ; sans lui, ils restent sur le serveur où l'on est (rien n'est cassé).
+- **Redis** (obligatoire, via EterLib) : `/tpa`, `/tp`, `/tphere`, `/broadcast` et les messages de `/pay` traversent les
+  serveurs.
 - **Vault + EterEconomy 2.0+** pour `/money`, `/pay` et `/eco` (sinon : « économie indisponible »). EterEconomy garde les
   soldes en base, mouvements atomiques : rien à régler pour le multi-serveur.
 
@@ -22,14 +22,14 @@ Document développeur, à tenir à jour avec le code.
 `PlayerLookup` trouve un joueur sur ce serveur puis dans `eter_players`.
 
 **Tpa** (`module/tpa`) : la demande est gardée côté destinataire, dans Redis (hash `tpa:received:<uuid>`, expiration
-`tpa.expire-seconds`) ou en mémoire sans Redis, **jamais en base**. Un joueur n'a qu'une demande envoyée à la fois.
+`tpa.expire-seconds`), **jamais en base**. Un joueur n'a qu'une demande envoyée à la fois.
 À l'acceptation, celui qui voyage part avec **ses** règles d'EterLib ; s'il est sur un autre serveur, `tpa-teleport`
 demande à ce serveur de lancer sa téléportation. `/tptoggle` est en base (`eteressential_players`), lu à chaque demande ;
 `eteressential.bypass.tptoggle` passe outre.
 
 **/back** (`module/back`) : `EterTeleportEvent` d'EterLib est lancé juste avant chaque départ, même vers un autre
 serveur ; `BackListener` y retient la position quittée, et le lieu de la mort avec `eteressential.back.death`.
-Stockage commun au réseau : Redis (`back:<uuid>`, 1 jour), sinon la table `eteressential_back`. **Jamais en mémoire** :
+Stockage commun au réseau : Redis (`back:<uuid>`, 1 jour). **Jamais en mémoire** :
 chaque serveur aurait sa copie, et on pourrait faire plusieurs `/back` en changeant de serveur.
 
 
@@ -56,4 +56,3 @@ Dispense : `eteressential.bypass.tptoggle` (sous `eteressential.bypass.*`).
 ## Données
 
 - `eteressential_players` : `uuid`, `tpa_disabled`.
-- Sans Redis seulement : `eteressential_back` (dernière position).

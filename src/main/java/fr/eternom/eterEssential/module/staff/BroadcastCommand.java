@@ -39,11 +39,7 @@ public class BroadcastCommand implements CommandExecutor {
         show(text);
         JsonObject data = new JsonObject();
         data.addProperty("text", text);
-        bus.publish(BROADCAST, data, () -> {
-            if (bus.isNetworked()) {
-                messages.send(sender, "network.failed");
-            }
-        });
+        bus.publish(BROADCAST, data, () -> messages.send(sender, "network.failed"));
         return true;
     }
 

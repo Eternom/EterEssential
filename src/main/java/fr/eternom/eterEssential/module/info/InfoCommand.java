@@ -32,17 +32,14 @@ public class InfoCommand implements TabExecutor {
     private final PlayerLookup lookup;
     private final OnlineNames names;
     private final Messages messages;
-    private final boolean networked;
     private final Action action;
 
-    public InfoCommand(JavaPlugin plugin, PlayerDirectory directory, PlayerLookup lookup, OnlineNames names, Messages messages,
-                       boolean networked, Action action) {
+    public InfoCommand(JavaPlugin plugin, PlayerDirectory directory, PlayerLookup lookup, OnlineNames names, Messages messages, Action action) {
         this.plugin = plugin;
         this.directory = directory;
         this.lookup = lookup;
         this.names = names;
         this.messages = messages;
-        this.networked = networked;
         this.action = action;
     }
 
@@ -66,13 +63,6 @@ public class InfoCommand implements TabExecutor {
     }
 
     private void list(Player player) {
-        if (!networked) {
-            String players = Bukkit.getOnlinePlayers().stream().map(Player::getName).sorted().collect(Collectors.joining(", "));
-            messages.send(player, "list.header", "count", String.valueOf(Bukkit.getOnlinePlayers().size()));
-            player.sendMessage(messages.get(player, "list.server", "server", EterLib.get().getServerDisplayName(),
-                    "count", String.valueOf(Bukkit.getOnlinePlayers().size()), "players", players));
-            return;
-        }
         Tasks.async(plugin, player, directory::listOnline, online -> {
             // Serveur affiché -> pseudos, triés
             Map<String, List<String>> byServer = new TreeMap<>(online.stream().collect(Collectors.groupingBy(
@@ -97,6 +87,6 @@ public class InfoCommand implements TabExecutor {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        return action != Action.LIST && args.length == 1 ? names.complete(args[0], true) : List.of();
+        return action != Action.LIST && args.length == 1 ? names.complete(args[0]) : List.of();
     }
 }

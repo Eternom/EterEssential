@@ -17,14 +17,12 @@ public class TpaCommand implements TabExecutor {
     private final TpaService tpa;
     private final OnlineNames names;
     private final Messages messages;
-    private final boolean networked;
     private final Action action;
 
-    public TpaCommand(TpaService tpa, OnlineNames names, Messages messages, boolean networked, Action action) {
+    public TpaCommand(TpaService tpa, OnlineNames names, Messages messages, Action action) {
         this.tpa = tpa;
         this.names = names;
         this.messages = messages;
-        this.networked = networked;
         this.action = action;
     }
 
@@ -54,6 +52,6 @@ public class TpaCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         boolean wantsName = action == Action.TPA || action == Action.TPAHERE;
-        return wantsName && args.length == 1 ? names.complete(args[0], networked) : List.of();
+        return wantsName && args.length == 1 ? names.complete(args[0]) : List.of();
     }
 }

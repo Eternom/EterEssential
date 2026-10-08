@@ -29,21 +29,20 @@ public class Commands {
         Messages messages = main.getMessages();
         OnlineNames names = lib.getOnlineNames();
         TeleportService teleports = lib.getTeleports();
-        boolean networked = main.getBus().isNetworked();
 
         // Téléportation entre joueurs, /back
-        register(main, "tpa", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.TPA));
-        register(main, "tpahere", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.TPAHERE));
-        register(main, "tpaccept", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.ACCEPT));
-        register(main, "tpdeny", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.DENY));
-        register(main, "tpacancel", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.CANCEL));
-        register(main, "tptoggle", new TpaCommand(main.getTpa(), names, messages, networked, TpaCommand.Action.TOGGLE));
+        register(main, "tpa", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.TPA));
+        register(main, "tpahere", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.TPAHERE));
+        register(main, "tpaccept", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.ACCEPT));
+        register(main, "tpdeny", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.DENY));
+        register(main, "tpacancel", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.CANCEL));
+        register(main, "tptoggle", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.TOGGLE));
         register(main, "back", new BackCommand(main, main.getBack(), teleports, messages));
 
         // Informations
-        register(main, "list", new InfoCommand(main, lib.getPlayers(), main.getLookup(), names, messages, networked, InfoCommand.Action.LIST));
-        register(main, "find", new InfoCommand(main, lib.getPlayers(), main.getLookup(), names, messages, networked, InfoCommand.Action.FIND));
-        register(main, "seen", new InfoCommand(main, lib.getPlayers(), main.getLookup(), names, messages, networked, InfoCommand.Action.SEEN));
+        register(main, "list", new InfoCommand(main, lib.getPlayers(), main.getLookup(), names, messages, InfoCommand.Action.LIST));
+        register(main, "find", new InfoCommand(main, lib.getPlayers(), main.getLookup(), names, messages, InfoCommand.Action.FIND));
+        register(main, "seen", new InfoCommand(main, lib.getPlayers(), main.getLookup(), names, messages, InfoCommand.Action.SEEN));
 
         // Économie (Vault -> EterEconomy)
         register(main, "money", new EconomyCommand(main, main.getLookup(), main.getBus(), names, messages, EconomyCommand.Action.MONEY));

@@ -150,6 +150,6 @@ public class EconomyCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         boolean wantsName = action == Action.PAY || sender.hasPermission(OTHERS_PERMISSION);
-        return wantsName && args.length == 1 ? names.complete(args[0], true) : List.of();
+        return wantsName && args.length == 1 ? names.complete(args[0]) : List.of();
     }
 }
