@@ -58,6 +58,10 @@ par Vault en tâche de fond. Dispense : `eteressential.bypass.deathloss`. La fut
 Dispense : `eteressential.bypass.tptoggle` (sous `eteressential.bypass.*`).
 `eteressential.admin` regroupe tout.
 
+Vol : le droit de voler est gardé dans les données du joueur sur chaque serveur. À la connexion, un joueur en survie ou
+aventure sans `eteressential.fly` le perd (`FlightReset`, au plus tôt) : un /fly donné par le staff ne dure qu'une
+session, et un plugin de lobby installé par erreur (double saut d'EterHub) ne laisse pas voler en survie.
+
 ## Données
 
 - `eteressential_players` : `uuid`, `tpa_disabled`.
