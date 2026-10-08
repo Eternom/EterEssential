@@ -37,6 +37,10 @@ chaque serveur aurait sa copie, et on pourrait faire plusieurs `/back` en change
 fonctionnent sur tout le réseau. `/invsee` et `/endersee` ouvrent l'inventaire réel (modifiable) d'un joueur de **ce**
 serveur. Les annonces (`/broadcast`) sont sur le proxy : EterVelocityBroadcast.
 
+**Mort** (`module/death/DeathPenalty`) : mourir fait perdre `death.money-loss-percent` (5 %) de son solde, arrondi à l'unité
+inférieure ; l'argent disparaît (évier de l'économie). Un pourcentage : les grosses fortunes le sentent aussi. Retrait
+par Vault en tâche de fond. Dispense : `eteressential.bypass.deathloss`. La future banque de clan sera à l'abri.
+
 ## Commandes et permissions
 
 | Commande | Permission | Par défaut |

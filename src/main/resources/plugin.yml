@@ -202,8 +202,12 @@ permissions:
     default: op
     children:
       eteressential.bypass.tptoggle: true
+      eteressential.bypass.deathloss: true
   eteressential.bypass.tptoggle:
     description: Envoyer une demande de tpa même à un joueur qui les refuse.
+    default: op
+  eteressential.bypass.deathloss:
+    description: Ne perdre aucun argent en mourant.
     default: op
 
   eteressential.admin:

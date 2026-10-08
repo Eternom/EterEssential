@@ -64,6 +64,9 @@ seen:
   online: "<accent><player></accent> <info>is <success>online</success> on <accent><server></accent>."
   offline: "<accent><player></accent> <info>was last seen <accent><time></accent> ago."
 
+death:
+  money-lost: "<error>You died: <accent><amount></accent> lost <dark_gray>(<percent> % of your money)"
+
 money:
   self: "<info>Your balance: <accent><amount>"
   other: "<info>Balance of <accent><player></accent>: <accent><amount>"

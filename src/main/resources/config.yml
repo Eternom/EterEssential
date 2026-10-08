@@ -4,11 +4,16 @@
 #
 #  Les règles de téléportation communes (attente, délai, combat) se règlent
 #  dans EterLib/config.yml > teleport : elles s'appliquent aussi à /tpa et /back.
-#  Avec Redis (EterLib/config.yml > cache), /tpa, /tp, /tphere, /broadcast et les
-#  messages de /pay traversent les serveurs ; sans Redis, ils restent sur ce serveur.
+#  /tpa, /tp, /tphere et les messages de /pay traversent les serveurs (Redis, réglé dans EterLib).
 #  Les textes sont dans lang/. Toute modification nécessite un redémarrage du serveur.
 
 tpa:
   # Durée de vie d'une demande, en secondes.
   expire-seconds: 60
+
+death:
+  # Mourir fait perdre ce pourcentage de son argent (arrondi à l'unité inférieure ; 0 = rien). L'argent disparaît.
+  # Un pourcentage : les grosses fortunes le sentent aussi. La banque d'un clan n'est pas touchée.
+  # Dispense : eteressential.bypass.deathloss.
+  money-loss-percent: 5
 
