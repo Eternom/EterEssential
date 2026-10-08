@@ -1,9 +1,11 @@
 package fr.eternom.eterEssential.module.network;
 
+import fr.eternom.eterLib.EterLib;
 import fr.eternom.eterLib.helper.message.Messages;
 import fr.eternom.eterLib.helper.task.Tasks;
 import fr.eternom.eterLib.module.player.PlayerDirectory;
 import fr.eternom.eterLib.module.player.PlayerDirectory.NetworkPlayer;
+import fr.eternom.eterLib.module.vanish.Vanish;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -35,22 +37,31 @@ public class PlayerLookup {
     }
 
     /**
-     * Joueur connecté, sur ce serveur ou sur un autre.
+     * Joueur connecté, sur ce serveur ou sur un autre. Un invisible (vanish du staff) que asker ne peut pas voir est
+     * « hors ligne ».
      */
     public void findOnline(Player asker, String name, Consumer<Optional<OnlinePlayer>> then) {
+        Vanish vanish = EterLib.get().getVanish();
         Player local = Bukkit.getPlayerExact(name);
         if (local != null) {
+            if (!vanish.canSee(asker, local.getUniqueId())) {
+                then.accept(Optional.empty());
+                return;
+            }
             then.accept(Optional.of(new OnlinePlayer(local.getUniqueId(), local.getName(), serverName)));
             return;
         }
         Tasks.async(plugin, asker, () -> directory.find(name).filter(NetworkPlayer::isOnline)
+                        .filter(found -> vanish.canSee(asker, found.uuid()))
                         .map(found -> new OnlinePlayer(found.uuid(), found.name(), found.server())),
                 then, () -> messages.send(asker, "error.generic"));
     }
 
-    /** N'importe quel joueur déjà venu sur le réseau, même hors ligne (/seen, /pay). */
+    /** N'importe quel joueur déjà venu sur le réseau, même hors ligne (/seen, /pay) ; un invisible est montré hors ligne. */
     public void findAny(Player asker, String name, Consumer<Optional<NetworkPlayer>> then) {
-        Tasks.async(plugin, asker, () -> directory.find(name), then, () -> messages.send(asker, "error.generic"));
+        Vanish vanish = EterLib.get().getVanish();
+        Tasks.async(plugin, asker, () -> directory.find(name).map(found -> found.isOnline() && !vanish.canSee(asker, found.uuid())
+                ? new NetworkPlayer(found.uuid(), found.name(), found.locale(), null, found.firstSeen(), found.lastSeen()) : found), then, () -> messages.send(asker, "error.generic"));
     }
 
     /** Bloquant : serveur actuel d'un joueur, vide s'il est hors ligne. */

@@ -7,7 +7,7 @@ Document développeur, à tenir à jour avec le code.
 
 ## Prérequis
 
-- **EterLib 1.8.0+** (`depend`, textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
+- **EterLib 1.9.1+** (`depend`, textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
   (attente, délai commun, combat, départ vers un autre serveur).
 - **Redis** (obligatoire, via EterLib) : `/tpa`, `/tp`, `/tphere` et les messages de `/pay` traversent les
   serveurs.
@@ -19,7 +19,8 @@ Document développeur, à tenir à jour avec le code.
 **Messages entre serveurs** (`NetworkBus` d'EterLib, `lib.network`) : un canal Redis `eteressential`, un type par message
 (`tpa-request`, `tpa-teleport`, `staff-tphere`, `notify`). Le serveur d'origine ignore le sien.
 `notify` envoie un message de langue à un joueur où qu'il soit (accepté, refusé, argent reçu...).
-`PlayerLookup` trouve un joueur sur ce serveur puis dans `eter_players`.
+`PlayerLookup` trouve un joueur sur ce serveur puis dans `eter_players` ; un invisible (vanish du staff, EterLib 1.9.1) est
+« hors ligne » pour qui ne peut pas le voir (`/tpa`, `/find`, `/seen`, `/list`).
 
 **Tpa** (`module/tpa`) : la demande est gardée côté destinataire, dans Redis (hash `tpa:received:<uuid>`, expiration
 `tpa.expire-seconds`), **jamais en base**. Un joueur n'a qu'une demande envoyée à la fois.
