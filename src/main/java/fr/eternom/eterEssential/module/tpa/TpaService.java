@@ -23,7 +23,7 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 /**
- * Téléportation entre joueurs (/tpa, /tpahere), sur tout le réseau avec Redis, sinon sur ce serveur.
+ * Téléportation entre joueurs (/tpa, /tpahere), sur tout le réseau.
  * Le départ passe toujours par EterLib (combat, délai, attente), avec les règles de celui qui voyage.
  *
  * La demande est gardée côté destinataire ; il l'accepte depuis son serveur. S'il faut faire partir le demandeur

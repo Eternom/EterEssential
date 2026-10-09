@@ -61,8 +61,8 @@ public class Commands {
         register(main, "speed", new PlayerActionCommand(messages, PlayerActionCommand.Action.SPEED, null));
         register(main, "tp", new StaffTeleportCommand(teleports, main.getLookup(), main.getBus(), names, messages, StaffTeleportCommand.Action.TP));
         register(main, "tphere", new StaffTeleportCommand(teleports, main.getLookup(), main.getBus(), names, messages, StaffTeleportCommand.Action.TPHERE));
-        register(main, "invsee", new InventoryCommand(messages, InventoryCommand.Action.INVSEE));
-        register(main, "endersee", new InventoryCommand(messages, InventoryCommand.Action.ENDERSEE));
+        register(main, "invsee", new InventoryCommand(main, main.getLookup(), messages, InventoryCommand.Action.INVSEE));
+        register(main, "endersee", new InventoryCommand(main, main.getLookup(), messages, InventoryCommand.Action.ENDERSEE));
     }
 
     private void register(Main main, String name, CommandExecutor executor) {

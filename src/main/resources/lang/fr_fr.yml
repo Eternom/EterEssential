@@ -143,6 +143,8 @@ tphere:
 
 invsee:
   usage: '<error>Utilisation : <accent>/invsee \<joueur>'
+  snapshot: '<primary>Inventaire de <player> <dark_gray>(sauvegarde, lecture seule)'
+  no-snapshot: '<error>Aucune sauvegarde de l''inventaire de <accent><player></accent>.'
 
 endersee:
   usage: '<error>Utilisation : <accent>/endersee \<joueur>'

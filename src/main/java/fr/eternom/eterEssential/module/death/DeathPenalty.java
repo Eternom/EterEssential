@@ -3,7 +3,7 @@ package fr.eternom.eterEssential.module.death;
 import fr.eternom.eterLib.helper.economy.Money;
 import fr.eternom.eterLib.helper.message.Messages;
 import fr.eternom.eterLib.helper.task.Tasks;
-import net.milkbowl.vault.economy.Economy;
+import fr.eternom.eterEconomy.api.EconomyApi;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -33,14 +33,14 @@ public class DeathPenalty implements Listener {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        Economy economy = Money.economy();
+        EconomyApi economy = EconomyApi.get().orElse(null);
         if (percent <= 0 || economy == null || player.hasPermission(BYPASS)) {
             return;
         }
         Tasks.async(plugin, player, () -> {
             // Arrondi à l'unité inférieure : un petit solde (moins de 100 / percent) ne perd rien
-            double loss = Math.floor(economy.getBalance(player) * percent / 100);
-            return loss > 0 && economy.withdrawPlayer(player, loss).transactionSuccess() ? loss : 0;
+            double loss = Math.floor(economy.balance(player.getUniqueId()) * percent / 100);
+            return loss > 0 && economy.withdraw(player.getUniqueId(), loss, "EterEssential · mort") ? loss : 0;
         }, loss -> {
             if (loss > 0) {
                 messages.send(player, "death.money-lost", "amount", Money.format(loss),

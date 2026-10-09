@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Téléportations du staff, immédiates et sans règles (combat, délai, attente), sur tout le réseau avec Redis :
+ * Téléportations du staff, immédiates et sans règles (combat, délai, attente), sur tout le réseau :
  * /tp <joueur> (y aller), /tp <x> <y> <z> (dans son monde), /tphere <joueur> (le faire venir).
  * Pour /tphere vers un joueur d'un autre serveur, c'est son serveur qui le fait partir ("staff-tphere").
  */

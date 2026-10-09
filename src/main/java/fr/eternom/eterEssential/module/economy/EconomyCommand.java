@@ -7,7 +7,7 @@ import fr.eternom.eterLib.helper.message.Messages;
 import fr.eternom.eterLib.helper.task.Tasks;
 import fr.eternom.eterLib.module.player.OnlineNames;
 import fr.eternom.eterLib.module.player.PlayerDirectory.NetworkPlayer;
-import net.milkbowl.vault.economy.Economy;
+import fr.eternom.eterEconomy.api.EconomyApi;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -21,7 +21,7 @@ import java.math.RoundingMode;
 import java.util.List;
 
 /**
- * /money [joueur] et /pay <joueur> <montant>, par Vault (EterEconomy). Le destinataire peut être hors ligne ou sur un
+ * /money [joueur] et /pay <joueur> <montant>, par l'API d'EterEconomy. Le destinataire peut être hors ligne ou sur un
  * autre serveur : il est prévenu s'il est connecté quelque part. Les appels à l'économie se font en tâche de fond.
  */
 public class EconomyCommand implements TabExecutor {
@@ -56,7 +56,7 @@ public class EconomyCommand implements TabExecutor {
             return true;
         }
         // Lu à chaque fois : EterEconomy peut être chargé après nous ou rechargé
-        Economy economy = Money.economy();
+        EconomyApi economy = EconomyApi.get().orElse(null);
         if (economy == null) {
             messages.send(player, "economy.unavailable");
             return true;
@@ -69,21 +69,21 @@ public class EconomyCommand implements TabExecutor {
         return true;
     }
 
-    private void money(Player player, Economy economy, String[] args) {
+    private void money(Player player, EconomyApi economy, String[] args) {
         if (args.length == 0 || !player.hasPermission(OTHERS_PERMISSION)) {
-            Tasks.async(plugin, player, () -> economy.format(economy.getBalance(player)),
+            Tasks.async(plugin, player, () -> economy.format(economy.balance(player.getUniqueId())),
                     balance -> messages.send(player, "money.self", "amount", balance),
                     () -> messages.send(player, "error.generic"));
             return;
         }
         lookup.findAny(player, args[0], found -> found.ifPresentOrElse(target -> Tasks.async(plugin, player,
-                        () -> economy.format(economy.getBalance(offline(target))),
+                        () -> economy.format(economy.balance(target.uuid())),
                         balance -> messages.send(player, "money.other", "player", target.name(), "amount", balance),
                         () -> messages.send(player, "error.generic")),
                 () -> messages.send(player, "player.unknown", "player", args[0])));
     }
 
-    private void pay(Player player, Economy economy, String[] args) {
+    private void pay(Player player, EconomyApi economy, String[] args) {
         if (args.length != 2) {
             messages.send(player, "pay.usage");
             return;
@@ -118,12 +118,12 @@ public class EconomyCommand implements TabExecutor {
     }
 
     /** Bloquant. Retire puis verse ; si le versement échoue, l'expéditeur est remboursé. */
-    private static PayResult transfer(Economy economy, OfflinePlayer from, OfflinePlayer to, double amount) {
-        if (!economy.withdrawPlayer(from, amount).transactionSuccess()) {
-            return economy.has(from, amount) ? PayResult.FAILED : PayResult.NOT_ENOUGH;
+    private static PayResult transfer(EconomyApi economy, OfflinePlayer from, OfflinePlayer to, double amount) {
+        if (!economy.withdraw(from.getUniqueId(), amount, "EterEssential · /pay")) {
+            return economy.has(from.getUniqueId(), amount) ? PayResult.FAILED : PayResult.NOT_ENOUGH;
         }
-        if (!economy.depositPlayer(to, amount).transactionSuccess()) {
-            economy.depositPlayer(from, amount);
+        if (!economy.deposit(to.getUniqueId(), amount, "EterEssential · /pay")) {
+            economy.deposit(from.getUniqueId(), amount, "EterEssential · /pay");
             return PayResult.FAILED;
         }
         return PayResult.OK;

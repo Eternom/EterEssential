@@ -7,12 +7,13 @@ Document développeur, à tenir à jour avec le code.
 
 ## Prérequis
 
-- **EterLib 1.9.1+** (`depend`, textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
+- **EterLib 1.10.0+** (`depend`, textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
   (attente, délai commun, combat, départ vers un autre serveur).
 - **Redis** (obligatoire, via EterLib) : `/tpa`, `/tp`, `/tphere` et les messages de `/pay` traversent les
   serveurs.
-- **Vault + EterEconomy 2.0+** pour `/money`, `/pay` et `/eco` (sinon : « économie indisponible »). EterEconomy garde les
-  soldes en base, mouvements atomiques : rien à régler pour le multi-serveur.
+- **EterEconomy 2.2.1+** (`depend`, son API `EconomyApi`) pour `/money`, `/pay`, `/eco` et la perte à la mort. Soldes en
+  base, mouvements atomiques : rien à régler pour le multi-serveur.
+- **EterSync 1.1.0+** (facultatif) : `/invsee` d'un joueur ailleurs ou hors ligne.
 
 ## Fonctionnement
 
@@ -36,11 +37,11 @@ chaque serveur aurait sa copie, et on pourrait faire plusieurs `/back` en change
 
 **Staff** (`module/staff`) : `/tp` et `/tphere` utilisent `teleportNow` d'EterLib (immédiat, sans règles) et
 fonctionnent sur tout le réseau. `/invsee` et `/endersee` ouvrent l'inventaire réel (modifiable) d'un joueur de **ce**
-serveur. Les annonces (`/broadcast`) sont sur le proxy : EterVelocityBroadcast.
+serveur ; `/invsee` d'un joueur ailleurs ou hors ligne montre sa dernière sauvegarde, en lecture seule (EterSync). Les annonces (`/broadcast`) sont sur le proxy : EterVelocityBroadcast.
 
 **Mort** (`module/death/DeathPenalty`) : mourir fait perdre `death.money-loss-percent` (5 %) de son solde, arrondi à l'unité
 inférieure ; l'argent disparaît (évier de l'économie). Un pourcentage : les grosses fortunes le sentent aussi. Retrait
-par Vault en tâche de fond. Dispense : `eteressential.bypass.deathloss`. La future banque de clan sera à l'abri.
+par EterEconomy en tâche de fond. Dispense : `eteressential.bypass.deathloss`. La banque d'EterClan est à l'abri.
 
 ## Commandes et permissions
 
@@ -65,3 +66,15 @@ session, et un plugin de lobby installé par erreur (double saut d'EterHub) ne l
 ## Données
 
 - `eteressential_players` : `uuid`, `tpa_disabled`.
+
+## API (pour les autres plugins)
+
+`fr.eternom.eterEssential.api.EssentialApi` (`EssentialApi.get()`) : personne d'autre ne lit ses clés Redis (`back:`,
+`tpa:`) ni `eteressential_players`.
+
+- `back(uuid)` : la dernière position quittée (bloquant) ;
+- `acceptsTpa(uuid)` : pas de `/tptoggle` (bloquant).
+
+Ce qu'EterEssential demande aux autres : l'**argent** à EterEconomy (`EconomyApi`, sources « EterEssential · /pay »,
+« · mort », « · staff (/eco) ») ; le **dernier inventaire** d'un joueur ailleurs ou hors ligne à EterSync (`SyncApi`,
+`/invsee` en lecture seule) ; la recherche d'un joueur qui respecte le vanish à EterLib (`findFor`).

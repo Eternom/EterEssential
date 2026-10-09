@@ -5,7 +5,7 @@ import fr.eternom.eterLib.helper.message.Messages;
 import fr.eternom.eterLib.module.player.OnlineNames;
 import fr.eternom.eterLib.module.player.PlayerDirectory;
 import fr.eternom.eterLib.module.player.PlayerDirectory.NetworkPlayer;
-import net.milkbowl.vault.economy.Economy;
+import fr.eternom.eterEconomy.api.EconomyApi;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -47,7 +47,7 @@ public class EcoCommand implements TabExecutor {
             messages.send(sender, "eco.usage");
             return true;
         }
-        Economy economy = Money.economy();
+        EconomyApi economy = EconomyApi.get().orElse(null);
         if (economy == null) {
             messages.send(sender, "economy.unavailable");
             return true;
@@ -87,26 +87,26 @@ public class EcoCommand implements TabExecutor {
     }
 
     /** Bloquant. @return le nouveau solde mis en forme, ou "not-enough" si le retrait est impossible */
-    private static String apply(Economy economy, OfflinePlayer player, String action, double amount) {
+    private static String apply(EconomyApi economy, OfflinePlayer player, String action, double amount) {
         switch (action) {
-            case "give" -> economy.depositPlayer(player, amount);
+            case "give" -> economy.deposit(player.getUniqueId(), amount, "EterEssential · staff (/eco)");
             case "take" -> {
-                if (!economy.withdrawPlayer(player, amount).transactionSuccess()) {
+                if (!economy.withdraw(player.getUniqueId(), amount, "EterEssential · staff (/eco)")) {
                     return "not-enough";
                 }
             }
             default -> {
                 // set / reset : Vault n'a pas de « fixer le solde », on ajoute ou retire la différence
                 double target = action.equals("reset") ? 0 : amount;
-                double difference = target - economy.getBalance(player);
+                double difference = target - economy.balance(player.getUniqueId());
                 if (difference > 0) {
-                    economy.depositPlayer(player, difference);
+                    economy.deposit(player.getUniqueId(), difference, "EterEssential · staff (/eco)");
                 } else if (difference < 0) {
-                    economy.withdrawPlayer(player, -difference);
+                    economy.withdraw(player.getUniqueId(), -difference, "EterEssential · staff (/eco)");
                 }
             }
         }
-        return economy.format(economy.getBalance(player));
+        return economy.format(economy.balance(player.getUniqueId()));
     }
 
     @Override

@@ -20,7 +20,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 /**
- * /list : joueurs en ligne, regroupés par serveur (tout le réseau avec Redis, sinon ce serveur).
+ * /list : joueurs en ligne sur tout le réseau, regroupés par serveur (sans les invisibles).
  * /find <joueur> : sur quel serveur il est. /seen <joueur> : en ligne, ou depuis quand il ne l'est plus.
  */
 public class InfoCommand implements TabExecutor {

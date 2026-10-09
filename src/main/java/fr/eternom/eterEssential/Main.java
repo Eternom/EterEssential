@@ -12,6 +12,9 @@ import fr.eternom.eterLib.EterLib;
 import fr.eternom.eterLib.helper.cache.RedisCache;
 import fr.eternom.eterLib.helper.message.Messages;
 import fr.eternom.eterLib.helper.sql.Database;
+import fr.eternom.eterEssential.api.EssentialApi;
+import fr.eternom.eterEssential.module.back.EssentialApiService;
+import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.time.Duration;
@@ -19,7 +22,7 @@ import java.time.Duration;
 public final class Main extends JavaPlugin {
 
     /** Version minimale d'EterLib : textes communs et outils partagés (Frame, Money, NetworkBus) depuis 1.6.0. */
-    private static final String REQUIRED_ETERLIB = "1.9.1";
+    private static final String REQUIRED_ETERLIB = "1.10.0";
 
     /** Préfixe des tables d'EterEssential dans la base commune : eteressential_players... */
     private static final String TABLE_PREFIX = "eteressential_";
@@ -52,10 +55,12 @@ public final class Main extends JavaPlugin {
         lookup = new PlayerLookup(this, lib.getPlayers(), messages, lib.getServerName());
 
         TpaRequests requests = new TpaRequests(redis, Duration.ofSeconds(Math.max(10, getConfig().getInt("tpa.expire-seconds", 60))));
-        tpa = new TpaService(this, lib.getTeleports(), bus, lookup, requests, new TpaSettings(database), messages);
+        TpaSettings tpaSettings = new TpaSettings(database);
+        tpa = new TpaService(this, lib.getTeleports(), bus, lookup, requests, tpaSettings, messages);
         back = new BackStore(redis);
-        // Tables retirées : /rtp (maintenant EterRtp) et le /back sans Redis (Redis obligatoire) : pas de table morte
-        database.execute("DROP TABLE IF EXISTS " + database.table("rtp") + ", " + database.table("back"));
+        // API pour les autres plugins (EssentialApi.get())
+        getServer().getServicesManager().register(EssentialApi.class, new EssentialApiService(back, tpaSettings), this,
+                ServicePriority.Normal);
 
         new Commands(this);
         new Events(this);
