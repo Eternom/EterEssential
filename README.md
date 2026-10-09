@@ -11,7 +11,7 @@ Document développeur, à tenir à jour avec le code.
   (attente, délai commun, combat, départ vers un autre serveur).
 - **Redis** (obligatoire, via EterLib) : `/tpa`, `/tp`, `/tphere` et les messages de `/pay` traversent les
   serveurs.
-- **EterEconomy 2.2.1+** (`depend`, son API `EconomyApi`) pour `/money`, `/pay`, `/eco` et la perte à la mort. Soldes en
+- **EterEconomy 2.2.2+** (`depend`, son API `EconomyApi`) pour `/money`, `/pay`, `/eco` et la perte à la mort. Soldes en
   base, mouvements atomiques : rien à régler pour le multi-serveur.
 - **EterSync 1.1.0+** (facultatif) : `/invsee` d'un joueur ailleurs ou hors ligne.
 
