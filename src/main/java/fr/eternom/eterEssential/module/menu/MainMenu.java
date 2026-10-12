@@ -108,12 +108,23 @@ public class MainMenu implements Menu {
                 kept.forEach(button -> layout.put(button.slot(), button));
                 return;
             }
-            int start = row * 9 + 1 + (7 - Math.min(7, kept.size())) / 2;
             for (int i = 0; i < kept.size() && i < 7; i++) {
-                layout.put(start + i, kept.get(i));
+                layout.put(row * 9 + column(i, Math.min(7, kept.size())), kept.get(i));
             }
         });
         return layout;
+    }
+
+    /**
+     * Colonne (1 à 7) du i-ème de count boutons, symétrique autour de la colonne du milieu (4) : un nombre impair est
+     * centré d'un bloc, un nombre pair laisse la colonne du milieu vide (4 boutons : 2, 3, _, 5, 6).
+     */
+    private static int column(int i, int count) {
+        if (count % 2 == 1 || count == 7) {
+            return 4 - count / 2 + i;
+        }
+        int half = count / 2;
+        return i < half ? 4 - half + i : 5 + i - half;
     }
 
     /** Commande présente ici et permise ; sous-menu avec au moins un bouton visible. */
