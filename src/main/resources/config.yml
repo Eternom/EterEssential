@@ -28,20 +28,21 @@ death:
 menu:
   # Accroupi + touche « changer de main » (Maj + F) : ouvre /menu
   shortcut: true
-  # Page principale : les 6 catégories (2e ligne, deux groupes de 3), puis 5 raccourcis vers ce qui sert
-  # le plus souvent (4e ligne). Le reste est dans les sous-menus : la page reste facile à lire.
+  # Page principale, rien que ce que tout le monde a (permissions par défaut) : les 5 catégories (2e ligne), puis 5
+  # raccourcis vers ce qui sert le plus souvent (4e ligne). Outils (au centre) n'apparaît qu'aux joueurs qui ont au
+  # moins un outil (grade, pass). Le reste est dans les sous-menus : la page reste facile à lire.
   main:
-    progression: { slot: 10, icon: EXPERIENCE_BOTTLE, menu: progression }
-    voyager: { slot: 11, icon: COMPASS, menu: voyager }
-    social: { slot: 12, icon: BELL, menu: social }
+    progression: { slot: 11, icon: EXPERIENCE_BOTTLE, menu: progression }
+    voyager: { slot: 12, icon: COMPASS, menu: voyager }
+    social: { slot: 13, icon: BELL, menu: social }
     clan: { slot: 14, icon: WHITE_BANNER, command: "clan" }
     economie: { slot: 15, icon: GOLD_INGOT, menu: economie }
-    outils: { slot: 16, icon: ANVIL, menu: outils }
+    outils: { slot: 22, icon: ANVIL, menu: outils }
     homes: { slot: 29, icon: RED_BED, command: "homes" }
     spawn: { slot: 30, icon: BEACON, command: "spawn" }
-    daily: { slot: 31, icon: CHEST, command: "daily" }
-    enderchest: { slot: 32, icon: ENDER_CHEST, command: "enderchest" }
-    craft: { slot: 33, icon: CRAFTING_TABLE, command: "craft" }
+    rtp: { slot: 31, icon: ENDER_PEARL, command: "rtp" }
+    daily: { slot: 32, icon: CHEST, command: "daily" }
+    pass: { slot: 33, icon: NETHER_STAR, command: "pass" }
   submenus:
     progression:
       succes: { slot: 20, icon: GOLDEN_APPLE, command: "succes" }
