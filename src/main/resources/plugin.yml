@@ -49,6 +49,11 @@ commands:
     aliases: [profil, profile]
     permission: eteressential.menu
 
+  lobby:
+    description: Retour au lobby (bouton du menu ; tapé, /lobby est traité par le proxy).
+    usage: /lobby
+    permission: eteressential.lobby
+
   # Établis, coffre de l'Ender et four portatifs (commandes d'usage, par grade ou pour une durée)
   craft:
     description: Ouvrir un établi.
@@ -179,6 +184,8 @@ permissions:
   eteressential.money:
     default: true
   eteressential.menu:
+    default: true
+  eteressential.lobby:
     default: true
   eteressential.pay:
     default: true

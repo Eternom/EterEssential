@@ -44,6 +44,7 @@ public class Commands {
 
         // Menu central (sous-menus)
         register(main, "menu", new MenuCommand(main, messages));
+        register(main, "lobby", new fr.eternom.eterEssential.module.menu.LobbyCommand(main, messages));
 
         // Établis et coffre de l'Ender portatifs, four portatif : des commandes d'usage, à donner par grade ou pour une durée
         register(main, "craft", new StationCommand(messages, Station.CRAFT));

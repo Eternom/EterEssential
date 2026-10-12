@@ -25,6 +25,8 @@ death:
 # (ex : "menu progression"). Un back-command vide ramène au menu central (EterLib).
 # {player} dans une commande : le joueur la choisit dans la liste des joueurs connectés ; {amount} (montant) et {text}
 # (message) : demandés dans une fenêtre. Ex : "pay {player} {amount}". Annuler ramène au menu.
+# hide-on-lobby: true : bouton caché sur un lobby (EterHub). Ex : Spawn sur un lobby, Lobby ailleurs, à la même case.
+# Si un bouton d'une ligne est caché, les autres boutons de la ligne se recentrent.
 menu:
   # Accroupi + touche « changer de main » (Maj + F) : ouvre /menu
   shortcut: true
@@ -40,6 +42,7 @@ menu:
     outils: { slot: 22, icon: ANVIL, menu: outils }
     homes: { slot: 29, icon: RED_BED, command: "homes" }
     spawn: { slot: 30, icon: BEACON, command: "spawn" }
+    lobby: { slot: 30, icon: OAK_DOOR, command: "lobby", hide-on-lobby: true }
     rtp: { slot: 31, icon: ENDER_PEARL, command: "rtp" }
     daily: { slot: 32, icon: CHEST, command: "daily" }
     pass: { slot: 33, icon: NETHER_STAR, command: "pass" }
@@ -57,6 +60,7 @@ menu:
       tpa: { slot: 23, icon: LEAD, command: "tpa {player}" }
       tpahere: { slot: 24, icon: FISHING_ROD, command: "tpahere {player}" }
       spawn: { slot: 30, icon: BEACON, command: "spawn" }
+      lobby: { slot: 30, icon: OAK_DOOR, command: "lobby", hide-on-lobby: true }
       servers: { slot: 31, icon: NETHER_STAR, command: "servers" }
       lobbies: { slot: 32, icon: OAK_DOOR, command: "lobbies" }
     social:

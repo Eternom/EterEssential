@@ -30,8 +30,8 @@ import java.util.Map;
  */
 public class MainMenu implements Menu {
 
-    /** Un bouton : sa case, son icône, et soit une commande (sans le /), soit un sous-menu. */
-    public record Button(String id, int slot, Material icon, String command, String submenu) {
+    /** Un bouton : sa case, son icône, et soit une commande (sans le /), soit un sous-menu ; hideOnLobby : caché sur un lobby. */
+    public record Button(String id, int slot, Material icon, String command, String submenu, boolean hideOnLobby) {
     }
 
     private static final int HEAD = 4;
@@ -118,6 +118,9 @@ public class MainMenu implements Menu {
 
     /** Commande présente ici et permise ; sous-menu avec au moins un bouton visible. */
     private boolean visible(Player viewer, Button button) {
+        if (button.hideOnLobby() && Bukkit.getPluginManager().getPlugin("EterHub") != null) {
+            return false; // ex : « Lobby » sur un lobby, où « Spawn » prend sa place
+        }
         if (button.submenu() != null) {
             return !button.submenu().equals(page) && menus.pages().getOrDefault(button.submenu(), List.of()).stream()
                     .anyMatch(child -> child.submenu() == null && visible(viewer, child));

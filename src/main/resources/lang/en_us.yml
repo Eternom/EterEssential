@@ -154,6 +154,9 @@ furnace:
   title: "<primary>Portable furnace"
   busy: "<error>Your furnace is still being saved: try again in a moment."
 
+lobby:
+  unavailable: "<error>Back to the lobby is unavailable right now: type <accent>/lobby</accent>."
+
 menu:
   title: "<primary>Menu"
   sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
@@ -262,6 +265,9 @@ menu:
     tpahere:
       name: "<accent>Bring a player here"
       lore: "<info>Pick the player: they must accept."
+    lobby:
+      name: "<accent>Back to the lobby"
+      lore: "<info>The least crowded lobby."
     msg:
       name: "<accent>Private message"
       lore: "<info>Pick the player, then write your message."

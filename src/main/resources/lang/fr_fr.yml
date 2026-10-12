@@ -154,6 +154,9 @@ furnace:
   title: "<primary>Four portatif"
   busy: "<error>Ton four est encore en cours d'enregistrement : réessaie dans un instant."
 
+lobby:
+  unavailable: "<error>Retour au lobby indisponible pour l'instant : tape <accent>/lobby</accent>."
+
 menu:
   title: "<primary>Menu"
   sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
@@ -262,6 +265,9 @@ menu:
     tpahere:
       name: "<accent>Faire venir un joueur"
       lore: "<info>Choisis le joueur : il doit accepter."
+    lobby:
+      name: "<accent>Retour au lobby"
+      lore: "<info>Le lobby le moins rempli."
     msg:
       name: "<accent>Message privé"
       lore: "<info>Choisis le joueur, puis écris ton message."

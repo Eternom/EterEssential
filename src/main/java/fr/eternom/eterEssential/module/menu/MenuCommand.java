@@ -76,7 +76,7 @@ public class MenuCommand implements TabExecutor {
             }
             buttons.add(new Button(id, section.getInt(id + ".slot", -1), icon == null || !icon.isItem() ? Material.PAPER : icon,
                     command == null ? null : command.startsWith("/") ? command.substring(1) : command,
-                    submenu == null || submenu.isBlank() ? null : submenu));
+                    submenu == null || submenu.isBlank() ? null : submenu, section.getBoolean(id + ".hide-on-lobby")));
         }
         return List.copyOf(buttons);
     }
