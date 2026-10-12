@@ -59,10 +59,6 @@ menu:
       rtp: { slot: 22, icon: ENDER_PEARL, command: "rtp" }
       tpa: { slot: 23, icon: LEAD, command: "tpa {player}" }
       tpahere: { slot: 24, icon: FISHING_ROD, command: "tpahere {player}" }
-      spawn: { slot: 30, icon: BEACON, command: "spawn" }
-      lobby: { slot: 30, icon: OAK_DOOR, command: "lobby", hide-on-lobby: true }
-      servers: { slot: 31, icon: NETHER_STAR, command: "servers" }
-      lobbies: { slot: 32, icon: OAK_DOOR, command: "lobbies" }
     social:
       chat: { slot: 20, icon: OAK_SIGN, command: "chat" }
       ignore: { slot: 21, icon: BARRIER, command: "ignore" }
