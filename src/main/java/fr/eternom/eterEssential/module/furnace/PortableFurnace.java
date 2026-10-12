@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.FurnaceInventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MenuType;
@@ -166,7 +167,9 @@ public class PortableFurnace implements Listener {
             return;
         }
         Session session = open.get(player.getUniqueId());
-        if (session == null || !event.getView().equals(session.view)) {
+        // Un seul menu ouvert à la fois : un four qui se ferme pendant une session, c'est le nôtre (on ne compare pas
+        // les objets « vue » : Paper peut en donner un autre à la fermeture, et le contenu ne serait jamais enregistré)
+        if (session == null || event.getInventory().getType() != InventoryType.FURNACE) {
             return;
         }
         open.remove(player.getUniqueId());

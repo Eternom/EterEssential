@@ -4,7 +4,7 @@ import fr.eternom.eterEssential.module.menu.MainMenu.Button;
 import fr.eternom.eterLib.helper.message.Messages;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /** /menu (/profil) : ouvre le menu central. */
-public class MenuCommand implements CommandExecutor {
+public class MenuCommand implements TabExecutor {
 
     /** Identifiant de la page principale (config.yml > menu.main). */
     static final String MAIN = "main";
@@ -71,5 +71,12 @@ public class MenuCommand implements CommandExecutor {
         String page = args.length > 0 && pages.containsKey(args[0]) ? args[0] : MAIN;
         player.openInventory(new MainMenu(messages, player, pages, page).getInventory());
         return true;
+    }
+
+    /** Les sous-menus. */
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        return args.length == 1 ? pages.keySet().stream().filter(page -> !page.equals(MAIN) && page.startsWith(args[0])).sorted().toList()
+                : List.of();
     }
 }
