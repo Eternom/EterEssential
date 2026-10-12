@@ -166,7 +166,7 @@ menu:
   button:
     progression:
       name: "<primary>Progression"
-      lore: "<info>Succès, défis, pass de saison, récompense du jour."
+      lore: "<info>Succès, défis, classements, pass de saison, récompense du jour."
     voyager:
       name: "<primary>Voyager"
       lore: "<info>Homes, monde ressource, téléportation, serveurs."
@@ -185,6 +185,9 @@ menu:
     defis:
       name: "<accent>Défis"
       lore: "<info>Les défis du jour et de la semaine."
+    classement:
+      name: "<accent>Classements"
+      lore: "<info>Les meilleurs du réseau, et les récompenses du mois."
     pass:
       name: "<accent>Pass de saison"
       lore: "<info>Les paliers du mois et leurs récompenses."

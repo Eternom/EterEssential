@@ -166,7 +166,7 @@ menu:
   button:
     progression:
       name: "<primary>Progression"
-      lore: "<info>Achievements, challenges, season pass, daily reward."
+      lore: "<info>Achievements, challenges, leaderboards, season pass, daily reward."
     voyager:
       name: "<primary>Travel"
       lore: "<info>Homes, resource world, teleport, servers."
@@ -185,6 +185,9 @@ menu:
     defis:
       name: "<accent>Challenges"
       lore: "<info>Daily and weekly challenges."
+    classement:
+      name: "<accent>Leaderboards"
+      lore: "<info>The best of the network, and the monthly rewards."
     pass:
       name: "<accent>Season pass"
       lore: "<info>This month's tiers and rewards."

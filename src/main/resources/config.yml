@@ -34,6 +34,7 @@ menu:
     progression:
       succes: { slot: 20, icon: GOLDEN_APPLE, command: "succes" }
       defis: { slot: 21, icon: TARGET, command: "defis" }
+      classement: { slot: 22, icon: GOLDEN_HELMET, command: "classement" }
       pass: { slot: 23, icon: NETHER_STAR, command: "pass" }
       daily: { slot: 24, icon: CHEST, command: "daily" }
     voyager:
