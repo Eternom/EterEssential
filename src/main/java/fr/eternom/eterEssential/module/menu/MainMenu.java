@@ -22,7 +22,7 @@ import java.util.Map;
 
 /**
  * /menu : le menu central du joueur, une porte vers tout le reste. Page principale : les catégories (sous-menus) en
- * haut, puis les actions les plus utilisées en direct. Un bouton lance une commande d'un autre plugin, ou ouvre un
+ * haut, puis quelques raccourcis vers ce qui sert le plus souvent. Un bouton lance une commande d'un autre plugin, ou ouvre un
  * sous-menu. Une commande avec {player} fait d'abord choisir un joueur, avec {amount} ou {text} demande la valeur
  * (Dialog) : /pay, /tpa, /msg sans rien taper. Un bouton n'est montré que s'il sert ici : commande présente sur ce
  * serveur et permise au joueur ; sous-menu avec au moins un bouton montré. Boutons réglés dans config.yml > menu,
@@ -35,7 +35,9 @@ public class MainMenu implements Menu {
     }
 
     private static final int HEAD = 4;
-    private static final int BACK = 49;
+    /** 5 lignes : peu de boutons, faciles à trouver. */
+    private static final int SIZE = 45;
+    private static final int BACK = 40;
 
     private final MenuCommand menus;
     private final Messages messages;
@@ -49,14 +51,10 @@ public class MainMenu implements Menu {
         this.messages = menus.messages();
         this.page = page;
         boolean main = page.equals(MenuCommand.MAIN);
-        this.inventory = Bukkit.createInventory(this, 54, main ? messages.get(viewer, "menu.title")
+        this.inventory = Bukkit.createInventory(this, SIZE, main ? messages.get(viewer, "menu.title")
                 : messages.get(viewer, "menu.sub-title", "menu", messages.plain(viewer, "menu.button." + page + ".name")));
         Frame.draw(inventory, Material.ORANGE_STAINED_GLASS_PANE);
         if (main) {
-            // Les catégories (ligne 2) séparées des actions directes (lignes 4 et 5)
-            for (int slot = 19; slot <= 25; slot++) {
-                inventory.setItem(slot, Items.item(Material.GRAY_STAINED_GLASS_PANE, Component.empty(), List.of()));
-            }
             inventory.setItem(HEAD, profile(viewer, List.of()));
             Tasks.async(menus.plugin(), viewer, () -> ProfileInfo.read(viewer.getUniqueId()), info -> {
                 if (viewer.getOpenInventory().getTopInventory().getHolder() == this) {
@@ -66,7 +64,7 @@ public class MainMenu implements Menu {
             });
         }
         for (Button button : menus.pages().getOrDefault(page, List.of())) {
-            if (button.slot() < 0 || button.slot() >= 54 || !visible(viewer, button)) {
+            if (button.slot() < 0 || button.slot() >= SIZE || !visible(viewer, button)) {
                 continue;
             }
             List<Component> lore = new ArrayList<>();

@@ -38,7 +38,8 @@ chaque serveur aurait sa copie, et on pourrait faire plusieurs `/back` en change
 
 **Menu central** (`module/menu`) : `/menu` (`/profil`, ou accroupi + F : `MenuShortcut`, `menu.shortcut`), une porte
 vers tout le reste. Page principale : les catégories (sous-menus Progression, Voyager, Social, Économie, Outils) sur la
-2e ligne, puis les actions les plus utilisées en direct ; tout est réglé dans `config.yml > menu`. Un bouton lance la
+2e ligne, puis 5 raccourcis vers ce qui sert le plus souvent (homes, spawn, récompense du jour, coffre de
+l'Ender, établi) : peu de boutons, 5 lignes, la page reste facile à lire. Tout est réglé dans `config.yml > menu`. Un bouton lance la
 commande d'un autre plugin ou ouvre un sous-menu ; il n'est montré que s'il sert ici (commande présente et permise,
 sous-menu non vide). Une commande avec `{player}` fait choisir un joueur connecté (`PlayerPicker`, noms d'EterLib sans
 les invisibles), `{amount}` et `{text}` sont demandés dans un Dialog (`MenuInputs`) : `/pay`, `/tpa`, `/msg` sans rien
