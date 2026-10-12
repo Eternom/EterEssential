@@ -148,7 +148,7 @@ invsee:
 
 endersee:
   usage: '<error>Usage: <accent>/endersee \<player>'
-
+  snapshot: '<primary><player>''s ender chest <dark_gray>(saved, read only)'
 
 furnace:
   title: "<primary>Portable furnace"
@@ -158,7 +158,7 @@ menu:
   title: "<primary>Menu"
   sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
   player: "<accent><player>"
-  player-lore: "<info>The whole server is here: no commands needed."
+  player-lore: "<info>The whole server is here. Shortcut: <accent>sneak + F</accent>."
   open: "<accent>Click <dark_gray>· <info>open <dark_gray>(<command>)"
   open-sub: "<accent>Click <dark_gray>· <info>open"
   close: "<error>Close"
@@ -245,3 +245,61 @@ menu:
     four:
       name: "<accent>Portable furnace"
       lore: "<info>It keeps cooking while you're away."
+    economie:
+      name: "<primary>Economy"
+      lore: "<info>Your balance, pay a player, the richest."
+    money:
+      name: "<accent>My balance"
+    pay:
+      name: "<accent>Pay a player"
+      lore: "<info>Pick the player, then the amount."
+    richesse:
+      name: "<accent>The richest"
+      lore: "<info>The network leaderboard."
+    tpa:
+      name: "<accent>Go to a player"
+      lore: "<info>Pick the player: they must accept."
+    tpahere:
+      name: "<accent>Bring a player here"
+      lore: "<info>Pick the player: they must accept."
+    tpaccept:
+      name: "<accent>Accept teleport"
+      lore: "<info>The most recent request."
+    tpdeny:
+      name: "<accent>Deny teleport"
+      lore: "<info>The most recent request."
+    msg:
+      name: "<accent>Private message"
+      lore: "<info>Pick the player, then write your message."
+    appel:
+      name: "<accent>My appeals"
+      lore: "<info>Contest a sanction."
+  profile:
+    balance: "<info>Balance: <accent><value>"
+    job: "<info>Job: <accent><value>"
+    no-job: "<info>Job: <dark_gray>none"
+    clan: "<info>Clan: <accent><value>"
+    no-clan: "<info>Clan: <dark_gray>none"
+    pass: "<info>Season pass: <accent>tier <value>"
+    daily: "<info>Daily streak: <accent><value></accent> day(s)"
+    success: "<info>Achievements: <accent><value></accent> points"
+    success-rank: "<info>Achievements: <accent><value></accent> points <dark_gray>(#<rank>)"
+  picker:
+    title: "<primary>Pick a player <dark_gray>· <command>"
+    player: "<accent><player>"
+    pick: "<accent>Click <dark_gray>· <info>pick"
+    nobody: "<error>Nobody else is online."
+    previous: "<accent>« Previous page"
+    next: "<accent>Next page »"
+  input:
+    body: "<info>Command: <accent><command>"
+    confirm: "<success>Confirm"
+    cancel: "<error>Cancel"
+    amount:
+      title: "<primary>Amount"
+      label: "Amount"
+      invalid: "<error>Invalid amount: a positive number (e.g. <accent>150</accent> or <accent>12.50</accent>)."
+    text:
+      title: "<primary>Message"
+      label: "Message"
+      invalid: "<error>The message is empty."

@@ -17,16 +17,22 @@ final class RemoteInventory {
     }
 
     static void open(JavaPlugin plugin, PlayerLookup lookup, Messages messages, Player staff, String name) {
+        open(plugin, lookup, messages, staff, name, false);
+    }
+
+    /** ender : le coffre de l'Ender (/endersee) au lieu de l'inventaire. */
+    static void open(JavaPlugin plugin, PlayerLookup lookup, Messages messages, Player staff, String name, boolean ender) {
         SyncApi sync = SyncApi.get().orElse(null);
         if (sync == null) {
             messages.send(staff, "player.not-here", "player", name);
             return;
         }
         lookup.findAny(staff, name, found -> found.ifPresentOrElse(target -> Tasks.async(plugin, staff,
-                        () -> sync.lastInventory(target.uuid()),
+                        () -> ender ? sync.lastEnderChest(target.uuid()) : sync.lastInventory(target.uuid()),
                         contents -> contents.ifPresentOrElse(
-                                items -> staff.openInventory(new SnapshotView(messages.get(staff, "invsee.snapshot", "player", target.name()),
-                                        items).getInventory()),
+                                items -> staff.openInventory((ender
+                                        ? SnapshotView.enderChest(messages.get(staff, "endersee.snapshot", "player", target.name()), items)
+                                        : new SnapshotView(messages.get(staff, "invsee.snapshot", "player", target.name()), items)).getInventory()),
                                 () -> messages.send(staff, "invsee.no-snapshot", "player", target.name())),
                         () -> messages.send(staff, "error.generic")),
                 () -> messages.send(staff, "player.unknown", "player", name)));

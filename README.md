@@ -13,7 +13,8 @@ Document développeur, à tenir à jour avec le code.
   serveurs.
 - **EterEconomy 2.2.2+** (`depend`, son API `EconomyApi`) pour `/money`, `/pay`, `/eco` et la perte à la mort. Soldes en
   base, mouvements atomiques : rien à régler pour le multi-serveur.
-- **EterSync 1.1.0+** (facultatif) : `/invsee` d'un joueur ailleurs ou hors ligne.
+- **EterSync 1.2.1+** (facultatif) : `/invsee` et `/endersee` d'un joueur ailleurs ou hors ligne.
+- **EterMarket, EterClan, EterReward, EterSuccess** (facultatifs, `softdepend`) : les infos de la tête de `/menu`.
 
 ## Fonctionnement
 
@@ -35,11 +36,17 @@ Stockage commun au réseau : Redis (`back:<uuid>`, 1 jour). **Jamais en mémoire
 chaque serveur aurait sa copie, et on pourrait faire plusieurs `/back` en changeant de serveur.
 
 
-**Menu central** (`module/menu`) : `/menu` (`/profil`), une porte vers tout le reste, avec des sous-menus (Progression,
-Voyager, Social, Outils, réglés dans `config.yml > menu`). Un bouton lance la commande d'un autre plugin ou ouvre un
-sous-menu ; il n'est montré que s'il sert ici (commande présente et permise, sous-menu non vide). `/menu <sous-menu>`
-ouvre un sous-menu : le bouton Retour des autres plugins y ramène (`back-command: "menu progression"`...), et un
-`back-command` vide ramène au menu central (EterLib 1.11.1) : on navigue partout sans taper de commande.
+**Menu central** (`module/menu`) : `/menu` (`/profil`, ou accroupi + F : `MenuShortcut`, `menu.shortcut`), une porte
+vers tout le reste. Page principale : les catégories (sous-menus Progression, Voyager, Social, Économie, Outils) sur la
+2e ligne, puis les actions les plus utilisées en direct ; tout est réglé dans `config.yml > menu`. Un bouton lance la
+commande d'un autre plugin ou ouvre un sous-menu ; il n'est montré que s'il sert ici (commande présente et permise,
+sous-menu non vide). Une commande avec `{player}` fait choisir un joueur connecté (`PlayerPicker`, noms d'EterLib sans
+les invisibles), `{amount}` et `{text}` sont demandés dans un Dialog (`MenuInputs`) : `/pay`, `/tpa`, `/msg` sans rien
+taper. Annuler ou une saisie invalide **ramène à la page**, jamais hors du menu. La tête du joueur affiche ses infos
+(`ProfileInfo`, lues en tâche de fond par l'API d'EterEconomy, EterMarket, EterClan, EterReward et EterSuccess, chacune
+dans sa classe : un plugin absent ici n'affiche simplement pas sa ligne). `/menu <sous-menu>` ouvre un sous-menu : le
+bouton Retour des autres plugins y ramène (`back-command: "menu progression"`...), et un `back-command` vide ramène au
+menu central (EterLib 1.11.1) : on navigue partout sans taper de commande.
 
 **Établis portatifs** (`module/station/StationCommand`) : `/craft`, `/anvil`, `/smithing`, `/grindstone`,
 `/stonecutter` ouvrent le menu du bloc par `MenuType`, **rattaché à la position du joueur sans vérifier le bloc** : à la
@@ -61,7 +68,7 @@ Le contenu reste si la permission est retirée : il revient avec elle.
 
 **Staff** (`module/staff`) : `/tp` et `/tphere` utilisent `teleportNow` d'EterLib (immédiat, sans règles) et
 fonctionnent sur tout le réseau. `/invsee` et `/endersee` ouvrent l'inventaire réel (modifiable) d'un joueur de **ce**
-serveur ; `/invsee` d'un joueur ailleurs ou hors ligne montre sa dernière sauvegarde, en lecture seule (EterSync). Les annonces (`/broadcast`) sont sur le proxy : EterVelocityBroadcast.
+serveur ; `/invsee` et `/endersee` d'un joueur ailleurs ou hors ligne montrent sa dernière sauvegarde (inventaire ou coffre de l'Ender), en lecture seule (EterSync 1.2.1+). Les annonces (`/broadcast`) sont sur le proxy : EterVelocityBroadcast.
 
 **Mort** (`module/death/DeathPenalty`) : mourir fait perdre `death.money-loss-percent` (5 %) de son solde, arrondi à l'unité
 inférieure ; l'argent disparaît (évier de l'économie). Un pourcentage : les grosses fortunes le sentent aussi. Retrait

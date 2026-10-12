@@ -16,6 +16,18 @@ class SnapshotView implements Menu {
 
     private final Inventory inventory;
 
+    /** Coffre de l'Ender (27 cases), en lecture seule. */
+    static SnapshotView enderChest(Component title, ItemStack[] contents) {
+        return new SnapshotView(title, contents, true);
+    }
+
+    private SnapshotView(Component title, ItemStack[] contents, boolean ender) {
+        this.inventory = Bukkit.createInventory(this, 27, title);
+        for (int slot = 0; slot < 27 && slot < contents.length; slot++) {
+            inventory.setItem(slot, contents[slot]);
+        }
+    }
+
     SnapshotView(Component title, ItemStack[] contents) {
         this.inventory = Bukkit.createInventory(this, 54, title);
         // contents : 0-8 barre, 9-35 sac, 36-39 armure (bottes -> casque), 40 seconde main

@@ -23,13 +23,34 @@ death:
 # slot : case du menu (6 lignes, 0 à 53 ; le cadre occupe les bords). Nom et description : lang/ > menu.button.<id>.
 # /menu <sous-menu> ouvre directement un sous-menu : les autres plugins y reviennent avec leur back-command
 # (ex : "menu progression"). Un back-command vide ramène au menu central (EterLib).
+# {player} dans une commande : le joueur la choisit dans la liste des joueurs connectés ; {amount} (montant) et {text}
+# (message) : demandés dans une fenêtre. Ex : "pay {player} {amount}". Annuler ramène au menu.
+# Page principale : les catégories sur la 2e ligne, les actions directes sur les 4e et 5e.
 menu:
+  # Accroupi + touche « changer de main » (Maj + F) : ouvre /menu
+  shortcut: true
   main:
-    progression: { slot: 20, icon: EXPERIENCE_BOTTLE, menu: progression }
-    voyager: { slot: 21, icon: COMPASS, menu: voyager }
-    clan: { slot: 22, icon: WHITE_BANNER, command: "clan" }
-    social: { slot: 23, icon: BELL, menu: social }
-    outils: { slot: 24, icon: CRAFTING_TABLE, menu: outils }
+    progression: { slot: 10, icon: EXPERIENCE_BOTTLE, menu: progression }
+    voyager: { slot: 11, icon: COMPASS, menu: voyager }
+    social: { slot: 12, icon: BELL, menu: social }
+    economie: { slot: 13, icon: GOLD_INGOT, menu: economie }
+    outils: { slot: 14, icon: CRAFTING_TABLE, menu: outils }
+    clan: { slot: 15, icon: WHITE_BANNER, command: "clan" }
+    classement: { slot: 16, icon: GOLDEN_HELMET, command: "classement" }
+    succes: { slot: 28, icon: GOLDEN_APPLE, command: "succes" }
+    defis: { slot: 29, icon: TARGET, command: "defis" }
+    pass: { slot: 30, icon: NETHER_STAR, command: "pass" }
+    daily: { slot: 31, icon: CHEST, command: "daily" }
+    homes: { slot: 32, icon: RED_BED, command: "homes" }
+    spawn: { slot: 33, icon: BEACON, command: "spawn" }
+    rtp: { slot: 34, icon: ENDER_PEARL, command: "rtp" }
+    tpa: { slot: 37, icon: LEAD, command: "tpa {player}" }
+    tpaccept: { slot: 38, icon: LIME_DYE, command: "tpaccept" }
+    msg: { slot: 39, icon: WRITABLE_BOOK, command: "msg {player} {text}" }
+    ressource: { slot: 40, icon: GRASS_BLOCK, command: "ressource" }
+    enderchest: { slot: 41, icon: ENDER_CHEST, command: "enderchest" }
+    craft: { slot: 42, icon: CRAFTING_TABLE, command: "craft" }
+    four: { slot: 43, icon: FURNACE, command: "furnace" }
   submenus:
     progression:
       succes: { slot: 20, icon: GOLDEN_APPLE, command: "succes" }
@@ -43,14 +64,24 @@ menu:
       rtp: { slot: 22, icon: ENDER_PEARL, command: "rtp" }
       spawn: { slot: 23, icon: BEACON, command: "spawn" }
       servers: { slot: 24, icon: NETHER_STAR, command: "servers" }
-      lobbies: { slot: 31, icon: OAK_DOOR, command: "lobbies" }
+      tpa: { slot: 29, icon: LEAD, command: "tpa {player}" }
+      tpahere: { slot: 30, icon: FISHING_ROD, command: "tpahere {player}" }
+      tpaccept: { slot: 31, icon: LIME_DYE, command: "tpaccept" }
+      tpdeny: { slot: 32, icon: RED_DYE, command: "tpdeny" }
+      lobbies: { slot: 33, icon: OAK_DOOR, command: "lobbies" }
     social:
       chat: { slot: 20, icon: OAK_SIGN, command: "chat" }
       ignore: { slot: 21, icon: BARRIER, command: "ignore" }
       notifications: { slot: 22, icon: BELL, command: "notifications" }
       msgtoggle: { slot: 23, icon: PAPER, command: "msgtoggle" }
       report: { slot: 24, icon: REDSTONE_TORCH, command: "report" }
+      msg: { slot: 30, icon: WRITABLE_BOOK, command: "msg {player} {text}" }
       visibility: { slot: 31, icon: ENDER_EYE, command: "visibility" }
+      appel: { slot: 32, icon: BOOK, command: "appel" }
+    economie:
+      money: { slot: 20, icon: GOLD_NUGGET, command: "money" }
+      pay: { slot: 22, icon: EMERALD, command: "pay {player} {amount}" }
+      richesse: { slot: 24, icon: GOLD_BLOCK, command: "classement" }
     outils:
       craft: { slot: 20, icon: CRAFTING_TABLE, command: "craft" }
       anvil: { slot: 21, icon: ANVIL, command: "anvil" }

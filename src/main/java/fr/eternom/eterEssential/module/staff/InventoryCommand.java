@@ -46,8 +46,9 @@ public class InventoryCommand implements TabExecutor {
         }
         Player target = Bukkit.getPlayerExact(args[0]);
         if (target == null) {
-            if (action == Action.INVSEE && Bukkit.getPluginManager().isPluginEnabled("EterSync")) {
-                RemoteInventory.open(plugin, lookup, messages, staff, args[0]);
+            if (Bukkit.getPluginManager().isPluginEnabled("EterSync")) {
+                // Ailleurs ou hors ligne : sa dernière sauvegarde, en lecture seule (inventaire ou coffre de l'Ender)
+                RemoteInventory.open(plugin, lookup, messages, staff, args[0], action == Action.ENDERSEE);
             } else {
                 messages.send(staff, "player.not-here", "player", args[0]);
             }

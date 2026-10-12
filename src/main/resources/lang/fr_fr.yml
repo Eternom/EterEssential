@@ -148,7 +148,7 @@ invsee:
 
 endersee:
   usage: '<error>Utilisation : <accent>/endersee \<joueur>'
-
+  snapshot: '<primary>Coffre de l''Ender de <player> <dark_gray>(sauvegarde, lecture seule)'
 
 furnace:
   title: "<primary>Four portatif"
@@ -158,7 +158,7 @@ menu:
   title: "<primary>Menu"
   sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
   player: "<accent><player>"
-  player-lore: "<info>Tout le serveur est ici : pas besoin de commandes."
+  player-lore: "<info>Tout le serveur est ici. Raccourci : <accent>accroupi + F</accent>."
   open: "<accent>Clic <dark_gray>· <info>ouvrir <dark_gray>(<command>)"
   open-sub: "<accent>Clic <dark_gray>· <info>ouvrir"
   close: "<error>Fermer"
@@ -245,3 +245,61 @@ menu:
     four:
       name: "<accent>Four portatif"
       lore: "<info>Il cuit même quand tu n'es pas là."
+    economie:
+      name: "<primary>Économie"
+      lore: "<info>Ton solde, payer un joueur, les plus riches."
+    money:
+      name: "<accent>Mon solde"
+    pay:
+      name: "<accent>Payer un joueur"
+      lore: "<info>Choisis le joueur, puis le montant."
+    richesse:
+      name: "<accent>Les plus riches"
+      lore: "<info>Le classement du réseau."
+    tpa:
+      name: "<accent>Aller vers un joueur"
+      lore: "<info>Choisis le joueur : il doit accepter."
+    tpahere:
+      name: "<accent>Faire venir un joueur"
+      lore: "<info>Choisis le joueur : il doit accepter."
+    tpaccept:
+      name: "<accent>Accepter la téléportation"
+      lore: "<info>La demande la plus récente."
+    tpdeny:
+      name: "<accent>Refuser la téléportation"
+      lore: "<info>La demande la plus récente."
+    msg:
+      name: "<accent>Message privé"
+      lore: "<info>Choisis le joueur, puis écris ton message."
+    appel:
+      name: "<accent>Mes appels"
+      lore: "<info>Contester une sanction."
+  profile:
+    balance: "<info>Solde : <accent><value>"
+    job: "<info>Métier : <accent><value>"
+    no-job: "<info>Métier : <dark_gray>aucun"
+    clan: "<info>Clan : <accent><value>"
+    no-clan: "<info>Clan : <dark_gray>aucun"
+    pass: "<info>Pass de saison : <accent>palier <value>"
+    daily: "<info>Série du jour : <accent><value></accent> jour(s)"
+    success: "<info>Succès : <accent><value></accent> points"
+    success-rank: "<info>Succès : <accent><value></accent> points <dark_gray>(#<rank>)"
+  picker:
+    title: "<primary>Choisir un joueur <dark_gray>· <command>"
+    player: "<accent><player>"
+    pick: "<accent>Clic <dark_gray>· <info>choisir"
+    nobody: "<error>Personne d'autre n'est connecté."
+    previous: "<accent>« Page précédente"
+    next: "<accent>Page suivante »"
+  input:
+    body: "<info>Commande : <accent><command>"
+    confirm: "<success>Valider"
+    cancel: "<error>Annuler"
+    amount:
+      title: "<primary>Montant"
+      label: "Montant"
+      invalid: "<error>Montant invalide : un nombre positif (ex : <accent>150</accent> ou <accent>12.50</accent>)."
+    text:
+      title: "<primary>Message"
+      label: "Message"
+      invalid: "<error>Le message est vide."

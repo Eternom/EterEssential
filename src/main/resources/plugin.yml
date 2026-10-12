@@ -7,7 +7,7 @@ load: POSTWORLD
 authors: [ NadTum ]
 description: Commandes essentielles du réseau (tpa, back, infos, argent, staff).
 depend: [EterLib, EterEconomy]
-softdepend: [EterSync]
+softdepend: [EterSync, EterMarket, EterReward, EterSuccess, EterClan]
 
 commands:
   # Téléportation entre joueurs

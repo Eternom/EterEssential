@@ -21,12 +21,31 @@ public class MenuCommand implements TabExecutor {
     /** Identifiant de la page principale (config.yml > menu.main). */
     static final String MAIN = "main";
 
+    private final JavaPlugin plugin;
     private final Messages messages;
     private final Map<String, List<Button>> pages;
 
     public MenuCommand(JavaPlugin plugin, Messages messages) {
+        this.plugin = plugin;
         this.messages = messages;
         this.pages = load(plugin);
+    }
+
+    JavaPlugin plugin() {
+        return plugin;
+    }
+
+    Messages messages() {
+        return messages;
+    }
+
+    Map<String, List<Button>> pages() {
+        return pages;
+    }
+
+    /** Ouvre une page (MAIN ou un sous-menu). */
+    void open(Player player, String page) {
+        player.openInventory(new MainMenu(this, player, pages.containsKey(page) ? page : MAIN).getInventory());
     }
 
     /** config.yml > menu.main (page principale) et menu.submenus.<id> (sous-menus) : id -> slot, icon, command ou menu. */
@@ -68,8 +87,7 @@ public class MenuCommand implements TabExecutor {
             messages.send(sender, "command.players-only");
             return true;
         }
-        String page = args.length > 0 && pages.containsKey(args[0]) ? args[0] : MAIN;
-        player.openInventory(new MainMenu(messages, player, pages, page).getInventory());
+        open(player, args.length > 0 ? args[0] : MAIN);
         return true;
     }
 
