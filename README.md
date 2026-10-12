@@ -41,7 +41,7 @@ vers tout le reste. Page principale : les catégories (sous-menus Progression, V
 2e ligne, puis 5 raccourcis vers ce qui sert le plus souvent (homes, spawn, rtp, récompense du jour, pass),
 rien que des commandes permises à tous par défaut ; Outils n'apparaît qu'à qui a au moins un outil (grade, pass) : peu de boutons, 5 lignes, la page reste facile à lire. Tout est réglé dans `config.yml > menu`. Un bouton lance la
 commande d'un autre plugin ou ouvre un sous-menu ; il n'est montré que s'il sert ici (commande présente et permise,
-sous-menu non vide). Une commande avec `{player}` fait choisir un joueur connecté (`PlayerPicker`, noms d'EterLib sans
+sous-menu non vide) ; si un bouton d'une ligne est caché, les autres de la ligne se recentrent (pas de trou). Une commande avec `{player}` fait choisir un joueur connecté (`PlayerPicker`, noms d'EterLib sans
 les invisibles), `{amount}` et `{text}` sont demandés dans un Dialog (`MenuInputs`) : `/pay`, `/tpa`, `/msg` sans rien
 taper. Annuler ou une saisie invalide **ramène à la page**, jamais hors du menu. La tête du joueur affiche ses infos
 (`ProfileInfo`, lues en tâche de fond par l'API d'EterEconomy, EterMarket, EterClan, EterReward et EterSuccess, chacune

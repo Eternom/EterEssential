@@ -63,10 +63,8 @@ public class MainMenu implements Menu {
             }, () -> {
             });
         }
-        for (Button button : menus.pages().getOrDefault(page, List.of())) {
-            if (button.slot() < 0 || button.slot() >= SIZE || !visible(viewer, button)) {
-                continue;
-            }
+        for (Map.Entry<Integer, Button> placed : layout(viewer).entrySet()) {
+            Button button = placed.getValue();
             List<Component> lore = new ArrayList<>();
             if (messages.raw(viewer, "menu.button." + button.id() + ".lore") != null) {
                 lore.add(messages.get(viewer, "menu.button." + button.id() + ".lore"));
@@ -74,8 +72,8 @@ public class MainMenu implements Menu {
             lore.add(Component.empty());
             lore.add(button.submenu() != null || MenuInputs.asks(button.command()) ? messages.get(viewer, "menu.open-sub")
                     : messages.get(viewer, "menu.open", "command", "/" + button.command()));
-            inventory.setItem(button.slot(), Items.item(button.icon(), messages.get(viewer, "menu.button." + button.id() + ".name"), lore));
-            shown.put(button.slot(), button);
+            inventory.setItem(placed.getKey(), Items.item(button.icon(), messages.get(viewer, "menu.button." + button.id() + ".name"), lore));
+            shown.put(placed.getKey(), button);
         }
         inventory.setItem(BACK, main ? Items.item(Material.BARRIER, messages.get(viewer, "menu.close"), List.of())
                 : Items.item(Material.OAK_DOOR, messages.get(viewer, "menu.back"), List.of()));
@@ -89,6 +87,33 @@ public class MainMenu implements Menu {
         }
         lore.add(messages.get(viewer, "menu.player-lore"));
         return Items.head(viewer.getPlayerProfile(), messages.get(viewer, "menu.player", "player", viewer.getName()), lore);
+    }
+
+    /**
+     * Case -> bouton montré. Une ligne garde les cases de la config si tous ses boutons sont montrés ; sinon (commande
+     * absente de ce serveur, pas la permission), ceux qui restent sont recentrés, dans l'ordre : pas de trou.
+     */
+    private Map<Integer, Button> layout(Player viewer) {
+        Map<Integer, List<Button>> rows = new java.util.TreeMap<>();
+        for (Button button : menus.pages().getOrDefault(page, List.of())) {
+            if (button.slot() >= 0 && button.slot() < SIZE) {
+                rows.computeIfAbsent(button.slot() / 9, row -> new ArrayList<>()).add(button);
+            }
+        }
+        Map<Integer, Button> layout = new java.util.LinkedHashMap<>();
+        rows.forEach((row, buttons) -> {
+            List<Button> kept = buttons.stream().filter(button -> visible(viewer, button))
+                    .sorted(java.util.Comparator.comparingInt(Button::slot)).toList();
+            if (kept.size() == buttons.size()) {
+                kept.forEach(button -> layout.put(button.slot(), button));
+                return;
+            }
+            int start = row * 9 + 1 + (7 - Math.min(7, kept.size())) / 2;
+            for (int i = 0; i < kept.size() && i < 7; i++) {
+                layout.put(start + i, kept.get(i));
+            }
+        });
+        return layout;
     }
 
     /** Commande présente ici et permise ; sous-menu avec au moins un bouton visible. */
