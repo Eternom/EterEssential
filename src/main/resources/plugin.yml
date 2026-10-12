@@ -42,6 +42,38 @@ commands:
     usage: /back
     permission: eteressential.back
 
+  # Établis, coffre de l'Ender et four portatifs (commandes d'usage, par grade ou pour une durée)
+  craft:
+    description: Ouvrir un établi.
+    usage: /craft
+    aliases: [workbench, wb]
+    permission: eteressential.craft
+  anvil:
+    description: Ouvrir une enclume.
+    usage: /anvil
+    permission: eteressential.anvil
+  smithing:
+    description: Ouvrir une table de forge.
+    usage: /smithing
+    permission: eteressential.smithing
+  grindstone:
+    description: Ouvrir une meule.
+    usage: /grindstone
+    permission: eteressential.grindstone
+  stonecutter:
+    description: Ouvrir un tailleur de pierre.
+    usage: /stonecutter
+    permission: eteressential.stonecutter
+  enderchest:
+    description: Ouvrir ton coffre de l'Ender.
+    usage: /enderchest
+    aliases: [ec, echest]
+    permission: eteressential.enderchest
+  furnace:
+    description: Ouvrir ton four portatif (il cuit même fermé).
+    usage: /furnace
+    permission: eteressential.furnace
+
   # Informations
   list:
     description: Joueurs en ligne, par serveur.
@@ -158,6 +190,23 @@ permissions:
     description: /back ramène aussi au lieu de la mort.
     default: op
 
+  # Établis, coffre de l'Ender et four portatifs : à accorder par grade ou pour une durée (personne par défaut)
+  eteressential.craft:
+    default: op
+  eteressential.anvil:
+    default: op
+  eteressential.smithing:
+    default: op
+  eteressential.grindstone:
+    default: op
+  eteressential.stonecutter:
+    default: op
+  eteressential.enderchest:
+    default: op
+  eteressential.furnace:
+    description: Le four portatif. Son contenu reste si la permission est retirée, et revient avec elle.
+    default: op
+
   # Staff
   eteressential.gamemode:
     default: op
@@ -216,6 +265,13 @@ permissions:
     children:
       eteressential.back: true
       eteressential.back.death: true
+      eteressential.craft: true
+      eteressential.anvil: true
+      eteressential.smithing: true
+      eteressential.grindstone: true
+      eteressential.stonecutter: true
+      eteressential.enderchest: true
+      eteressential.furnace: true
       eteressential.list: true
       eteressential.find: true
       eteressential.seen: true

@@ -3,6 +3,9 @@ package fr.eternom.eterEssential;
 import fr.eternom.eterEssential.listeners.Commands;
 import fr.eternom.eterEssential.listeners.Events;
 import fr.eternom.eterEssential.module.back.BackStore;
+import fr.eternom.eterEssential.module.furnace.FurnaceSimulation;
+import fr.eternom.eterEssential.module.furnace.FurnaceStore;
+import fr.eternom.eterEssential.module.furnace.PortableFurnace;
 import fr.eternom.eterLib.helper.cache.NetworkBus;
 import fr.eternom.eterEssential.module.network.PlayerLookup;
 import fr.eternom.eterEssential.module.tpa.TpaRequests;
@@ -32,6 +35,7 @@ public final class Main extends JavaPlugin {
     private PlayerLookup lookup;
     private TpaService tpa;
     private BackStore back;
+    private PortableFurnace furnace;
 
     @Override
     public void onEnable() {
@@ -58,6 +62,7 @@ public final class Main extends JavaPlugin {
         TpaSettings tpaSettings = new TpaSettings(database);
         tpa = new TpaService(this, lib.getTeleports(), bus, lookup, requests, tpaSettings, messages);
         back = new BackStore(redis);
+        furnace = new PortableFurnace(this, new FurnaceStore(database), new FurnaceSimulation(), messages, redis);
         // API pour les autres plugins (EssentialApi.get())
         getServer().getServicesManager().register(EssentialApi.class, new EssentialApiService(back, tpaSettings), this,
                 ServicePriority.Normal);
@@ -68,6 +73,13 @@ public final class Main extends JavaPlugin {
 
     public Messages getMessages() {
         return messages;
+    }
+
+    @Override
+    public void onDisable() {
+        if (furnace != null) {
+            furnace.closeAll();
+        }
     }
 
     public NetworkBus getBus() {
@@ -84,5 +96,9 @@ public final class Main extends JavaPlugin {
 
     public BackStore getBack() {
         return back;
+    }
+
+    public PortableFurnace getFurnace() {
+        return furnace;
     }
 }

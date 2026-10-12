@@ -149,3 +149,7 @@ invsee:
 endersee:
   usage: '<error>Utilisation : <accent>/endersee \<joueur>'
 
+
+furnace:
+  title: "<primary>Four portatif"
+  busy: "<error>Ton four est encore en cours d'enregistrement : réessaie dans un instant."

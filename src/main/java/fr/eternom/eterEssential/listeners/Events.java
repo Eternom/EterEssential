@@ -14,5 +14,6 @@ public class Events {
         main.getServer().getPluginManager().registerEvents(new DeathPenalty(main, main.getMessages(),
                 Math.clamp(main.getConfig().getDouble("death.money-loss-percent", 5), 0, 100)), main);
         main.getServer().getPluginManager().registerEvents(new FlightReset(), main);
+        main.getServer().getPluginManager().registerEvents(main.getFurnace(), main);
     }
 }

@@ -149,3 +149,7 @@ invsee:
 endersee:
   usage: '<error>Usage: <accent>/endersee \<player>'
 
+
+furnace:
+  title: "<primary>Portable furnace"
+  busy: "<error>Your furnace is still being saved: try again in a moment."

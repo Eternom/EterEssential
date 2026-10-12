@@ -1,7 +1,7 @@
 # EterEssential
 
-Les commandes essentielles du réseau : téléportation entre joueurs, `/back`, informations, argent et outils du
-staff. Ailleurs : `/rtp` (EterRtp, seulement sur les serveurs de survie), `/spawn` et `/lobby` (EterHub, EterVelocityLobby), messages d'arrivée et de départ du réseau
+Les commandes essentielles du réseau : téléportation entre joueurs, `/back`, établis et four portatifs, informations,
+argent et outils du staff. Ailleurs : `/rtp` (EterRtp, seulement sur les serveurs de survie), `/spawn` et `/lobby` (EterHub, EterVelocityLobby), messages d'arrivée et de départ du réseau
 (EterVelocityLobby) ; pas de kit de départ.
 Document développeur, à tenir à jour avec le code.
 
@@ -35,6 +35,24 @@ Stockage commun au réseau : Redis (`back:<uuid>`, 1 jour). **Jamais en mémoire
 chaque serveur aurait sa copie, et on pourrait faire plusieurs `/back` en changeant de serveur.
 
 
+**Établis portatifs** (`module/station/StationCommand`) : `/craft`, `/anvil`, `/smithing`, `/grindstone`,
+`/stonecutter` ouvrent le menu du bloc par `MenuType`, **rattaché à la position du joueur sans vérifier le bloc** : à la
+fermeture, ce qui reste dans la grille est rendu au joueur (sans position, le jeu le perdrait). `/enderchest` ouvre son
+propre coffre de l'Ender (le même que le bloc, synchronisé entre les serveurs par EterSync 1.2.0+). Commandes
+d'**usage** : rien n'y reste, on peut donc les donner pour une durée (grade, pass d'EterReward).
+
+**Four portatif** (`module/furnace`) : `/furnace`, un vrai four propre au joueur, le même sur tout le réseau
+(`eteressential_furnaces`), qui **cuit même fermé, joueur déconnecté ou serveur éteint**. Le menu est celui du four, sans
+bloc : rien ne le fait cuire tout seul. `PortableFurnace` le fait avancer tick par tick tant qu'il est ouvert ; à la
+fermeture, toutes les 5 s pendant qu'il est ouvert (un plantage ne laisse pas en base ce que le joueur a déjà sorti) et
+à l'arrêt du serveur, le contenu part en base avec l'heure (un seul fil d'écriture : dans l'ordre), et le menu est
+vidé à la fermeture. Verrou Redis `furnace:lock:<uuid>` (30 s, prolongé à chaque enregistrement, rendu après le
+dernier) : un joueur qui change de serveur four ouvert ne peut pas le rouvrir ailleurs avant que la base soit à jour ; à l'ouverture,
+`FurnaceSimulation` rattrape le temps écoulé d'un coup (7 jours au plus), par bonds. La simulation reprend les règles
+du jeu : recettes du four (datapacks compris), durée de chaque combustible, seau de lave qui laisse un seau, cuisson qui
+recule quand le feu s'éteint, nouvel objet = cuisson à zéro. L'expérience des recettes est donnée à la fermeture.
+Le contenu reste si la permission est retirée : il revient avec elle.
+
 **Staff** (`module/staff`) : `/tp` et `/tphere` utilisent `teleportNow` d'EterLib (immédiat, sans règles) et
 fonctionnent sur tout le réseau. `/invsee` et `/endersee` ouvrent l'inventaire réel (modifiable) d'un joueur de **ce**
 serveur ; `/invsee` d'un joueur ailleurs ou hors ligne montre sa dernière sauvegarde, en lecture seule (EterSync). Les annonces (`/broadcast`) sont sur le proxy : EterVelocityBroadcast.
@@ -50,6 +68,7 @@ par EterEconomy en tâche de fond. Dispense : `eteressential.bypass.deathloss`. 
 | `/tpa`, `/tpaccept` (`tpyes`), `/tpdeny` (`tpno`), `/tpacancel`, `/tptoggle` | `eteressential.tpa` | tous |
 | `/tpahere` | `eteressential.tpahere` | tous |
 | `/back` | `eteressential.back` (+ `eteressential.back.death` pour la mort) | op |
+| `/craft` (`workbench`, `wb`), `/anvil`, `/smithing`, `/grindstone`, `/stonecutter`, `/enderchest` (`ec`), `/furnace` | `eteressential.<commande>` | op (à donner par grade ou pour une durée) |
 | `/list`, `/find`, `/seen` | `eteressential.list`, `.find`, `.seen` | op |
 | `/money [joueur]` (`bal`), `/pay` | `eteressential.money`, `.pay` ; autre joueur : `eteressential.others.money` | tous / op |
 | `/eco give\|take\|set\|reset <joueur> [montant]` (aussi depuis la console) | `eteressential.eco` | op |
@@ -66,6 +85,8 @@ session, et un plugin de lobby installé par erreur (double saut d'EterHub) ne l
 ## Données
 
 - `eteressential_players` : `uuid`, `tpa_disabled`.
+- `eteressential_furnaces` : `uuid`, `input`, `fuel`, `output` (objets sérialisés), `cook`, `lit`, `lit_total` (ticks),
+  `xp` (pas encore donnée), `saved_at` (heure de la dernière mise à jour, pour rattraper la cuisson).
 
 ## API (pour les autres plugins)
 
