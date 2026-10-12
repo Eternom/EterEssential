@@ -17,3 +17,45 @@ death:
   # Dispense : eteressential.bypass.deathloss.
   money-loss-percent: 5
 
+# Menu central (/menu, /profil) : une porte vers tout le reste, avec des sous-menus. Un bouton lance une commande
+# (command, sans le /) pour le joueur, ou ouvre un sous-menu (menu). Il n'est montré que s'il sert ici : commande
+# présente sur ce serveur et permise au joueur ; sous-menu avec au moins un bouton montré.
+# slot : case du menu (6 lignes, 0 à 53 ; le cadre occupe les bords). Nom et description : lang/ > menu.button.<id>.
+# /menu <sous-menu> ouvre directement un sous-menu : les autres plugins y reviennent avec leur back-command
+# (ex : "menu progression"). Un back-command vide ramène au menu central (EterLib).
+menu:
+  main:
+    progression: { slot: 20, icon: EXPERIENCE_BOTTLE, menu: progression }
+    voyager: { slot: 21, icon: COMPASS, menu: voyager }
+    clan: { slot: 22, icon: WHITE_BANNER, command: "clan" }
+    social: { slot: 23, icon: BELL, menu: social }
+    outils: { slot: 24, icon: CRAFTING_TABLE, menu: outils }
+  submenus:
+    progression:
+      succes: { slot: 20, icon: GOLDEN_APPLE, command: "succes" }
+      defis: { slot: 21, icon: TARGET, command: "defis" }
+      pass: { slot: 23, icon: NETHER_STAR, command: "pass" }
+      daily: { slot: 24, icon: CHEST, command: "daily" }
+    voyager:
+      homes: { slot: 20, icon: RED_BED, command: "homes" }
+      ressource: { slot: 21, icon: GRASS_BLOCK, command: "ressource" }
+      rtp: { slot: 22, icon: ENDER_PEARL, command: "rtp" }
+      spawn: { slot: 23, icon: BEACON, command: "spawn" }
+      servers: { slot: 24, icon: NETHER_STAR, command: "servers" }
+      lobbies: { slot: 31, icon: OAK_DOOR, command: "lobbies" }
+    social:
+      chat: { slot: 20, icon: OAK_SIGN, command: "chat" }
+      ignore: { slot: 21, icon: BARRIER, command: "ignore" }
+      notifications: { slot: 22, icon: BELL, command: "notifications" }
+      msgtoggle: { slot: 23, icon: PAPER, command: "msgtoggle" }
+      report: { slot: 24, icon: REDSTONE_TORCH, command: "report" }
+      visibility: { slot: 31, icon: ENDER_EYE, command: "visibility" }
+    outils:
+      craft: { slot: 20, icon: CRAFTING_TABLE, command: "craft" }
+      anvil: { slot: 21, icon: ANVIL, command: "anvil" }
+      smithing: { slot: 22, icon: SMITHING_TABLE, command: "smithing" }
+      grindstone: { slot: 23, icon: GRINDSTONE, command: "grindstone" }
+      stonecutter: { slot: 24, icon: STONECUTTER, command: "stonecutter" }
+      enderchest: { slot: 30, icon: ENDER_CHEST, command: "enderchest" }
+      four: { slot: 32, icon: FURNACE, command: "furnace" }
+

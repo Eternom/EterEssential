@@ -35,6 +35,12 @@ Stockage commun au réseau : Redis (`back:<uuid>`, 1 jour). **Jamais en mémoire
 chaque serveur aurait sa copie, et on pourrait faire plusieurs `/back` en changeant de serveur.
 
 
+**Menu central** (`module/menu`) : `/menu` (`/profil`), une porte vers tout le reste, avec des sous-menus (Progression,
+Voyager, Social, Outils, réglés dans `config.yml > menu`). Un bouton lance la commande d'un autre plugin ou ouvre un
+sous-menu ; il n'est montré que s'il sert ici (commande présente et permise, sous-menu non vide). `/menu <sous-menu>`
+ouvre un sous-menu : le bouton Retour des autres plugins y ramène (`back-command: "menu progression"`...), et un
+`back-command` vide ramène au menu central (EterLib 1.11.1) : on navigue partout sans taper de commande.
+
 **Établis portatifs** (`module/station/StationCommand`) : `/craft`, `/anvil`, `/smithing`, `/grindstone`,
 `/stonecutter` ouvrent le menu du bloc par `MenuType`, **rattaché à la position du joueur sans vérifier le bloc** : à la
 fermeture, ce qui reste dans la grille est rendu au joueur (sans position, le jeu le perdrait). `/enderchest` ouvre son
@@ -67,6 +73,7 @@ par EterEconomy en tâche de fond. Dispense : `eteressential.bypass.deathloss`. 
 |---|---|---|
 | `/tpa`, `/tpaccept` (`tpyes`), `/tpdeny` (`tpno`), `/tpacancel`, `/tptoggle` | `eteressential.tpa` | tous |
 | `/tpahere` | `eteressential.tpahere` | tous |
+| `/menu [sous-menu]` (`profil`) | `eteressential.menu` | tous |
 | `/back` | `eteressential.back` (+ `eteressential.back.death` pour la mort) | op |
 | `/craft` (`workbench`, `wb`), `/anvil`, `/smithing`, `/grindstone`, `/stonecutter`, `/enderchest` (`ec`), `/furnace` | `eteressential.<commande>` | op (à donner par grade ou pour une durée) |
 | `/list`, `/find`, `/seen` | `eteressential.list`, `.find`, `.seen` | op |

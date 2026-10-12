@@ -153,3 +153,92 @@ endersee:
 furnace:
   title: "<primary>Four portatif"
   busy: "<error>Ton four est encore en cours d'enregistrement : réessaie dans un instant."
+
+menu:
+  title: "<primary>Menu"
+  sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
+  player: "<accent><player>"
+  player-lore: "<info>Tout le serveur est ici : pas besoin de commandes."
+  open: "<accent>Clic <dark_gray>· <info>ouvrir <dark_gray>(<command>)"
+  open-sub: "<accent>Clic <dark_gray>· <info>ouvrir"
+  close: "<error>Fermer"
+  back: "<accent>« Menu"
+  button:
+    progression:
+      name: "<primary>Progression"
+      lore: "<info>Succès, défis, pass de saison, récompense du jour."
+    voyager:
+      name: "<primary>Voyager"
+      lore: "<info>Homes, monde ressource, téléportation, serveurs."
+    clan:
+      name: "<primary>Clan"
+      lore: "<info>Ton clan, ses terres et sa banque."
+    social:
+      name: "<primary>Social"
+      lore: "<info>Chat, messages privés, signalements."
+    outils:
+      name: "<primary>Outils"
+      lore: "<info>Établi, enclume, coffre de l'Ender, four portatif..."
+    succes:
+      name: "<accent>Succès"
+      lore: "<info>Tes succès, et les étapes des Premiers pas."
+    defis:
+      name: "<accent>Défis"
+      lore: "<info>Les défis du jour et de la semaine."
+    pass:
+      name: "<accent>Pass de saison"
+      lore: "<info>Les paliers du mois et leurs récompenses."
+    daily:
+      name: "<accent>Récompense du jour"
+      lore: "<info>Une récompense par jour, série de 7 jours."
+    homes:
+      name: "<accent>Mes homes"
+      lore: "<info>Tes maisons, sur tout le réseau."
+    ressource:
+      name: "<accent>Monde ressource"
+      lore: "<info>Un monde à miner, renouvelé régulièrement."
+    rtp:
+      name: "<accent>Téléportation aléatoire"
+      lore: "<info>Partir au hasard dans la nature."
+    spawn:
+      name: "<accent>Spawn"
+      lore: "<info>Retour au point de départ."
+    servers:
+      name: "<accent>Serveurs"
+      lore: "<info>Choisir un serveur du réseau."
+    lobbies:
+      name: "<accent>Lobbies"
+      lore: "<info>Choisir un lobby."
+    chat:
+      name: "<accent>Réglages du chat"
+      lore: "<info>Canaux, mentions, apparence."
+    ignore:
+      name: "<accent>Joueurs ignorés"
+      lore: "<info>La liste des joueurs que tu ignores."
+    notifications:
+      name: "<accent>Notifications"
+      lore: "<info>Couper ou remettre le son des mentions."
+    msgtoggle:
+      name: "<accent>Messages privés"
+      lore: "<info>Refuser ou accepter les messages privés."
+    report:
+      name: "<accent>Signaler un joueur"
+      lore: "<info>Prévenir le staff d'un problème."
+    visibility:
+      name: "<accent>Visibilité des joueurs"
+      lore: "<info>Masquer ou afficher les autres joueurs."
+    craft:
+      name: "<accent>Établi"
+    anvil:
+      name: "<accent>Enclume"
+    smithing:
+      name: "<accent>Table de forge"
+    grindstone:
+      name: "<accent>Meule"
+    stonecutter:
+      name: "<accent>Tailleur de pierre"
+    enderchest:
+      name: "<accent>Coffre de l'Ender"
+    four:
+      name: "<accent>Four portatif"
+      lore: "<info>Il cuit même quand tu n'es pas là."

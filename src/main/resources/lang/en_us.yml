@@ -153,3 +153,92 @@ endersee:
 furnace:
   title: "<primary>Portable furnace"
   busy: "<error>Your furnace is still being saved: try again in a moment."
+
+menu:
+  title: "<primary>Menu"
+  sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
+  player: "<accent><player>"
+  player-lore: "<info>The whole server is here: no commands needed."
+  open: "<accent>Click <dark_gray>· <info>open <dark_gray>(<command>)"
+  open-sub: "<accent>Click <dark_gray>· <info>open"
+  close: "<error>Close"
+  back: "<accent>« Menu"
+  button:
+    progression:
+      name: "<primary>Progression"
+      lore: "<info>Achievements, challenges, season pass, daily reward."
+    voyager:
+      name: "<primary>Travel"
+      lore: "<info>Homes, resource world, teleport, servers."
+    clan:
+      name: "<primary>Clan"
+      lore: "<info>Your clan, its land and its bank."
+    social:
+      name: "<primary>Social"
+      lore: "<info>Chat, private messages, reports."
+    outils:
+      name: "<primary>Tools"
+      lore: "<info>Crafting table, anvil, ender chest, portable furnace..."
+    succes:
+      name: "<accent>Achievements"
+      lore: "<info>Your achievements and the First steps."
+    defis:
+      name: "<accent>Challenges"
+      lore: "<info>Daily and weekly challenges."
+    pass:
+      name: "<accent>Season pass"
+      lore: "<info>This month's tiers and rewards."
+    daily:
+      name: "<accent>Daily reward"
+      lore: "<info>One reward a day, 7-day streak."
+    homes:
+      name: "<accent>My homes"
+      lore: "<info>Your homes, across the network."
+    ressource:
+      name: "<accent>Resource world"
+      lore: "<info>A world to mine, renewed regularly."
+    rtp:
+      name: "<accent>Random teleport"
+      lore: "<info>Go somewhere random in the wild."
+    spawn:
+      name: "<accent>Spawn"
+      lore: "<info>Back to the starting point."
+    servers:
+      name: "<accent>Servers"
+      lore: "<info>Pick a server of the network."
+    lobbies:
+      name: "<accent>Lobbies"
+      lore: "<info>Pick a lobby."
+    chat:
+      name: "<accent>Chat settings"
+      lore: "<info>Channels, mentions, look."
+    ignore:
+      name: "<accent>Ignored players"
+      lore: "<info>The players you ignore."
+    notifications:
+      name: "<accent>Notifications"
+      lore: "<info>Mute or unmute mention sounds."
+    msgtoggle:
+      name: "<accent>Private messages"
+      lore: "<info>Refuse or accept private messages."
+    report:
+      name: "<accent>Report a player"
+      lore: "<info>Tell the staff about a problem."
+    visibility:
+      name: "<accent>Player visibility"
+      lore: "<info>Hide or show other players."
+    craft:
+      name: "<accent>Crafting table"
+    anvil:
+      name: "<accent>Anvil"
+    smithing:
+      name: "<accent>Smithing table"
+    grindstone:
+      name: "<accent>Grindstone"
+    stonecutter:
+      name: "<accent>Stonecutter"
+    enderchest:
+      name: "<accent>Ender chest"
+    four:
+      name: "<accent>Portable furnace"
+      lore: "<info>It keeps cooking while you're away."

@@ -42,6 +42,13 @@ commands:
     usage: /back
     permission: eteressential.back
 
+  # Menu central, avec ses sous-menus
+  menu:
+    description: Le menu central (tout le serveur, sans commandes).
+    usage: /menu [sous-menu]
+    aliases: [profil, profile]
+    permission: eteressential.menu
+
   # Établis, coffre de l'Ender et four portatifs (commandes d'usage, par grade ou pour une durée)
   craft:
     description: Ouvrir un établi.
@@ -170,6 +177,8 @@ permissions:
   eteressential.tpahere:
     default: true
   eteressential.money:
+    default: true
+  eteressential.menu:
     default: true
   eteressential.pay:
     default: true
