@@ -262,12 +262,6 @@ menu:
     tpahere:
       name: "<accent>Bring a player here"
       lore: "<info>Pick the player: they must accept."
-    tpaccept:
-      name: "<accent>Accept teleport"
-      lore: "<info>The most recent request."
-    tpdeny:
-      name: "<accent>Deny teleport"
-      lore: "<info>The most recent request."
     msg:
       name: "<accent>Private message"
       lore: "<info>Pick the player, then write your message."

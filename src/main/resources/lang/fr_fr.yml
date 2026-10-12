@@ -262,12 +262,6 @@ menu:
     tpahere:
       name: "<accent>Faire venir un joueur"
       lore: "<info>Choisis le joueur : il doit accepter."
-    tpaccept:
-      name: "<accent>Accepter la téléportation"
-      lore: "<info>La demande la plus récente."
-    tpdeny:
-      name: "<accent>Refuser la téléportation"
-      lore: "<info>La demande la plus récente."
     msg:
       name: "<accent>Message privé"
       lore: "<info>Choisis le joueur, puis écris ton message."

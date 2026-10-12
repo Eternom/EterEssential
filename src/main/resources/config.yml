@@ -54,13 +54,11 @@ menu:
       homes: { slot: 20, icon: RED_BED, command: "homes" }
       ressource: { slot: 21, icon: GRASS_BLOCK, command: "ressource" }
       rtp: { slot: 22, icon: ENDER_PEARL, command: "rtp" }
-      spawn: { slot: 23, icon: BEACON, command: "spawn" }
-      servers: { slot: 24, icon: NETHER_STAR, command: "servers" }
-      tpa: { slot: 29, icon: LEAD, command: "tpa {player}" }
-      tpahere: { slot: 30, icon: FISHING_ROD, command: "tpahere {player}" }
-      tpaccept: { slot: 31, icon: LIME_DYE, command: "tpaccept" }
-      tpdeny: { slot: 32, icon: RED_DYE, command: "tpdeny" }
-      lobbies: { slot: 33, icon: OAK_DOOR, command: "lobbies" }
+      tpa: { slot: 23, icon: LEAD, command: "tpa {player}" }
+      tpahere: { slot: 24, icon: FISHING_ROD, command: "tpahere {player}" }
+      spawn: { slot: 30, icon: BEACON, command: "spawn" }
+      servers: { slot: 31, icon: NETHER_STAR, command: "servers" }
+      lobbies: { slot: 32, icon: OAK_DOOR, command: "lobbies" }
     social:
       chat: { slot: 20, icon: OAK_SIGN, command: "chat" }
       ignore: { slot: 21, icon: BARRIER, command: "ignore" }
