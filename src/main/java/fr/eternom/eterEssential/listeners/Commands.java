@@ -7,11 +7,12 @@ import fr.eternom.eterEssential.module.economy.EconomyCommand;
 import fr.eternom.eterEssential.module.furnace.FurnaceCommand;
 import fr.eternom.eterEssential.module.info.InfoCommand;
 import fr.eternom.eterEssential.module.menu.MenuCommand;
+import fr.eternom.eterEssential.module.network.LobbyCommand;
 import fr.eternom.eterEssential.module.staff.InventoryCommand;
 import fr.eternom.eterEssential.module.staff.PlayerActionCommand;
 import fr.eternom.eterEssential.module.staff.StaffTeleportCommand;
-import fr.eternom.eterEssential.module.station.StationCommand;
 import fr.eternom.eterEssential.module.station.StationCommand.Station;
+import fr.eternom.eterEssential.module.station.StationCommand;
 import fr.eternom.eterEssential.module.tpa.TpaCommand;
 import fr.eternom.eterLib.EterLib;
 import fr.eternom.eterLib.helper.message.Messages;
@@ -44,7 +45,7 @@ public class Commands {
 
         // Menu central (sous-menus)
         register(main, "menu", new MenuCommand(main, messages));
-        register(main, "lobby", new fr.eternom.eterEssential.module.menu.LobbyCommand(main, messages));
+        register(main, "lobby", new LobbyCommand(main, messages));
 
         // Établis et coffre de l'Ender portatifs, four portatif : des commandes d'usage, à donner par grade ou pour une durée
         register(main, "craft", new StationCommand(messages, Station.CRAFT));

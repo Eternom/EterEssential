@@ -1,4 +1,4 @@
-package fr.eternom.eterEssential.module.menu;
+package fr.eternom.eterEssential.module.network;
 
 import fr.eternom.eterLib.helper.message.Messages;
 import org.bukkit.command.Command;

@@ -16,9 +16,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * /menu : le menu central du joueur, une porte vers tout le reste. Page principale : les catégories (sous-menus) en
@@ -94,16 +97,16 @@ public class MainMenu implements Menu {
      * absente de ce serveur, pas la permission), ceux qui restent sont recentrés, dans l'ordre : pas de trou.
      */
     private Map<Integer, Button> layout(Player viewer) {
-        Map<Integer, List<Button>> rows = new java.util.TreeMap<>();
+        Map<Integer, List<Button>> rows = new TreeMap<>();
         for (Button button : menus.pages().getOrDefault(page, List.of())) {
             if (button.slot() >= 0 && button.slot() < SIZE) {
                 rows.computeIfAbsent(button.slot() / 9, row -> new ArrayList<>()).add(button);
             }
         }
-        Map<Integer, Button> layout = new java.util.LinkedHashMap<>();
+        Map<Integer, Button> layout = new LinkedHashMap<>();
         rows.forEach((row, buttons) -> {
             List<Button> kept = buttons.stream().filter(button -> visible(viewer, button))
-                    .sorted(java.util.Comparator.comparingInt(Button::slot)).toList();
+                    .sorted(Comparator.comparingInt(Button::slot)).toList();
             if (kept.size() == buttons.size()) {
                 kept.forEach(button -> layout.put(button.slot(), button));
                 return;
@@ -120,7 +123,7 @@ public class MainMenu implements Menu {
      * centré d'un bloc, un nombre pair laisse la colonne du milieu vide (4 boutons : 2, 3, _, 5, 6).
      */
     private static int column(int i, int count) {
-        if (count % 2 == 1 || count == 7) {
+        if (count % 2 == 1) {
             return 4 - count / 2 + i;
         }
         int half = count / 2;
