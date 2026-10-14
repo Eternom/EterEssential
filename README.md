@@ -75,6 +75,15 @@ serveur ; `/invsee` et `/endersee` d'un joueur ailleurs ou hors ligne montrent s
 inférieure ; l'argent disparaît (évier de l'économie). Un pourcentage : les grosses fortunes le sentent aussi. Retrait
 par EterEconomy en tâche de fond. Dispense : `eteressential.bypass.deathloss`. La banque d'EterClan est à l'abri.
 
+**Annonce des morts** (`module/death/DeathAnnouncer`, `DeathCause`) : la cause est lue dans le `DamageSource` de Paper et
+réduite à une famille (`lava`, `fall`, `creeper`, `player`, `mob`...). À la place du message de Minecraft, une variante
+au hasard de `lang/ > death.public.<cause>` (`<player>`, `<killer>` : joueur, ou créature traduite chez chaque joueur),
+sur tout le réseau (`death.announce: network`, bus `eteressential`, type `death` ; un même `seed` choisit la variante dans
+chaque langue), sur ce serveur (`server`) ou pas du tout (`none` : message de Minecraft). Rien de public pour un joueur
+invisible. Pour le mort seulement : un son propre à la cause (par défaut dans le code, `death.sounds.<cause>` pour en
+changer), une pique suivie d'une vraie astuce (`death.tips.<cause>`) et sa position (avec `/back` s'il a
+`eteressential.back.death`).
+
 ## Commandes et permissions
 
 | Commande | Permission | Par défaut |

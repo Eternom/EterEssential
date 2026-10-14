@@ -66,6 +66,131 @@ seen:
 
 death:
   money-lost: "<error>Tu es mort : <accent><amount></accent> perdus <dark_gray>(<percent> % de ton argent)"
+  position: "<info>Tu es mort en <accent><x> <y> <z></accent> <dark_gray>(<world>)"
+  position-back: "<info>Tu es mort en <accent><x> <y> <z></accent> <dark_gray>(<world>)</dark_gray><info> : <accent>/back</accent> pour y retourner."
+  # Message public : une variante au hasard par cause. <player> = le mort, <killer> = le joueur ou la créature.
+  # Jamais méchant : on rit AVEC le joueur. Une cause sans variante prend celles de generic.
+  public:
+    lava:
+      - "<dark_gray>☠ <accent><player></accent> <info>a voulu goûter la lave. Verdict : trop cuit."
+      - "<dark_gray>☠ <accent><player></accent> <info>a pris un bain de lave. La température était… discutable."
+      - "<dark_gray>☠ <accent><player></accent> <info>pensait que la lave, c'était du jus d'orange."
+      - "<dark_gray>☠ <accent><player></accent> <info>a fondu. Comme un glaçon. Mais en moins frais."
+    fire:
+      - "<dark_gray>☠ <accent><player></accent> <info>a pris feu. Le barbecue, c'était lui."
+      - "<dark_gray>☠ <accent><player></accent> <info>est parti en fumée. Littéralement."
+      - "<dark_gray>☠ <accent><player></accent> <info>voulait se réchauffer. Un peu trop."
+    fall:
+      - "<dark_gray>☠ <accent><player></accent> <info>a découvert la gravité. Elle gagne toujours."
+      - "<dark_gray>☠ <accent><player></accent> <info>a sauté. Le sol, lui, n'a pas bougé."
+      - "<dark_gray>☠ <accent><player></accent> <info>croyait avoir des ailes. Spoiler : non."
+      - "<dark_gray>☠ <accent><player></accent> <info>a raté son atterrissage. Note du jury : 0/10."
+    void:
+      - "<dark_gray>☠ <accent><player></accent> <info>est tombé dans le vide. On lui fait coucou de là-haut."
+      - "<dark_gray>☠ <accent><player></accent> <info>a voulu voir le dessous du monde. Il n'y a rien. Surprise."
+    drown:
+      - "<dark_gray>☠ <accent><player></accent> <info>a oublié de remonter respirer."
+      - "<dark_gray>☠ <accent><player></accent> <info>s'est pris pour un poisson. Raté."
+      - "<dark_gray>☠ <accent><player></accent> <info>a bu la tasse. Toute la tasse."
+    suffocation:
+      - "<dark_gray>☠ <accent><player></accent> <info>s'est coincé dans un mur. Le mur a gagné."
+      - "<dark_gray>☠ <accent><player></accent> <info>a voulu devenir un bloc. Presque réussi."
+    starvation:
+      - "<dark_gray>☠ <accent><player></accent> <info>a oublié de manger. Le régime est allé trop loin."
+      - "<dark_gray>☠ <accent><player></accent> <info>est mort de faim. Il avait pourtant du pain dans son coffre."
+    lightning:
+      - "<dark_gray>☠ <accent><player></accent> <info>a été choisi par les dieux. Pas pour le bon côté."
+      - "<dark_gray>☠ <accent><player></accent> <info>a attiré la foudre. Quel charisme électrique."
+    magic:
+      - "<dark_gray>☠ <accent><player></accent> <info>a bu la mauvaise potion. Ou la bonne, selon la sorcière."
+      - "<dark_gray>☠ <accent><player></accent> <info>a succombé à un mauvais sort. Abracadabra, c'est fini."
+    wither:
+      - "<dark_gray>☠ <accent><player></accent> <info>s'est desséché. Pensez à l'hydratation."
+      - "<dark_gray>☠ <accent><player></accent> <info>a rencontré le Wither. Le Wither n'a pas été sympa."
+    freeze:
+      - "<dark_gray>☠ <accent><player></accent> <info>a gelé sur place. Bonne nouvelle : il se conserve bien."
+      - "<dark_gray>☠ <accent><player></accent> <info>est devenu un glaçon géant."
+    contact:
+      - "<dark_gray>☠ <accent><player></accent> <info>a fait un câlin à un cactus. Le cactus ne voulait pas."
+      - "<dark_gray>☠ <accent><player></accent> <info>s'est piqué à mort. Les plantes se vengent."
+    falling:
+      - "<dark_gray>☠ <accent><player></accent> <info>a reçu une enclume sur la tête. Très cartoon."
+      - "<dark_gray>☠ <accent><player></accent> <info>a levé les yeux un peu trop tard."
+    kill:
+      - "<dark_gray>☠ <accent><player></accent> <info>a été effacé. Par qui ? Mystère."
+    explosion:
+      - "<dark_gray>☠ <accent><player></accent> <info>a explosé. Feu d'artifice gratuit pour tout le monde."
+      - "<dark_gray>☠ <accent><player></accent> <info>est parti en mille morceaux. On les ramasse ?"
+    creeper:
+      - "<dark_gray>☠ <accent><player></accent> <info>a fait un câlin à un creeper. Ssssss… BOUM."
+      - "<dark_gray>☠ <accent><player></accent> <info>n'a pas entendu le « ssss ». Le creeper, lui, l'a bien prononcé."
+      - "<dark_gray>☠ <accent><player></accent> <info>et un creeper sont devenus inséparables. En petits morceaux."
+    player:
+      - "<dark_gray>☠ <accent><player></accent> <info>s'est fait battre par <accent><killer></accent>. GG."
+      - "<dark_gray>☠ <accent><killer></accent> <info>a envoyé <accent><player></accent> <info>méditer au respawn."
+      - "<dark_gray>☠ <accent><player></accent> <info>a perdu le duel contre <accent><killer></accent>. Revanche ?"
+    warden:
+      - "<dark_gray>☠ <accent><player></accent> <info>a réveillé le Warden. Il n'était pas du matin."
+      - "<dark_gray>☠ <accent><player></accent> <info>a fait trop de bruit. Le Warden a tout entendu."
+    dragon:
+      - "<dark_gray>☠ <accent><player></accent> <info>a voulu caresser le dragon. Mauvaise idée."
+      - "<dark_gray>☠ <accent><player></accent> <info>a été vaincu par le dragon de l'End. Il reviendra plus fort."
+    mob:
+      - "<dark_gray>☠ <accent><player></accent> <info>s'est fait avoir par un(e) <accent><killer></accent>. La honte… mais on t'aime."
+      - "<dark_gray>☠ <accent><player></accent> <info>a perdu contre <accent><killer></accent>. Les monstres 1, <player> 0."
+      - "<dark_gray>☠ <accent><killer></accent> <info>a eu raison de <accent><player></accent>. Pour cette fois."
+      - "<dark_gray>☠ <accent><player></accent> <info>a sous-estimé <accent><killer></accent>. Erreur classique."
+    generic:
+      - "<dark_gray>☠ <accent><player></accent> <info>est mort. Personne ne sait vraiment comment."
+      - "<dark_gray>☠ <accent><player></accent> <info>a quitté ce monde. Temporairement."
+  # Pour le mort seulement : une pique, puis une vraie astuce. Une variante au hasard par cause.
+  tips:
+    lava:
+      - "<info>La lave, c'est chaud. Qui l'eût cru ? <dark_gray>Astuce : <accent>un seau d'eau dans ta barre d'objets</accent> éteint tout, et une potion de résistance au feu te sauve."
+      - "<info>Le jus d'orange ne brûle pas, normalement. <dark_gray>Astuce : <accent>mine en dessous de toi avec prudence</accent>, la lave aime les grottes."
+    fire:
+      - "<info>Tu sentais le poulet rôti. <dark_gray>Astuce : <accent>saute dans l'eau</accent> pour t'éteindre, ou bois une potion de résistance au feu."
+    fall:
+      - "<info>Le sol est dur. Il le restera. <dark_gray>Astuce : <accent>un seau d'eau</accent> posé juste avant l'impact annule la chute, et <accent>Chute amortie</accent> sur tes bottes aide beaucoup."
+      - "<info>Le parachute n'existe pas, désolé. <dark_gray>Astuce : <accent>descends en escalier</accent> au lieu de sauter."
+    void:
+      - "<info>Le vide n'a pas de fond. Tes affaires non plus. <dark_gray>Astuce : <accent>reste loin des bords dans l'End</accent>, et garde une perle de l'Ender."
+    drown:
+      - "<info>Les bulles, c'est ta réserve d'air. <dark_gray>Astuce : <accent>une porte ou un panneau</accent> sous l'eau crée une poche d'air, et <accent>Respiration</accent> sur un casque t'aide."
+    suffocation:
+      - "<info>Les murs ne sont pas des portes. <dark_gray>Astuce : <accent>attention au sable et au gravier</accent> qui tombent quand tu mines au-dessus de toi."
+    starvation:
+      - "<info>Ton ventre criait, tu ne l'as pas écouté. <dark_gray>Astuce : <accent>/daily</accent> donne du pain, et les fermiers vendent de quoi manger."
+    lightning:
+      - "<info>Les dieux t'ont remarqué. Bravo ? <dark_gray>Astuce : pendant un orage, <accent>abrite-toi sous un toit</accent>, loin des grands arbres."
+    magic:
+      - "<info>La sorcière rigole encore. <dark_gray>Astuce : <accent>du lait</accent> retire tous les effets, garde-en un seau sur toi."
+    wither:
+      - "<info>Tout noir, tout sec. <dark_gray>Astuce : <accent>du lait</accent> retire l'effet Wither, et le Wither se combat mieux sous terre."
+    freeze:
+      - "<info>Il fait frais, hein ? <dark_gray>Astuce : <accent>des bottes en cuir</accent> te laissent marcher sur la neige poudreuse sans t'enfoncer."
+    contact:
+      - "<info>Le cactus n'aime pas les câlins. <dark_gray>Astuce : <accent>ne te bats pas près des cactus et des buissons de baies</accent>."
+    falling:
+      - "<info>Regarder en l'air, ça sauve des vies. <dark_gray>Astuce : <accent>ne reste pas sous une enclume</accent> ni sous du gravier quand tu mines."
+    kill:
+      - "<info>Parfois, ça arrive. <dark_gray>Astuce : <accent>/back</accent> t'y ramène si tu y as accès."
+    explosion:
+      - "<info>Boum. <dark_gray>Astuce : <accent>un bouclier</accent> ou une armure <accent>Protection contre les explosions</accent> réduit les dégâts."
+    creeper:
+      - "<info>Le « ssss » n'était pas un compliment. <dark_gray>Astuce : <accent>recule dès que tu l'entends</accent>, puis frappe-le de loin avec un arc."
+      - "<info>Les creepers aiment les câlins explosifs. <dark_gray>Astuce : <accent>un bouclier levé</accent> bloque presque toute l'explosion."
+    player:
+      - "<info>Il y a toujours plus fort. Pour l'instant. <dark_gray>Astuce : <accent>améliore ton équipement</accent> à l'enclume et prépare des potions avant de te battre."
+    warden:
+      - "<info>Chut… trop tard. <dark_gray>Astuce : dans les cités antiques, <accent>avance accroupi</accent> et ne casse pas les capteurs sculk."
+    dragon:
+      - "<info>Le dragon : 1, toi : 0. <dark_gray>Astuce : <accent>détruis d'abord les cristaux</accent> sur les piliers, ils le soignent."
+    mob:
+      - "<info>Les monstres s'entraînent aussi. <dark_gray>Astuce : <accent>éclaire ta base</accent> (torches) pour qu'ils n'y apparaissent pas, et ne sors pas la nuit sans armure."
+      - "<info>Il était plus motivé que toi. <dark_gray>Astuce : <accent>un bouclier</accent> bloque les coups et les flèches, clic droit pour le lever."
+    generic:
+      - "<info>Ça arrive aux meilleurs. <dark_gray>Astuce : <accent>garde tes objets de valeur dans un coffre</accent>, et ton argent sur le compte de ton clan."
 
 money:
   self: "<info>Ton solde : <accent><amount>"

@@ -16,6 +16,15 @@ death:
   # Un pourcentage : les grosses fortunes le sentent aussi. La banque d'un clan n'est pas touchée.
   # Dispense : eteressential.bypass.deathloss.
   money-loss-percent: 5
+  # Message public à chaque mort, à la place de celui de Minecraft (variantes : lang/ > death.public.<cause>) :
+  # network (tout le réseau), server (ce serveur seulement) ou none (message de Minecraft, rien de plus).
+  # Le mort reçoit toujours une pique et une astuce (death.tips.<cause>), sa position et un son propre à sa mort.
+  announce: network
+  # Sons du mort, à changer cause par cause : "son volume hauteur" (sons Minecraft : entity.generic.burn...).
+  # Causes : lava, fire, fall, void, drown, suffocation, starvation, lightning, magic, wither, freeze, contact
+  # (cactus, baies), falling (enclume), kill (/kill), explosion, creeper, player, warden, dragon, mob, generic.
+  # Ex : lava: "block.lava.extinguish 1 0.8"
+  sounds: {}
 
 # Menu central (/menu, /profil) : une porte vers tout le reste, avec des sous-menus. Un bouton lance une commande
 # (command, sans le /) pour le joueur, ou ouvre un sous-menu (menu). Il n'est montré que s'il sert ici : commande

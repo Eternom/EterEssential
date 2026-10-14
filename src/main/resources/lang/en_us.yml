@@ -66,6 +66,106 @@ seen:
 
 death:
   money-lost: "<error>You died: <accent><amount></accent> lost <dark_gray>(<percent> % of your money)"
+  position: "<info>You died at <accent><x> <y> <z></accent> <dark_gray>(<world>)"
+  position-back: "<info>You died at <accent><x> <y> <z></accent> <dark_gray>(<world>)</dark_gray><info>: <accent>/back</accent> to go back."
+  # Public message: a random variant per cause. <player> = the dead player, <killer> = the player or creature.
+  # Never mean: we laugh WITH the player. A cause without variants uses the generic ones.
+  public:
+    lava:
+      - "<dark_gray>☠ <accent><player></accent> <info>tasted the lava. Verdict: overcooked."
+      - "<dark_gray>☠ <accent><player></accent> <info>took a lava bath. The temperature was… questionable."
+      - "<dark_gray>☠ <accent><player></accent> <info>thought lava was orange juice."
+    fire:
+      - "<dark_gray>☠ <accent><player></accent> <info>caught fire. Turns out he was the barbecue."
+      - "<dark_gray>☠ <accent><player></accent> <info>went up in smoke. Literally."
+    fall:
+      - "<dark_gray>☠ <accent><player></accent> <info>discovered gravity. Gravity always wins."
+      - "<dark_gray>☠ <accent><player></accent> <info>jumped. The ground didn't move."
+      - "<dark_gray>☠ <accent><player></accent> <info>missed the landing. Jury score: 0/10."
+    void:
+      - "<dark_gray>☠ <accent><player></accent> <info>fell into the void. We wave from up here."
+    drown:
+      - "<dark_gray>☠ <accent><player></accent> <info>forgot to come up for air."
+      - "<dark_gray>☠ <accent><player></accent> <info>thought they were a fish. Nope."
+    suffocation:
+      - "<dark_gray>☠ <accent><player></accent> <info>got stuck in a wall. The wall won."
+    starvation:
+      - "<dark_gray>☠ <accent><player></accent> <info>forgot to eat. The diet went too far."
+    lightning:
+      - "<dark_gray>☠ <accent><player></accent> <info>was chosen by the gods. Not in a good way."
+    magic:
+      - "<dark_gray>☠ <accent><player></accent> <info>drank the wrong potion. Or the right one, says the witch."
+    wither:
+      - "<dark_gray>☠ <accent><player></accent> <info>withered away. Stay hydrated."
+    freeze:
+      - "<dark_gray>☠ <accent><player></accent> <info>froze solid. Good news: well preserved."
+    contact:
+      - "<dark_gray>☠ <accent><player></accent> <info>hugged a cactus. The cactus didn't want to."
+    falling:
+      - "<dark_gray>☠ <accent><player></accent> <info>got an anvil on the head. Very cartoon."
+    kill:
+      - "<dark_gray>☠ <accent><player></accent> <info>was erased. By whom? A mystery."
+    explosion:
+      - "<dark_gray>☠ <accent><player></accent> <info>exploded. Free fireworks for everyone."
+    creeper:
+      - "<dark_gray>☠ <accent><player></accent> <info>hugged a creeper. Ssssss… BOOM."
+      - "<dark_gray>☠ <accent><player></accent> <info>didn't hear the « ssss ». The creeper said it clearly."
+    player:
+      - "<dark_gray>☠ <accent><player></accent> <info>was beaten by <accent><killer></accent>. GG."
+      - "<dark_gray>☠ <accent><player></accent> <info>lost the duel against <accent><killer></accent>. Rematch?"
+    warden:
+      - "<dark_gray>☠ <accent><player></accent> <info>woke up the Warden. Not a morning person."
+    dragon:
+      - "<dark_gray>☠ <accent><player></accent> <info>tried to pet the dragon. Bad idea."
+    mob:
+      - "<dark_gray>☠ <accent><player></accent> <info>got taken out by a <accent><killer></accent>. Shame… but we love you."
+      - "<dark_gray>☠ <accent><player></accent> <info>underestimated a <accent><killer></accent>. Classic mistake."
+    generic:
+      - "<dark_gray>☠ <accent><player></accent> <info>died. Nobody really knows how."
+  # Only for the dead player: a tease, then a real tip. A random variant per cause.
+  tips:
+    lava:
+      - "<info>Lava is hot. Who knew? <dark_gray>Tip: <accent>a water bucket in your hotbar</accent> puts everything out."
+    fire:
+      - "<info>You smelled like roast chicken. <dark_gray>Tip: <accent>jump into water</accent> to put yourself out."
+    fall:
+      - "<info>The ground is hard. It will stay that way. <dark_gray>Tip: <accent>a water bucket</accent> placed right before landing cancels the fall."
+    void:
+      - "<info>The void has no bottom. Neither do your items. <dark_gray>Tip: <accent>stay away from edges in the End</accent>."
+    drown:
+      - "<info>Bubbles are your air supply. <dark_gray>Tip: <accent>a door or a sign</accent> underwater makes an air pocket."
+    suffocation:
+      - "<info>Walls are not doors. <dark_gray>Tip: <accent>watch out for falling sand and gravel</accent> when mining up."
+    starvation:
+      - "<info>Your stomach was yelling. <dark_gray>Tip: <accent>/daily</accent> gives bread, and farmers sell food."
+    lightning:
+      - "<info>The gods noticed you. Congrats? <dark_gray>Tip: during a storm, <accent>stay under a roof</accent>."
+    magic:
+      - "<info>The witch is still laughing. <dark_gray>Tip: <accent>milk</accent> removes all effects."
+    wither:
+      - "<info>All black, all dry. <dark_gray>Tip: <accent>milk</accent> removes the Wither effect."
+    freeze:
+      - "<info>Chilly, huh? <dark_gray>Tip: <accent>leather boots</accent> let you walk on powder snow."
+    contact:
+      - "<info>Cacti don't like hugs. <dark_gray>Tip: <accent>don't fight next to cacti and berry bushes</accent>."
+    falling:
+      - "<info>Looking up saves lives. <dark_gray>Tip: <accent>don't stand under anvils or gravel</accent>."
+    kill:
+      - "<info>It happens. <dark_gray>Tip: <accent>/back</accent> takes you there if you have access."
+    explosion:
+      - "<info>Boom. <dark_gray>Tip: <accent>a shield</accent> or <accent>Blast Protection</accent> armor reduces the damage."
+    creeper:
+      - "<info>The « ssss » was not a compliment. <dark_gray>Tip: <accent>back off as soon as you hear it</accent>, then use a bow."
+    player:
+      - "<info>There's always someone stronger. For now. <dark_gray>Tip: <accent>upgrade your gear</accent> and brew potions before a fight."
+    warden:
+      - "<info>Shh… too late. <dark_gray>Tip: in ancient cities, <accent>sneak</accent> and don't break sculk sensors."
+    dragon:
+      - "<info>Dragon: 1, you: 0. <dark_gray>Tip: <accent>destroy the crystals</accent> on the pillars first, they heal it."
+    mob:
+      - "<info>Monsters train too. <dark_gray>Tip: <accent>light up your base</accent> with torches so they don't spawn there."
+    generic:
+      - "<info>It happens to the best. <dark_gray>Tip: <accent>keep valuables in a chest</accent>, and your money in your clan's account."
 
 money:
   self: "<info>Your balance: <accent><amount>"
