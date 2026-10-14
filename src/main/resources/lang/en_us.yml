@@ -269,7 +269,7 @@ menu:
   button:
     progression:
       name: "<primary>Progression"
-      lore: "<info>Achievements, challenges, leaderboards, season pass, daily reward, kits."
+      lore: "<info>Achievements, challenges, leaderboards, season pass, daily reward."
     voyager:
       name: "<primary>Travel"
       lore: "<info>Homes, resource world, teleport, servers."

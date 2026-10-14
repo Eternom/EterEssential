@@ -294,7 +294,7 @@ menu:
   button:
     progression:
       name: "<primary>Progression"
-      lore: "<info>Succès, défis, classements, pass de saison, récompense du jour, kits."
+      lore: "<info>Succès, défis, classements, pass de saison, récompense du jour."
     voyager:
       name: "<primary>Voyager"
       lore: "<info>Homes, monde ressource, téléportation, serveurs."

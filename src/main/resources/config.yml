@@ -40,7 +40,7 @@ menu:
   # Accroupi + touche « changer de main » (Maj + F) : ouvre /menu
   shortcut: true
   # Page principale, rien que ce que tout le monde a (permissions par défaut) : les 5 catégories (2e ligne), puis 5
-  # raccourcis vers ce qui sert le plus souvent (4e ligne). Outils (au centre) n'apparaît qu'aux joueurs qui ont au
+  # raccourcis vers ce qui sert le plus souvent (4e ligne). Au centre, les kits et Outils, qui n'apparaît qu'aux joueurs qui ont au
   # moins un outil (grade, pass). Le reste est dans les sous-menus : la page reste facile à lire.
   main:
     progression: { slot: 11, icon: EXPERIENCE_BOTTLE, menu: progression }
@@ -48,7 +48,8 @@ menu:
     social: { slot: 13, icon: BELL, menu: social }
     clan: { slot: 14, icon: WHITE_BANNER, command: "clan" }
     economie: { slot: 15, icon: GOLD_INGOT, menu: economie }
-    outils: { slot: 22, icon: ANVIL, menu: outils }
+    kits: { slot: 21, icon: BARREL, command: "kit" }
+    outils: { slot: 23, icon: ANVIL, menu: outils }
     homes: { slot: 29, icon: RED_BED, command: "homes" }
     spawn: { slot: 30, icon: BEACON, command: "spawn" }
     lobby: { slot: 30, icon: OAK_DOOR, command: "lobby", hide-on-lobby: true }
@@ -62,7 +63,6 @@ menu:
       classement: { slot: 22, icon: GOLDEN_HELMET, command: "classement" }
       pass: { slot: 23, icon: NETHER_STAR, command: "pass" }
       daily: { slot: 24, icon: CHEST, command: "daily" }
-      kits: { slot: 31, icon: BUNDLE, command: "kit" }
     voyager:
       homes: { slot: 20, icon: RED_BED, command: "homes" }
       ressource: { slot: 21, icon: GRASS_BLOCK, command: "ressource" }
