@@ -2,7 +2,7 @@
 
 Les commandes essentielles du réseau : téléportation entre joueurs, `/back`, établis et four portatifs, informations,
 argent et outils du staff. Ailleurs : `/rtp` (EterRtp, seulement sur les serveurs de survie), `/spawn` et `/lobby` (EterHub, EterVelocityLobby), messages d'arrivée et de départ du réseau
-(EterVelocityLobby) ; pas de kit de départ.
+(EterVelocityLobby), kits (EterKit, bouton « Kits » du sous-menu Progression).
 Document développeur, à tenir à jour avec le code.
 
 ## Prérequis

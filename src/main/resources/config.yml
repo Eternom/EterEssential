@@ -53,6 +53,7 @@ menu:
       classement: { slot: 22, icon: GOLDEN_HELMET, command: "classement" }
       pass: { slot: 23, icon: NETHER_STAR, command: "pass" }
       daily: { slot: 24, icon: CHEST, command: "daily" }
+      kits: { slot: 31, icon: BUNDLE, command: "kit" }
     voyager:
       homes: { slot: 20, icon: RED_BED, command: "homes" }
       ressource: { slot: 21, icon: GRASS_BLOCK, command: "ressource" }

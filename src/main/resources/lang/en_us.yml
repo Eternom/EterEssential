@@ -169,7 +169,7 @@ menu:
   button:
     progression:
       name: "<primary>Progression"
-      lore: "<info>Achievements, challenges, leaderboards, season pass, daily reward."
+      lore: "<info>Achievements, challenges, leaderboards, season pass, daily reward, kits."
     voyager:
       name: "<primary>Travel"
       lore: "<info>Homes, resource world, teleport, servers."
@@ -197,6 +197,9 @@ menu:
     daily:
       name: "<accent>Daily reward"
       lore: "<info>One reward a day, 7-day streak."
+    kits:
+      name: "<accent>Kits"
+      lore: "<info>One kit a week, and the starter kit."
     homes:
       name: "<accent>My homes"
       lore: "<info>Your homes, across the network."

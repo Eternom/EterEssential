@@ -169,7 +169,7 @@ menu:
   button:
     progression:
       name: "<primary>Progression"
-      lore: "<info>Succès, défis, classements, pass de saison, récompense du jour."
+      lore: "<info>Succès, défis, classements, pass de saison, récompense du jour, kits."
     voyager:
       name: "<primary>Voyager"
       lore: "<info>Homes, monde ressource, téléportation, serveurs."
@@ -197,6 +197,9 @@ menu:
     daily:
       name: "<accent>Récompense du jour"
       lore: "<info>Une récompense par jour, série de 7 jours."
+    kits:
+      name: "<accent>Kits"
+      lore: "<info>Un kit par semaine, et le kit de départ."
     homes:
       name: "<accent>Mes homes"
       lore: "<info>Tes maisons, sur tout le réseau."
