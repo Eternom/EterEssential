@@ -53,6 +53,10 @@ commands:
     description: Retour au lobby (bouton du menu ; tapé, /lobby est traité par le proxy).
     usage: /lobby
     permission: eteressential.lobby
+  vote:
+    description: Le lien vers la page de vote du site.
+    usage: /vote
+    permission: eteressential.vote
 
   # Établis, coffre de l'Ender et four portatifs (commandes d'usage, par grade ou pour une durée)
   craft:
@@ -186,6 +190,8 @@ permissions:
   eteressential.menu:
     default: true
   eteressential.lobby:
+    default: true
+  eteressential.vote:
     default: true
   eteressential.pay:
     default: true

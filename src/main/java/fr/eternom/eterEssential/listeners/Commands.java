@@ -6,6 +6,7 @@ import fr.eternom.eterEssential.module.economy.EcoCommand;
 import fr.eternom.eterEssential.module.economy.EconomyCommand;
 import fr.eternom.eterEssential.module.furnace.FurnaceCommand;
 import fr.eternom.eterEssential.module.info.InfoCommand;
+import fr.eternom.eterEssential.module.info.VoteCommand;
 import fr.eternom.eterEssential.module.menu.MenuCommand;
 import fr.eternom.eterEssential.module.network.LobbyCommand;
 import fr.eternom.eterEssential.module.staff.InventoryCommand;
@@ -46,6 +47,7 @@ public class Commands {
         // Menu central (sous-menus)
         register(main, "menu", new MenuCommand(main, messages));
         register(main, "lobby", new LobbyCommand(main, messages));
+        register(main, "vote", new VoteCommand(messages, main.getConfig().getString("vote.page")));
 
         // Établis et coffre de l'Ender portatifs, four portatif : des commandes d'usage, à donner par grade ou pour une durée
         register(main, "craft", new StationCommand(messages, Station.CRAFT));

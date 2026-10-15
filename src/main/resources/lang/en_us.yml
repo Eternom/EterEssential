@@ -257,6 +257,13 @@ furnace:
 lobby:
   unavailable: "<error>Back to the lobby is unavailable right now: type <accent>/lobby</accent>."
 
+vote:
+  info: "<info>Vote for the server on the website: an in-game reward for each vote, even when you are offline."
+  button: "<accent><bold>[Vote on the website]</bold></accent>"
+  button-hover: "<info>Open <accent><url>"
+  how: "<dark_gray>Log in to the website with your Minecraft name, then vote on each site, once a day."
+  unset: "<error>Voting is not set up on this server yet."
+
 menu:
   title: "<primary>Menu"
   sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"

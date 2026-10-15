@@ -91,6 +91,7 @@ changer), une pique suivie d'une vraie astuce (`death.tips.<cause>`) et sa posit
 | `/tpa`, `/tpaccept` (`tpyes`), `/tpdeny` (`tpno`), `/tpacancel`, `/tptoggle` | `eteressential.tpa` | tous |
 | `/tpahere` | `eteressential.tpahere` | tous |
 | `/menu [sous-menu]` (`profil`) | `eteressential.menu` | tous |
+| `/vote` | `eteressential.vote` | tous — un lien vers la page de vote du site (`vote.page`), jamais vers les sites de vote : seule la page du site compte le vote et donne la récompense |
 | `/back` | `eteressential.back` (+ `eteressential.back.death` pour la mort) | op |
 | `/craft` (`workbench`, `wb`), `/anvil`, `/smithing`, `/grindstone`, `/stonecutter`, `/enderchest` (`ec`), `/furnace` | `eteressential.<commande>` | op (à donner par grade ou pour une durée) |
 | `/list`, `/find`, `/seen` | `eteressential.list`, `.find`, `.seen` | op |
