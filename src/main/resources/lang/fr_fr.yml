@@ -198,6 +198,7 @@ money:
 
 pay:
   usage: '<error>Utilisation : <accent>/pay \<joueur> \<montant>'
+  too-new: "<error>Tu pourras envoyer de l'argent après <accent><hours> h</accent> de jeu : encore <accent><time></accent>."
   invalid-amount: "<error>Montant invalide : <accent><amount></accent>."
   self: "<error>Tu ne peux pas te payer toi-même."
   not-enough: "<error>Tu n'as pas assez d'argent pour donner <accent><amount></accent>."

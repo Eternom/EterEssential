@@ -30,7 +30,7 @@ dependencies {
     // Infos du profil (/menu) : l'API des plugins qui les tiennent (facultatifs)
     compileOnly("com.github.Eternom:EterMarket:1.6.1")
     compileOnly("com.github.Eternom:EterReward:1.4.1")
-    compileOnly("com.github.Eternom:EterSuccess:1.1.0")
+    compileOnly("com.github.Eternom:EterSuccess:1.5.0")
     compileOnly("com.github.Eternom:EterClan:1.1.0")
     // Argent : l'API d'EterEconomy (chaque mouvement avec sa source)
     compileOnly("com.github.Eternom:EterEconomy:2.2.2")

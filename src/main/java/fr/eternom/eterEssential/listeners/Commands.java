@@ -64,8 +64,9 @@ public class Commands {
         register(main, "seen", new InfoCommand(main, lib.getPlayers(), main.getLookup(), names, messages, InfoCommand.Action.SEEN));
 
         // Économie (Vault -> EterEconomy)
-        register(main, "money", new EconomyCommand(main, main.getLookup(), main.getBus(), names, messages, EconomyCommand.Action.MONEY));
-        register(main, "pay", new EconomyCommand(main, main.getLookup(), main.getBus(), names, messages, EconomyCommand.Action.PAY));
+        register(main, "money", new EconomyCommand(main, main.getLookup(), main.getBus(), names, messages, EconomyCommand.Action.MONEY, 0));
+        register(main, "pay", new EconomyCommand(main, main.getLookup(), main.getBus(), names, messages, EconomyCommand.Action.PAY,
+                main.getConfig().getDouble("pay.min-playtime-hours", 5)));
         register(main, "eco", new EcoCommand(main, lib.getPlayers(), names, messages));
 
         // Staff

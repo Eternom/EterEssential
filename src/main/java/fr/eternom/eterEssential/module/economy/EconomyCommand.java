@@ -1,5 +1,6 @@
 package fr.eternom.eterEssential.module.economy;
 
+import fr.eternom.eterLib.EterLib;
 import fr.eternom.eterLib.helper.cache.NetworkBus;
 import fr.eternom.eterEssential.module.network.PlayerLookup;
 import fr.eternom.eterLib.helper.economy.Money;
@@ -19,6 +20,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * /money [joueur] et /pay <joueur> <montant>, par l'API d'EterEconomy. Le destinataire peut être hors ligne ou sur un
@@ -30,17 +32,19 @@ public class EconomyCommand implements TabExecutor {
 
     public enum Action { MONEY, PAY }
 
-    private enum PayResult { OK, NOT_ENOUGH, FAILED }
+    private enum PayResult { OK, NOT_ENOUGH, FAILED, TOO_NEW }
 
     private final JavaPlugin plugin;
     private final PlayerLookup lookup;
+    private final PayGate payGate;
     private final NetworkBus bus;
     private final OnlineNames names;
     private final Messages messages;
     private final Action action;
 
     public EconomyCommand(JavaPlugin plugin, PlayerLookup lookup, NetworkBus bus, OnlineNames names, Messages messages,
-                          Action action) {
+                          Action action, double payMinHours) {
+        this.payGate = new PayGate(payMinHours);
         this.plugin = plugin;
         this.lookup = lookup;
         this.bus = bus;
@@ -104,8 +108,15 @@ public class EconomyCommand implements TabExecutor {
                 return;
             }
             String formatted = economy.format(amount);
-            Tasks.async(plugin, player, () -> transfer(economy, player, offline(target), amount), result -> {
+            UUID uuid = player.getUniqueId();
+            long[] left = {0};
+            Tasks.async(plugin, player, () -> {
+                left[0] = payGate.minutesLeft(uuid);
+                return left[0] > 0 ? PayResult.TOO_NEW : transfer(economy, player, offline(target), amount);
+            }, result -> {
                 switch (result) {
+                    case TOO_NEW -> messages.send(player, "pay.too-new", "hours", String.valueOf(payGate.minMinutes() / 60),
+                            "time", EterLib.get().formatDuration(player, left[0] * 60));
                     case OK -> {
                         messages.send(player, "pay.sent", "player", target.name(), "amount", formatted);
                         bus.notify(target.uuid(), "pay.received", true, "player", player.getName(), "amount", formatted);

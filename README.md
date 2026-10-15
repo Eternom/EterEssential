@@ -91,6 +91,7 @@ changer), une pique suivie d'une vraie astuce (`death.tips.<cause>`) et sa posit
 | `/tpa`, `/tpaccept` (`tpyes`), `/tpdeny` (`tpno`), `/tpacancel`, `/tptoggle` | `eteressential.tpa` | tous |
 | `/tpahere` | `eteressential.tpahere` | tous |
 | `/menu [sous-menu]` (`profil`) | `eteressential.menu` | tous |
+| `/pay` (limite) | après `pay.min-playtime-hours` (5) heures de jeu actif (`PayGate`, temps de `/stats` d'EterSuccess 1.5.0+ : `SuccessApi#playtimeMinutes`) : un second compte ne peut pas envoyer ses récompenses au principal | |
 | `/vote` | `eteressential.vote` | tous — un lien vers la page de vote du site (`vote.page`), jamais vers les sites de vote : seule la page du site compte le vote et donne la récompense |
 | `/back` | `eteressential.back` (+ `eteressential.back.death` pour la mort) | op |
 | `/craft` (`workbench`, `wb`), `/anvil`, `/smithing`, `/grindstone`, `/stonecutter`, `/enderchest` (`ec`), `/furnace` | `eteressential.<commande>` | op (à donner par grade ou pour une durée) |

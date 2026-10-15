@@ -11,6 +11,11 @@ tpa:
   # Durée de vie d'une demande, en secondes.
   expire-seconds: 60
 
+# /pay : seulement après ce temps de jeu actif (heures, temps de /stats d'EterSuccess, AFK exclu). Empêche un second
+# compte de récolter récompenses du jour, kits et votes pour tout envoyer au compte principal. 0 : pas de limite.
+pay:
+  min-playtime-hours: 5
+
 # /vote : la page de vote du site (Azuriom, plugin Vote). Seule cette page compte les votes et donne les récompenses :
 # ne pas mettre les liens des sites de vote eux-mêmes. Vide : /vote prévient que le vote n'est pas configuré.
 vote:
