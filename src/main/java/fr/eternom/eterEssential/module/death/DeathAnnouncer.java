@@ -75,8 +75,11 @@ public class DeathAnnouncer implements Listener {
     private final NetworkBus bus;
     private final Scope scope;
     private final Map<String, Tone> sounds = new HashMap<>();
+    /** Morts pour s'être déconnecté en combat : cause « combat-log », l'adversaire fui à la place du tueur. */
+    private final CombatLog combatLog;
 
-    public DeathAnnouncer(JavaPlugin plugin, Messages messages, NetworkBus bus, ConfigurationSection config) {
+    public DeathAnnouncer(JavaPlugin plugin, Messages messages, NetworkBus bus, ConfigurationSection config, CombatLog combatLog) {
+        this.combatLog = combatLog;
         this.plugin = plugin;
         this.messages = messages;
         this.bus = bus;
@@ -117,7 +120,8 @@ public class DeathAnnouncer implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        DeathCause cause = DeathCause.of(event.getDamageSource());
+        String fled = combatLog == null ? null : combatLog.fledFrom(player.getUniqueId());
+        DeathCause cause = fled != null ? new DeathCause("combat-log", null) : DeathCause.of(event.getDamageSource());
         Entity killer = cause.killer() == player ? null : cause.killer(); // sa propre perle, son propre feu d'artifice
 
         if (scope != Scope.NONE) {
@@ -127,7 +131,9 @@ public class DeathAnnouncer implements Listener {
                 data.addProperty("player", player.getName());
                 data.addProperty("cause", cause.key());
                 data.addProperty("seed", ThreadLocalRandom.current().nextInt(Integer.MAX_VALUE));
-                if (killer instanceof Player killerPlayer) {
+                if (fled != null) {
+                    data.addProperty("killer", fled);
+                } else if (killer instanceof Player killerPlayer) {
                     data.addProperty("killer", killerPlayer.getName());
                 } else if (killer != null && killer.customName() == null) {
                     data.addProperty("killer-key", killer.getType().translationKey());

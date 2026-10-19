@@ -71,6 +71,9 @@ death:
   # Public message: a random variant per cause. <player> = the dead player, <killer> = the player or creature.
   # Never mean: we laugh WITH the player. A cause without variants uses the generic ones.
   public:
+    combat-log:
+      - "<dark_gray>☠ <accent><player></accent> <info>fled the fight against <accent><killer></accent> by disconnecting. Their stuff stayed behind."
+      - "<dark_gray>☠ <accent><player></accent> <info>pulled the plug mid-fight against <accent><killer></accent>. The fight didn't stop."
     lava:
       - "<dark_gray>☠ <accent><player></accent> <info>tasted the lava. Verdict: overcooked."
       - "<dark_gray>☠ <accent><player></accent> <info>took a lava bath. The temperature was… questionable."
@@ -124,6 +127,8 @@ death:
       - "<dark_gray>☠ <accent><player></accent> <info>died. Nobody really knows how."
   # Only for the dead player: a tease, then a real tip. A random variant per cause.
   tips:
+    combat-log:
+      - "<info>Disconnecting mid-fight means dying on the spot. <dark_gray>Tip: <accent>run away on foot, or finish the fight</accent>."
     lava:
       - "<info>Lava is hot. Who knew? <dark_gray>Tip: <accent>a water bucket in your hotbar</accent> puts everything out."
     fire:

@@ -71,6 +71,9 @@ death:
   # Message public : une variante au hasard par cause. <player> = le mort, <killer> = le joueur ou la créature.
   # Jamais méchant : on rit AVEC le joueur. Une cause sans variante prend celles de generic.
   public:
+    combat-log:
+      - "<dark_gray>☠ <accent><player></accent> <info>a fui le combat contre <accent><killer></accent> en se déconnectant. Ses affaires sont restées sur place."
+      - "<dark_gray>☠ <accent><player></accent> <info>a débranché la prise en plein combat contre <accent><killer></accent>. Le combat, lui, ne s'est pas arrêté."
     lava:
       - "<dark_gray>☠ <accent><player></accent> <info>a voulu goûter la lave. Verdict : trop cuit."
       - "<dark_gray>☠ <accent><player></accent> <info>a pris un bain de lave. La température était… discutable."
@@ -145,6 +148,8 @@ death:
       - "<dark_gray>☠ <accent><player></accent> <info>a quitté ce monde. Temporairement."
   # Pour le mort seulement : une pique, puis une vraie astuce. Une variante au hasard par cause.
   tips:
+    combat-log:
+      - "<info>Se déconnecter en plein combat, c'est mourir sur place. <dark_gray>Astuce : <accent>fuis à pied, ou finis le combat</accent> : ton adversaire ne peut plus te suivre une fois loin."
     lava:
       - "<info>La lave, c'est chaud. Qui l'eût cru ? <dark_gray>Astuce : <accent>un seau d'eau dans ta barre d'objets</accent> éteint tout, et une potion de résistance au feu te sauve."
       - "<info>Le jus d'orange ne brûle pas, normalement. <dark_gray>Astuce : <accent>mine en dessous de toi avec prudence</accent>, la lave aime les grottes."

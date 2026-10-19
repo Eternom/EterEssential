@@ -21,6 +21,13 @@ pay:
 vote:
   page: "https://craft.eternom.fr/vote"
 
+# Se déconnecter pendant un combat contre un joueur (pas un monstre) : mort sur place, comme une vraie mort (objets et
+# expérience au sol, perte d'argent, message public). Pas pour un joueur expulsé (redémarrage, staff).
+# Dispense : eteressential.bypass.combatlog.
+combat-log:
+  # Secondes après le dernier coup donné ou reçu d'un joueur (0 = désactivé).
+  seconds: 15
+
 death:
   # Mourir fait perdre ce pourcentage de son argent (arrondi à l'unité inférieure ; 0 = rien). L'argent disparaît.
   # Un pourcentage : les grosses fortunes le sentent aussi. La banque d'un clan n'est pas touchée.
