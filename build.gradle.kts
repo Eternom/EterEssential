@@ -24,7 +24,7 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:26.2.build.129-stable")
 
     // Socle commun : base, Redis, langues, menus, joueurs du réseau, téléportation (plugin EterLib installé sur le serveur)
-    compileOnly("com.github.Eternom:EterLib:1.13.0")
+    compileOnly("com.github.Eternom:EterLib:1.19.0")
     // /invsee et /endersee d'un joueur ailleurs : l'API d'EterSync
     compileOnly("com.github.Eternom:EterSync:1.2.1")
     // Infos du profil (/menu) : l'API des plugins qui les tiennent (facultatifs)

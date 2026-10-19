@@ -23,10 +23,9 @@ vote:
 
 # Se déconnecter pendant un combat contre un joueur (pas un monstre) : mort sur place, comme une vraie mort (objets et
 # expérience au sol, perte d'argent, message public). Pas pour un joueur expulsé (redémarrage, staff).
-# Dispense : eteressential.bypass.combatlog.
+# Durée du combat : celle d'EterLib (EterLib/config.yml > teleport.combat-tag). Dispense : eteressential.bypass.combatlog.
 combat-log:
-  # Secondes après le dernier coup donné ou reçu d'un joueur (0 = désactivé).
-  seconds: 15
+  enabled: true
 
 death:
   # Mourir fait perdre ce pourcentage de son argent (arrondi à l'unité inférieure ; 0 = rien). L'argent disparaît.

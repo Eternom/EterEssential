@@ -25,7 +25,7 @@ import java.time.Duration;
 public final class Main extends JavaPlugin {
 
     /** Version minimale d'EterLib : textes communs et outils partagés (Frame, Money, NetworkBus) depuis 1.6.0. */
-    private static final String REQUIRED_ETERLIB = "1.10.0";
+    private static final String REQUIRED_ETERLIB = "1.19.0";
 
     /** Préfixe des tables d'EterEssential dans la base commune : eteressential_players... */
     private static final String TABLE_PREFIX = "eteressential_";

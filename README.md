@@ -7,7 +7,7 @@ Document développeur, à tenir à jour avec le code.
 
 ## Prérequis
 
-- **EterLib 1.10.0+** (`depend`, textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
+- **EterLib 1.19.0+** (`depend`, combat contre un joueur (`CombatTracker#opponent`), textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
   (attente, délai commun, combat, départ vers un autre serveur).
 - **Redis** (obligatoire, via EterLib) : `/tpa`, `/tp`, `/tphere` et les messages de `/pay` traversent les
   serveurs.
@@ -75,11 +75,11 @@ serveur ; `/invsee` et `/endersee` d'un joueur ailleurs ou hors ligne montrent s
 inférieure ; l'argent disparaît (évier de l'économie). Un pourcentage : les grosses fortunes le sentent aussi. Retrait
 par EterEconomy en tâche de fond. Dispense : `eteressential.bypass.deathloss`. La banque d'EterClan est à l'abri.
 
-**Déconnexion en combat** (`module/death/CombatLog`, 1.6.0) : se déconnecter moins de `combat-log.seconds` (15) après un
-coup donné ou reçu d'un **joueur** (les monstres ne comptent pas) = mort sur place (`setHealth(0)` en `LOWEST`, avant
+**Déconnexion en combat** (`module/death/CombatLog`, 1.6.0) : se déconnecter pendant un combat contre un **joueur** (les
+monstres ne comptent pas ; durée : `teleport.combat-tag` d'EterLib, `CombatTracker#opponent`, EterLib 1.19.0) = mort sur place (`setHealth(0)` en `LOWEST`, avant
 qu'EterSync n'enregistre l'inventaire en `MONITOR` : objets et expérience au sol, rien de dupliqué), avec la perte d'argent et
 l'annonce de cause `combat-log` (`<killer>` = l'adversaire fui). Pas pour un joueur expulsé (`QuitReason.KICKED` :
-redémarrage, staff), en créatif ou spectateur. Dispense : `eteressential.bypass.combatlog`. `0` désactive.
+redémarrage, staff), en créatif ou spectateur. Dispense : `eteressential.bypass.combatlog`. `combat-log.enabled: false` désactive.
 
 **Annonce des morts** (`module/death/DeathAnnouncer`, `DeathCause`) : la cause est lue dans le `DamageSource` de Paper et
 réduite à une famille (`lava`, `fall`, `creeper`, `player`, `mob`...). À la place du message de Minecraft, une variante
