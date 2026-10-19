@@ -79,7 +79,8 @@ par EterEconomy en tâche de fond. Dispense : `eteressential.bypass.deathloss`. 
 monstres ne comptent pas ; durée : `teleport.combat-tag` d'EterLib, `CombatTracker#opponent`, EterLib 1.19.0) = mort sur place (`setHealth(0)` en `LOWEST`, avant
 qu'EterSync n'enregistre l'inventaire en `MONITOR` : objets et expérience au sol, rien de dupliqué), avec la perte d'argent et
 l'annonce de cause `combat-log` (`<killer>` = l'adversaire fui). Pas pour un joueur expulsé (`QuitReason.KICKED` :
-redémarrage, staff), en créatif ou spectateur. Dispense : `eteressential.bypass.combatlog`. `combat-log.enabled: false` désactive.
+redémarrage, staff), en créatif ou spectateur. À sa prochaine arrivée, n'importe où, le fuyard reçoit `combat-log.reminder`
+(Redis `eteressential:combatlog:<uuid>`, 7 jours). Dispense : `eteressential.bypass.combatlog`. `combat-log.enabled: false` désactive.
 
 **Annonce des morts** (`module/death/DeathAnnouncer`, `DeathCause`) : la cause est lue dans le `DamageSource` de Paper et
 réduite à une famille (`lava`, `fall`, `creeper`, `player`, `mob`...). À la place du message de Minecraft, une variante

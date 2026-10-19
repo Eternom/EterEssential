@@ -64,6 +64,10 @@ seen:
   online: "<accent><player></accent> <info>is <success>online</success> on <accent><server></accent>."
   offline: "<accent><player></accent> <info>was last seen <accent><time></accent> ago."
 
+combat-log:
+  # Au fuyard, à sa prochaine arrivée (<opponent> = l'adversaire fui)
+  reminder: "<error>You disconnected mid-fight against <accent><opponent></accent>: you died on the spot, and your stuff stayed there."
+
 death:
   money-lost: "<error>You died: <accent><amount></accent> lost <dark_gray>(<percent> % of your money)"
   position: "<info>You died at <accent><x> <y> <z></accent> <dark_gray>(<world>)"

@@ -17,7 +17,7 @@ public class Events {
         main.getServer().getPluginManager().registerEvents(new DeathPenalty(main, main.getMessages(),
                 Math.clamp(main.getConfig().getDouble("death.money-loss-percent", 5), 0, 100)), main);
         // Déconnexion en combat contre un joueur : mort sur place (durée du combat : EterLib teleport.combat-tag)
-        CombatLog combatLog = main.getConfig().getBoolean("combat-log.enabled", true) ? new CombatLog() : null;
+        CombatLog combatLog = main.getConfig().getBoolean("combat-log.enabled", true) ? new CombatLog(main, EterLib.get().getRedis(), main.getMessages()) : null;
         if (combatLog != null) {
             main.getServer().getPluginManager().registerEvents(combatLog, main);
         }
