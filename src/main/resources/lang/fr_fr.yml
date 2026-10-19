@@ -64,6 +64,17 @@ seen:
   online: "<accent><player></accent> <info>est <success>en ligne</success> sur <accent><server></accent>."
   offline: "<accent><player></accent> <info>a été vu pour la dernière fois il y a <accent><time></accent>."
 
+newcomer:
+  title: "<gradient:#FF7A00:#FFE0B2><bold>Bienvenue !</bold></gradient>"
+  subtitle: "<info>Accroupis-toi et appuie sur <accent>F</accent> pour ouvrir le menu"
+  guide-intro: "<success>Bienvenue sur Eternom, <accent><player></accent> ! L'essentiel pour bien démarrer :"
+  guide-menu: "<dark_gray>▸ <info>Le <accent>menu</accent> : accroupis-toi + <accent>F</accent>, ou <accent><click:run_command:'/menu'>/menu</click></accent>"
+  guide-steps: "<dark_gray>▸ <info>Les <accent><click:run_command:'/succes'>Premiers pas</click></accent> <info>te guident étape par étape, et rapportent de l'argent"
+  guide-job: "<dark_gray>▸ <info>Choisis un <accent>métier</accent> auprès des PNJ du lobby : c'est le vrai revenu du serveur"
+  guide-wiki: "<dark_gray>▸ <info>Une question ? Le <accent><click:open_url:'https://craft.eternom.fr/wiki'>wiki</click></accent>, ou demande dans le chat"
+  # À tous : <player> = le nouveau
+  announce: "<success>✦ <accent><player></accent> <info>rejoint Eternom pour la première fois. Souhaitez-lui la bienvenue !"
+
 combat-log:
   # Au fuyard, à sa prochaine arrivée (<opponent> = l'adversaire fui)
   reminder: "<error>Tu t'es déconnecté en plein combat contre <accent><opponent></accent> : tu es mort sur place, et tes affaires sont restées là-bas."

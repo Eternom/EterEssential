@@ -64,6 +64,17 @@ seen:
   online: "<accent><player></accent> <info>is <success>online</success> on <accent><server></accent>."
   offline: "<accent><player></accent> <info>was last seen <accent><time></accent> ago."
 
+newcomer:
+  title: "<gradient:#FF7A00:#FFE0B2><bold>Welcome!</bold></gradient>"
+  subtitle: "<info>Sneak and press <accent>F</accent> to open the menu"
+  guide-intro: "<success>Welcome to Eternom, <accent><player></accent>! The essentials to get started:"
+  guide-menu: "<dark_gray>▸ <info>The <accent>menu</accent>: sneak + <accent>F</accent>, or <accent><click:run_command:'/menu'>/menu</click></accent>"
+  guide-steps: "<dark_gray>▸ <info>The <accent><click:run_command:'/succes'>First steps</click></accent> <info>guide you step by step, and pay you"
+  guide-job: "<dark_gray>▸ <info>Pick a <accent>job</accent> from the lobby NPCs: it's the server's real income"
+  guide-wiki: "<dark_gray>▸ <info>A question? The <accent><click:open_url:'https://craft.eternom.fr/wiki'>wiki</click></accent>, or ask in the chat"
+  # To everyone: <player> = the newcomer
+  announce: "<success>✦ <accent><player></accent> <info>joins Eternom for the first time. Say hi!"
+
 combat-log:
   # Au fuyard, à sa prochaine arrivée (<opponent> = l'adversaire fui)
   reminder: "<error>You disconnected mid-fight against <accent><opponent></accent>: you died on the spot, and your stuff stayed there."

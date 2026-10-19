@@ -75,6 +75,11 @@ serveur ; `/invsee` et `/endersee` d'un joueur ailleurs ou hors ligne montrent s
 inférieure ; l'argent disparaît (évier de l'économie). Un pourcentage : les grosses fortunes le sentent aussi. Retrait
 par EterEconomy en tâche de fond. Dispense : `eteressential.bypass.deathloss`. La banque d'EterClan est à l'abri.
 
+**Nouveaux joueurs** (`module/welcome/Newcomers`, 1.7.0) : au tout premier passage sur le réseau (une seule fois partout,
+table `eteressential_newcomers` ; seulement si `eter_players.first_seen` a moins de 10 min, donc jamais un ancien joueur),
+3 s après l'arrivée : un titre, l'essentiel pour démarrer (`lang/ > newcomer.guide-*` : menu, Premiers pas, métier, wiki,
+cliquables), et une annonce pour l'accueillir (`newcomers.announce` : `network` par le bus, `server` ou `none`).
+
 **Déconnexion en combat** (`module/death/CombatLog`, 1.6.0) : se déconnecter pendant un combat contre un **joueur** (les
 monstres ne comptent pas ; durée : `teleport.combat-tag` d'EterLib, `CombatTracker#opponent`, EterLib 1.19.0) = mort sur place (`setHealth(0)` en `LOWEST`, avant
 qu'EterSync n'enregistre l'inventaire en `MONITOR` : objets et expérience au sol, rien de dupliqué), avec la perte d'argent et

@@ -1,5 +1,6 @@
 package fr.eternom.eterEssential;
 
+import fr.eternom.eterEssential.module.welcome.Newcomers;
 import fr.eternom.eterEssential.listeners.Commands;
 import fr.eternom.eterEssential.listeners.Events;
 import fr.eternom.eterEssential.module.back.BackStore;
@@ -63,6 +64,9 @@ public final class Main extends JavaPlugin {
         tpa = new TpaService(this, lib.getTeleports(), bus, lookup, requests, tpaSettings, messages);
         back = new BackStore(redis);
         furnace = new PortableFurnace(this, new FurnaceStore(database), new FurnaceSimulation(), messages, redis);
+        // Premier passage d'un joueur sur le réseau : accueil et annonce (newcomers.announce : network, server ou none)
+        getServer().getPluginManager().registerEvents(new Newcomers(this, database, messages, bus,
+                getConfig().getString("newcomers.announce", "network")), this);
         // API pour les autres plugins (EssentialApi.get())
         getServer().getServicesManager().register(EssentialApi.class, new EssentialApiService(back, tpaSettings), this,
                 ServicePriority.Normal);

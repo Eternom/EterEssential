@@ -21,6 +21,11 @@ pay:
 vote:
   page: "https://craft.eternom.fr/vote"
 
+# Tout premier passage d'un joueur sur le réseau : un titre, l'essentiel pour démarrer (lang/ > newcomer), et une
+# annonce aux autres pour l'accueillir : network (tout le réseau), server (ce serveur) ou none.
+newcomers:
+  announce: network
+
 # Se déconnecter pendant un combat contre un joueur (pas un monstre) : mort sur place, comme une vraie mort (objets et
 # expérience au sol, perte d'argent, message public). Pas pour un joueur expulsé (redémarrage, staff).
 # Durée du combat : celle d'EterLib (EterLib/config.yml > teleport.combat-tag). Dispense : eteressential.bypass.combatlog.
