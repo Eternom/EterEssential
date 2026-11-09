@@ -74,7 +74,7 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
 
         /** « Mineur · Artisan ». */
         static String name(Player viewer, String job) {
-            String[] parts = job.split("\|", 2);
+            String[] parts = job.split("[|]", 2);
             return JobApi.get().map(api -> api.jobName(viewer, parts[0])
                     + (parts.length > 1 ? " · " + api.rankName(viewer, parts[1]) : "")).orElse(parts[0]);
         }
