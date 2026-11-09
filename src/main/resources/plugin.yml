@@ -22,21 +22,37 @@ commands:
   tpaccept:
     description: Accepter une demande de téléportation.
     usage: /tpaccept [joueur]
-    aliases: [tpyes]
+    aliases: [tpyes, tpy]
     permission: eteressential.tpa
   tpdeny:
     description: Refuser une demande de téléportation.
     usage: /tpdeny [joueur]
-    aliases: [tpno]
+    aliases: [tpno, tpn]
     permission: eteressential.tpa
   tpacancel:
     description: Annuler la demande que tu as envoyée.
     usage: /tpacancel
     permission: eteressential.tpa
   tptoggle:
-    description: Refuser (ou accepter de nouveau) toutes les demandes de téléportation.
-    usage: /tptoggle
+    description: 'Qui peut t''envoyer une demande : tout le monde, tes amis et ton clan, personne ; « here » : les /tpahere.'
+    usage: /tptoggle [here]
     permission: eteressential.tpa
+  tpaignore:
+    description: Ignorer les demandes de tpa d'un joueur (ou ne plus l'ignorer) ; seul, la liste.
+    usage: /tpaignore [joueur]
+    permission: eteressential.tpa
+  tpaauto:
+    description: Accepter toutes seules les demandes d'un joueur ; « clan » pour ton clan ; seul, la liste.
+    usage: /tpaauto [joueur | clan]
+    permission: eteressential.tpa
+  tpaclan:
+    description: Faire venir tous les membres de ton clan connectés (une demande à chacun).
+    usage: /tpaclan
+    permission: eteressential.tpaclan
+  tpalog:
+    description: Les dernières téléportations entre joueurs d'un joueur (staff).
+    usage: /tpalog <joueur>
+    permission: eteressential.tpalog
   back:
     description: Revenir à ta dernière position.
     usage: /back
@@ -185,6 +201,15 @@ permissions:
     default: true
   eteressential.tpahere:
     default: true
+  eteressential.tpaclan:
+    description: /tpaclan, faire venir tout son clan.
+    default: true
+  eteressential.tpalog:
+    description: Le journal des tpa (staff).
+    default: op
+  eteressential.tpa.free:
+    description: Les tpa sans coût (tpa.cost).
+    default: op
   eteressential.money:
     default: true
   eteressential.menu:
@@ -308,6 +333,8 @@ permissions:
       eteressential.speed: true
       eteressential.clear: true
       eteressential.tp: true
+      eteressential.tpalog: true
+      eteressential.tpa.free: true
       eteressential.tphere: true
       eteressential.invsee: true
       eteressential.endersee: true

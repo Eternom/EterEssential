@@ -7,7 +7,7 @@ Document développeur, à tenir à jour avec le code.
 
 ## Prérequis
 
-- **EterLib 1.19.0+** (`depend`, combat contre un joueur (`CombatTracker#opponent`), textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
+- **EterLib 1.21.0+** (`depend`, combat contre un joueur (`CombatTracker#opponent`), textes communs, cadre des menus, bus réseau, `Money`) : base, langues, menus, joueurs du réseau et **toutes les téléportations**
   (attente, délai commun, combat, départ vers un autre serveur).
 - **Redis** (obligatoire, via EterLib) : `/tpa`, `/tp`, `/tphere` et les messages de `/pay` traversent les
   serveurs.
@@ -24,11 +24,27 @@ Document développeur, à tenir à jour avec le code.
 `PlayerLookup` trouve un joueur sur ce serveur puis dans `eter_players` ; un invisible (vanish du staff, EterLib 1.9.1) est
 « hors ligne » pour qui ne peut pas le voir (`/tpa`, `/find`, `/seen`, `/list`).
 
-**Tpa** (`module/tpa`) : la demande est gardée côté destinataire, dans Redis (hash `tpa:received:<uuid>`, expiration
-`tpa.expire-seconds`), **jamais en base**. Un joueur n'a qu'une demande envoyée à la fois.
-À l'acceptation, celui qui voyage part avec **ses** règles d'EterLib ; s'il est sur un autre serveur, `tpa-teleport`
-demande à ce serveur de lancer sa téléportation. `/tptoggle` est en base (`eteressential_players`), lu à chaque demande ;
-`eteressential.bypass.tptoggle` passe outre.
+**Tpa** (`module/tpa`, refait en 1.8.0 : les joueurs renvoyaient sans cesse leurs demandes, annulées dès l'acceptation).
+La demande est gardée côté destinataire, dans Redis (hash `tpa:received:<uuid>`, avec le serveur du demandeur),
+**jamais en base**. Un joueur n'a qu'une demande envoyée à la fois (sauf `/tpaclan`), en reçoit au plus
+`tpa.max-received` (la plus ancienne part), et n'écrit pas deux fois au même joueur en `tpa.spam-seconds`.
+- **Avant l'envoi** (`TpaService#send`) : le voyageur peut-il partir (combat, cooldown, `tpa.cost`), le monde n'est pas
+  dans `tpa.blocked-worlds`, le destinataire accepte (`/tptoggle` : tout le monde, amis et clan, personne ;
+  `/tptoggle here` ; `/tpaignore`), n'est pas en combat (`CombatTracker#networkSeconds`, même ailleurs).
+- **À l'acceptation** : les règles du voyageur d'ici sont vérifiées **avant** de retirer la demande ; le départ passe
+  par EterLib **sans annulation au mouvement** (`TeleportOptions#withCancelOnMove(false)`) et sans attente entre
+  membres d'un clan (`tpa.clan-no-warmup`). S'il échoue (combat, délai, attente interrompue), la demande **revient**
+  (`TpaRequests#restore`) et celui qui l'a reçue a un bouton **[Réessayer]**. Le voyageur ailleurs : `tpa-teleport`
+  demande à son serveur de partir (et de rendre la demande s'il échoue). `tpa.claims-clan-only` : pas d'arrivée dans le
+  terrain d'un autre clan.
+- **Amis** : `/tpaauto <joueur>` et `/tpaauto clan` acceptent tout seuls ; `/tpaignore` bloque un joueur
+  (`eteressential_tpa_lists`). Réglages dans `eteressential_players`, recopiés dans Redis (`tpa:settings`).
+- **Rappels** (`TpaReminders`) : barre d'action tant qu'une demande attend, rappel avec les boutons 10 s avant la fin,
+  demandeur prévenu si elle expire ou si le joueur visé quitte le réseau. **Menu** des demandes (`/tpa list`, ou
+  `/tpaccept` avec plusieurs demandes). `/tpa` sans pseudo : le choix du joueur dans la liste.
+- **Staff** : journal des départs (`eteressential_tpa_log`, `/tpalog <joueur>`, `tpa.log-days`) ; alerte « piège à tpa »
+  (`tpa.alert` : beaucoup de joueurs différents en peu de temps, à `eter.mod.alerts`).
+- Tests : `gradlew test` (`TpaRequestsTest`).
 
 **/back** (`module/back`) : `EterTeleportEvent` d'EterLib est lancé juste avant chaque départ, même vers un autre
 serveur ; `BackListener` y retient la position quittée, et le lieu de la mort avec `eteressential.back.death`.
@@ -100,7 +116,10 @@ changer), une pique suivie d'une vraie astuce (`death.tips.<cause>`) et sa posit
 
 | Commande | Permission | Par défaut |
 |---|---|---|
-| `/tpa`, `/tpaccept` (`tpyes`), `/tpdeny` (`tpno`), `/tpacancel`, `/tptoggle` | `eteressential.tpa` | tous |
+| `/tpa [joueur | list]`, `/tpaccept` (`tpyes`, `tpy`), `/tpdeny` (`tpno`, `tpn`), `/tpacancel`, `/tptoggle [here]`, `/tpaignore`, `/tpaauto [joueur | clan]` | `eteressential.tpa` | tous |
+| `/tpaclan` | `eteressential.tpaclan` | tous |
+| `/tpalog <joueur>` | `eteressential.tpalog` | op |
+| tpa sans coût | `eteressential.tpa.free` | op |
 | `/tpahere` | `eteressential.tpahere` | tous |
 | `/menu [sous-menu]` (`profil`) | `eteressential.menu` | tous |
 | `/pay` (limite) | après `pay.min-playtime-hours` (5) heures de jeu actif (`PayGate`, temps de `/stats` d'EterSuccess 1.5.0+ : `SuccessApi#playtimeMinutes`) : un second compte ne peut pas envoyer ses récompenses au principal | |
@@ -122,7 +141,9 @@ session, et un plugin de lobby installé par erreur (double saut d'EterHub) ne l
 
 ## Données
 
-- `eteressential_players` : `uuid`, `tpa_disabled`.
+- `eteressential_players` : `uuid`, `tpa_disabled`, `tpa_mode`, `tpahere_disabled`, `tpa_auto_clan`.
+- `eteressential_tpa_lists` : `owner`, `other`, `kind` (`IGNORE`, `AUTO`), `name`.
+- `eteressential_tpa_log` : `traveller`, `destination` (et leurs pseudos), `here`, `server`, `created_at`.
 - `eteressential_furnaces` : `uuid`, `input`, `fuel`, `output` (objets sérialisés), `cook`, `lit`, `lit_total` (ticks),
   `xp` (pas encore donnée), `saved_at` (heure de la dernière mise à jour, pour rattraper la cuisson).
 

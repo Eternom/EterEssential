@@ -36,16 +36,26 @@ public class Commands {
         TeleportService teleports = lib.getTeleports();
 
         // Téléportation entre joueurs, /back
-        register(main, "tpa", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.TPA));
-        register(main, "tpahere", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.TPAHERE));
-        register(main, "tpaccept", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.ACCEPT));
-        register(main, "tpdeny", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.DENY));
-        register(main, "tpacancel", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.CANCEL));
-        register(main, "tptoggle", new TpaCommand(main.getTpa(), names, messages, TpaCommand.Action.TOGGLE));
+        MenuCommand menus = new MenuCommand(main, messages);
+        java.util.function.BiConsumer<org.bukkit.entity.Player, String> picker = menus::pickPlayer;
+        for (TpaCommand.Action action : TpaCommand.Action.values()) {
+            register(main, switch (action) {
+                case TPA -> "tpa";
+                case TPAHERE -> "tpahere";
+                case ACCEPT -> "tpaccept";
+                case DENY -> "tpdeny";
+                case CANCEL -> "tpacancel";
+                case TOGGLE -> "tptoggle";
+                case IGNORE -> "tpaignore";
+                case AUTO -> "tpaauto";
+                case CLAN -> "tpaclan";
+                case LOG -> "tpalog";
+            }, new TpaCommand(main.getTpa(), names, messages, action, picker));
+        }
         register(main, "back", new BackCommand(main, main.getBack(), teleports, messages));
 
         // Menu central (sous-menus)
-        register(main, "menu", new MenuCommand(main, messages));
+        register(main, "menu", menus);
         register(main, "lobby", new LobbyCommand(main, messages));
         register(main, "vote", new VoteCommand(messages, main.getConfig().getString("vote.page")));
 

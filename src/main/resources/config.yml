@@ -7,9 +7,37 @@
 #  /tpa, /tp, /tphere et les messages de /pay traversent les serveurs (Redis, réglé dans EterLib).
 #  Les textes sont dans lang/. Toute modification nécessite un redémarrage du serveur.
 
+# Téléportation entre joueurs. Bouger pendant l'attente n'annule jamais un tpa (le voyageur n'a pas forcément lancé le
+# départ) ; un coup reçu ou donné, si (EterLib > teleport.cancel-on-damage).
 tpa:
-  # Durée de vie d'une demande, en secondes.
+  # Durée de vie d'une demande, en secondes (/tpa, puis /tpahere).
   expire-seconds: 60
+  expire-seconds-here: 60
+  # Demandes reçues en même temps, au plus : au-delà, la plus ancienne part.
+  max-received: 5
+  # Pas deux demandes au même joueur en moins de ce nombre de secondes (anti-spam).
+  spam-seconds: 10
+  # Mondes où l'on ne peut ni envoyer ni recevoir de tpa (donjons, événements) : leurs noms.
+  blocked-worlds: []
+  # true : pas d'arrivée dans le terrain d'un clan si les deux joueurs ne sont pas du même clan (EterClan).
+  claims-clan-only: false
+  # Entre membres d'un même clan, pas d'attente avant de partir.
+  clan-no-warmup: true
+  # Pas de demande à un joueur en plein combat (il ne doit pas être pris en traître).
+  refuse-target-in-combat: true
+  # Prix d'un tpa en Heloks, payé par celui qui demande au départ (0 = gratuit). Dispense : eteressential.tpa.free.
+  cost:
+    tpa: 0
+    tpahere: 0
+  # /tpaclan (faire venir tout son clan) : une fois toutes les ... minutes.
+  clan-cooldown-minutes: 5
+  # Journal des tpa (/tpalog, staff) : gardé ce nombre de jours.
+  log-days: 30
+  # Piège à tpa : un joueur qui envoie des demandes à au moins « targets » joueurs différents en « minutes » minutes,
+  # le staff est alerté (eter.mod.alerts). 0 = pas d'alerte.
+  alert:
+    targets: 5
+    minutes: 10
 
 # /pay : seulement après ce temps de jeu actif (heures, temps de /stats d'EterSuccess, AFK exclu). Empêche un second
 # compte de récolter récompenses du jour, kits et votes pour tout envoyer au compte principal. 0 : pas de limite.
@@ -90,6 +118,9 @@ menu:
       rtp: { slot: 22, icon: ENDER_PEARL, command: "rtp" }
       tpa: { slot: 23, icon: LEAD, command: "tpa {player}" }
       tpahere: { slot: 24, icon: FISHING_ROD, command: "tpahere {player}" }
+      tparequests: { slot: 30, icon: WRITABLE_BOOK, command: "tpa list" }
+      tptoggle: { slot: 31, icon: ENDER_EYE, command: "tptoggle" }
+      tpaclan: { slot: 32, icon: WHITE_BANNER, command: "tpaclan" }
     social:
       chat: { slot: 20, icon: OAK_SIGN, command: "chat" }
       ignore: { slot: 21, icon: BARRIER, command: "ignore" }

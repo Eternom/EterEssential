@@ -13,38 +13,106 @@ network:
 player:
   offline: "<error><accent><player></accent> is not online."
   not-here: "<error><accent><player></accent> is not on this server."
+  unknown: "<error>No player <accent><player></accent> has ever joined the server."
 
 state:
   enabled: "enabled"
   disabled: "disabled"
 
 tpa:
-  usage: '<error>Usage: <accent>/tpa \<player>'
+  usage: '<error>Usage: <accent>/tpa \<player></accent>, or <accent>/tpa</accent> to pick from the list'
   usage-here: '<error>Usage: <accent>/tpahere \<player>'
   self: "<error>You can't send a request to yourself."
+  world-blocked: "<error>No teleporting between players here."
+  self-combat: "<error>You are in combat: wait <accent><time> s</accent> more."
+  self-cooldown: "<error>You can teleport again in <accent><time> s</accent>."
+  no-money: "<error>You need <accent><amount></accent> for a tpa."
   disabled: "<error><accent><player></accent> doesn't accept teleport requests."
-  sent: "<info>Request sent to <accent><player></accent> to go to them. <dark_gray>(<accent><seconds>s</accent>, <accent>/tpacancel</accent> to cancel)"
-  sent-here: "<info>Request sent to <accent><player></accent> to bring them to you. <dark_gray>(<accent><seconds>s</accent>, <accent>/tpacancel</accent> to cancel)"
-  received: "<accent><player></accent> <info>wants to teleport <accent>to you</accent>. <dark_gray>(<seconds>s)"
-  received-here: "<accent><player></accent> <info>asks you to come <accent>to them</accent>. <dark_gray>(<seconds>s)"
+  friends-only: "<error><accent><player></accent> only accepts requests from friends and clan members."
+  here-disabled: "<error><accent><player></accent> doesn't want to be summoned: send them a <accent>/tpa</accent> instead."
+  target-combat: "<error><accent><player></accent> is in combat: try again in a few seconds."
+  spam: "<error>You just sent a request to <accent><player></accent>: wait <accent><time> s</accent>."
+  sent: "<info>Request sent to <accent><player></accent> to go to them <dark_gray>(<seconds> s)</dark_gray>."
+  sent-here: "<info>Request sent to <accent><player></accent> to come to you <dark_gray>(<seconds> s)</dark_gray>."
+  received: "<accent><player></accent> <info>wants to come <accent>to you</accent>. <dark_gray>(<seconds> s)"
+  received-here: "<accent><player></accent> <info>asks you to come <accent>to them</accent>. <dark_gray>(<seconds> s)"
+  reminder: "<info>The request from <accent><player></accent> expires in <accent><seconds> s</accent>."
+  auto-accepted: "<info>Request from <accent><player></accent> accepted automatically <dark_gray>(friend or clan)</dark_gray>."
   button:
     accept: "<success><bold>[Accept]</bold></success>"
-    accept-hover: "<info>Accept the request from <accent><player>"
+    accept-hover: "<info>Accept the request from <accent><player></accent><newline><dark_gray>They are on <server>"
     deny: "<error><bold>[Deny]</bold></error>"
     deny-hover: "<info>Deny the request from <accent><player>"
-  none: "<error>You have no pending teleport request."
-  none-from: "<error>No pending request from <accent><player></accent>."
+    ignore: "<dark_gray>[Ignore]"
+    ignore-hover: "<info>Stop receiving requests from <accent><player></accent> <dark_gray>(/tpaignore)"
+    cancel: "<dark_gray>[Cancel]"
+    cancel-hover: "<info>Cancel your request"
+    retry: "<accent><bold>[Retry]</bold></accent>"
+    retry-hover: "<info>Accept the request again"
+  bar:
+    one: "<info>Request from <accent><player></accent> · <accent><seconds> s</accent> · <accent>/tpaccept</accent> or <accent>/tpdeny"
+    many: "<info><accent><count></accent> teleport requests · <accent>/tpa list"
+  none: "<error>You have no teleport request."
+  none-from: "<error>No request from <accent><player></accent>."
   requester-gone: "<error><accent><player></accent> is no longer online."
   accepted-target: "<info>Request from <accent><player></accent> accepted."
-  accepted: "<accent><player></accent> <info>accepted your teleport request."
+  accepted: "<accent><player></accent> <success>accepted</success><info>: leaving in <accent><seconds> s</accent>, you can move."
+  accepted-here: "<accent><player></accent> <success>accepted</success><info>: arriving in <accent><seconds> s</accent>."
   denied-target: "<info>Request from <accent><player></accent> denied."
   denied: "<accent><player></accent> <info>denied your teleport request."
+  expired: "<info>Your request to <accent><player></accent> expired without an answer."
+  target-left: "<info><accent><player></accent> left the network: your request is cancelled."
+  claimed: "<error>No teleporting into a clan's land unless you are both members."
+  claimed-requester: "<error><accent><player></accent> is in a clan's land: teleport impossible."
+  failed-self: "<error>Teleport to <accent><player></accent> cancelled</error> <dark_gray>(<reason>)</dark_gray>."
+  failed-other: "<error><accent><player></accent>'s teleport failed</error> <dark_gray>(<reason>)</dark_gray><info>: their request is still waiting, <accent>/tpaccept <player></accent>."
+  failed-traveller: "<info>Your request to <accent><player></accent> is still waiting: they can accept it again."
+  reason:
+    combat: "combat"
+    cooldown: "delay between teleports"
+    cancelled: "countdown interrupted"
+    busy: "another teleport in progress"
+    unreachable: "player not found"
   nothing-sent: "<error>You haven't sent any request."
   cancelled: "<info>Your teleport request is cancelled."
   cancelled-target: "<accent><player></accent> <info>cancelled their teleport request."
+  trap-alert: "<error>[Mod]</error> <accent><player></accent> <info>sent tpa requests to <accent><count></accent> different players in <minutes> min <dark_gray>(trap?)"
   toggle:
-    enabled: "<info>Teleport requests <success>accepted</success>."
-    disabled: "<info>Teleport requests <error>blocked</error>: nobody can send you one anymore."
+    all: "<info>Teleport requests: <success>everyone</success>. <dark_gray>(/tptoggle: friends and clan only)"
+    friends: "<info>Teleport requests: <accent>friends and clan only</accent>. <dark_gray>(/tptoggle: nobody)"
+    none: "<info>Teleport requests: <error>nobody</error>. <dark_gray>(/tptoggle: everyone)"
+    here-off: "<info>Nobody can summon you anymore <dark_gray>(/tpahere)</dark_gray>."
+    here-on: "<info>Players can summon you again <dark_gray>(/tpahere)</dark_gray>."
+  ignore:
+    added: "<info>You ignore requests from <accent><player></accent>."
+    removed: "<info>You no longer ignore requests from <accent><player></accent>."
+    list: "<info>Ignored: <accent><players>"
+    empty: "<info>You ignore nobody. <dark_gray>/tpaignore <player>"
+  auto:
+    added: "<info>Requests from <accent><player></accent> will be accepted automatically."
+    removed: "<info>Requests from <accent><player></accent> will no longer be accepted automatically."
+    list: "<info>Accepted automatically: <accent><players>"
+    empty: "<info>Nobody is accepted automatically. <dark_gray>/tpaauto <player> · /tpaauto clan"
+    clan-on: "<info>Requests from your clan members will be accepted automatically."
+    clan-off: "<info>Requests from your clan will no longer be accepted automatically."
+  clan:
+    none: "<error>You have no clan."
+    cooldown-or-alone: "<error>Nobody from your clan is online, or you just called them."
+    sent: "<info>Request sent to <accent><count></accent> clan members."
+  menu:
+    title: "<primary>Teleport requests <dark_gray>(<count>)"
+    name: "<accent><player>"
+    wants: "<info>Wants to come to you"
+    wants-here: "<info>Asks you to come to them"
+    time: "<dark_gray>▸ <info><accent><seconds> s</accent> left <dark_gray>· <server>"
+    click: "<dark_gray>▸ <info>Left click: accept · right: deny"
+  log:
+    usage: '<error>Usage: <accent>/tpalog \<player>'
+    no-permission: "<error>Staff only."
+    empty: "<info>No teleport for <accent><player></accent>."
+    header: "<info>Teleports of <accent><player></accent>:"
+    line: "<dark_gray>▸ <accent><date></accent> <info><traveller> → <destination> <dark_gray>(<server>)"
+    line-here: "<dark_gray>▸ <accent><date></accent> <info><traveller> → <destination> <dark_gray>(summoned, <server>)"
 
 back:
   label: "Last location"
@@ -396,6 +464,15 @@ menu:
     tpahere:
       name: "<accent>Bring a player here"
       lore: "<info>Pick the player: they must accept."
+    tparequests:
+      name: "<accent>Received requests"
+      lore: "<info>Accept or deny teleport requests."
+    tptoggle:
+      name: "<accent>Who can ask me"
+      lore: "<info>Everyone, friends and clan, or nobody."
+    tpaclan:
+      name: "<accent>Call my clan"
+      lore: "<info>A request to each online member."
     lobby:
       name: "<accent>Back to the lobby"
       lore: "<info>The least crowded lobby."

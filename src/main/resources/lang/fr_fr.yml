@@ -13,38 +13,106 @@ network:
 player:
   offline: "<error><accent><player></accent> n'est pas connecté."
   not-here: "<error><accent><player></accent> n'est pas sur ce serveur."
+  unknown: "<error>Aucun joueur <accent><player></accent> n'est jamais venu sur le serveur."
 
 state:
   enabled: "activé"
   disabled: "désactivé"
 
 tpa:
-  usage: '<error>Utilisation : <accent>/tpa \<joueur>'
+  usage: '<error>Utilisation : <accent>/tpa \<joueur></accent>, ou <accent>/tpa</accent> pour choisir dans la liste'
   usage-here: '<error>Utilisation : <accent>/tpahere \<joueur>'
   self: "<error>Tu ne peux pas t'envoyer une demande à toi-même."
+  world-blocked: "<error>Pas de téléportation entre joueurs ici."
+  self-combat: "<error>Tu es en combat : attends encore <accent><time> s</accent>."
+  self-cooldown: "<error>Tu pourras te téléporter dans <accent><time> s</accent>."
+  no-money: "<error>Il te faut <accent><amount></accent> pour un tpa."
   disabled: "<error><accent><player></accent> n'accepte pas les demandes de téléportation."
-  sent: "<info>Demande envoyée à <accent><player></accent> pour aller vers lui. <dark_gray>(<accent><seconds> s</accent>, <accent>/tpacancel</accent> pour annuler)"
-  sent-here: "<info>Demande envoyée à <accent><player></accent> pour qu'il vienne vers toi. <dark_gray>(<accent><seconds> s</accent>, <accent>/tpacancel</accent> pour annuler)"
-  received: "<accent><player></accent> <info>veut se téléporter <accent>vers toi</accent>. <dark_gray>(<seconds> s)"
+  friends-only: "<error><accent><player></accent> n'accepte que les demandes de ses amis et de son clan."
+  here-disabled: "<error><accent><player></accent> ne veut pas qu'on le fasse venir : envoie-lui plutôt un <accent>/tpa</accent>."
+  target-combat: "<error><accent><player></accent> est en plein combat : réessaie dans quelques secondes."
+  spam: "<error>Tu viens déjà d'écrire à <accent><player></accent> : attends <accent><time> s</accent>."
+  sent: "<info>Demande envoyée à <accent><player></accent> pour aller vers lui <dark_gray>(<seconds> s)</dark_gray>."
+  sent-here: "<info>Demande envoyée à <accent><player></accent> pour qu'il vienne vers toi <dark_gray>(<seconds> s)</dark_gray>."
+  received: "<accent><player></accent> <info>veut venir <accent>vers toi</accent>. <dark_gray>(<seconds> s)"
   received-here: "<accent><player></accent> <info>te demande de venir <accent>vers lui</accent>. <dark_gray>(<seconds> s)"
+  reminder: "<info>La demande de <accent><player></accent> expire dans <accent><seconds> s</accent>."
+  auto-accepted: "<info>Demande de <accent><player></accent> acceptée toute seule <dark_gray>(ami ou clan)</dark_gray>."
   button:
     accept: "<success><bold>[Accepter]</bold></success>"
-    accept-hover: "<info>Accepter la demande de <accent><player>"
+    accept-hover: "<info>Accepter la demande de <accent><player></accent><newline><dark_gray>Il est sur <server>"
     deny: "<error><bold>[Refuser]</bold></error>"
     deny-hover: "<info>Refuser la demande de <accent><player>"
+    ignore: "<dark_gray>[Ignorer]"
+    ignore-hover: "<info>Ne plus recevoir les demandes de <accent><player></accent> <dark_gray>(/tpaignore)"
+    cancel: "<dark_gray>[Annuler]"
+    cancel-hover: "<info>Annuler ta demande"
+    retry: "<accent><bold>[Réessayer]</bold></accent>"
+    retry-hover: "<info>Accepter de nouveau la demande"
+  bar:
+    one: "<info>Demande de <accent><player></accent> · <accent><seconds> s</accent> · <accent>/tpaccept</accent> ou <accent>/tpdeny"
+    many: "<info><accent><count></accent> demandes de téléportation · <accent>/tpa list"
   none: "<error>Tu n'as aucune demande de téléportation en cours."
   none-from: "<error>Aucune demande de <accent><player></accent> en cours."
   requester-gone: "<error><accent><player></accent> n'est plus connecté."
   accepted-target: "<info>Demande de <accent><player></accent> acceptée."
-  accepted: "<accent><player></accent> <info>a accepté ta demande de téléportation."
+  accepted: "<accent><player></accent> <success>a accepté</success> <info>: départ dans <accent><seconds> s</accent>, tu peux bouger."
+  accepted-here: "<accent><player></accent> <success>a accepté</success> <info>: il arrive dans <accent><seconds> s</accent>."
   denied-target: "<info>Demande de <accent><player></accent> refusée."
   denied: "<accent><player></accent> <info>a refusé ta demande de téléportation."
+  expired: "<info>Ta demande à <accent><player></accent> a expiré sans réponse."
+  target-left: "<info><accent><player></accent> a quitté le réseau : ta demande est annulée."
+  claimed: "<error>Pas de téléportation dans le terrain d'un clan dont vous n'êtes pas tous les deux membres."
+  claimed-requester: "<error><accent><player></accent> est dans le terrain d'un clan : téléportation impossible."
+  failed-self: "<error>Téléportation vers <accent><player></accent> annulée</error> <dark_gray>(<reason>)</dark_gray>."
+  failed-other: "<error>La téléportation de <accent><player></accent> a échoué</error> <dark_gray>(<reason>)</dark_gray> <info>: sa demande t'attend encore, <accent>/tpaccept <player></accent>."
+  failed-traveller: "<info>Ta demande à <accent><player></accent> t'attend encore : il peut l'accepter de nouveau."
+  reason:
+    combat: "combat"
+    cooldown: "délai entre deux téléportations"
+    cancelled: "attente interrompue"
+    busy: "une autre téléportation en cours"
+    unreachable: "joueur introuvable"
   nothing-sent: "<error>Tu n'as envoyé aucune demande."
   cancelled: "<info>Ta demande de téléportation est annulée."
   cancelled-target: "<accent><player></accent> <info>a annulé sa demande de téléportation."
+  trap-alert: "<error>[Mod]</error> <accent><player></accent> <info>a envoyé des demandes de tpa à <accent><count></accent> joueurs différents en <minutes> min <dark_gray>(piège ?)"
   toggle:
-    enabled: "<info>Demandes de téléportation <success>acceptées</success>."
-    disabled: "<info>Demandes de téléportation <error>refusées</error> : plus personne ne peut t'en envoyer."
+    all: "<info>Demandes de téléportation : <success>tout le monde</success>. <dark_gray>(/tptoggle : amis et clan seulement)"
+    friends: "<info>Demandes de téléportation : <accent>amis et clan seulement</accent>. <dark_gray>(/tptoggle : personne)"
+    none: "<info>Demandes de téléportation : <error>personne</error>. <dark_gray>(/tptoggle : tout le monde)"
+    here-off: "<info>Plus personne ne peut te faire venir <dark_gray>(/tpahere)</dark_gray>."
+    here-on: "<info>On peut de nouveau te faire venir <dark_gray>(/tpahere)</dark_gray>."
+  ignore:
+    added: "<info>Tu ignores les demandes de <accent><player></accent>."
+    removed: "<info>Tu n'ignores plus les demandes de <accent><player></accent>."
+    list: "<info>Demandes ignorées : <accent><players>"
+    empty: "<info>Tu n'ignores personne. <dark_gray>/tpaignore <joueur>"
+  auto:
+    added: "<info>Les demandes de <accent><player></accent> seront acceptées toutes seules."
+    removed: "<info>Les demandes de <accent><player></accent> ne seront plus acceptées toutes seules."
+    list: "<info>Acceptés tout seuls : <accent><players>"
+    empty: "<info>Personne n'est accepté tout seul. <dark_gray>/tpaauto <joueur> · /tpaauto clan"
+    clan-on: "<info>Les demandes des membres de ton clan seront acceptées toutes seules."
+    clan-off: "<info>Les demandes de ton clan ne seront plus acceptées toutes seules."
+  clan:
+    none: "<error>Tu n'as pas de clan."
+    cooldown-or-alone: "<error>Personne de ton clan n'est connecté, ou tu viens déjà de les appeler."
+    sent: "<info>Demande envoyée à <accent><count></accent> membres de ton clan."
+  menu:
+    title: "<primary>Demandes de téléportation <dark_gray>(<count>)"
+    name: "<accent><player>"
+    wants: "<info>Veut venir vers toi"
+    wants-here: "<info>Te demande de venir vers lui"
+    time: "<dark_gray>▸ <info>Encore <accent><seconds> s</accent> <dark_gray>· <server>"
+    click: "<dark_gray>▸ <info>Clic gauche : accepter · droit : refuser"
+  log:
+    usage: '<error>Utilisation : <accent>/tpalog \<joueur>'
+    no-permission: "<error>Réservé au staff."
+    empty: "<info>Aucune téléportation pour <accent><player></accent>."
+    header: "<info>Téléportations de <accent><player></accent> :"
+    line: "<dark_gray>▸ <accent><date></accent> <info><traveller> → <destination> <dark_gray>(<server>)"
+    line-here: "<dark_gray>▸ <accent><date></accent> <info><traveller> → <destination> <dark_gray>(appelé, <server>)"
 
 back:
   label: "Dernière position"
@@ -421,6 +489,15 @@ menu:
     tpahere:
       name: "<accent>Faire venir un joueur"
       lore: "<info>Choisis le joueur : il doit accepter."
+    tparequests:
+      name: "<accent>Demandes reçues"
+      lore: "<info>Accepter ou refuser les demandes de téléportation."
+    tptoggle:
+      name: "<accent>Qui peut me demander"
+      lore: "<info>Tout le monde, amis et clan, ou personne."
+    tpaclan:
+      name: "<accent>Appeler mon clan"
+      lore: "<info>Une demande à chaque membre connecté."
     lobby:
       name: "<accent>Retour au lobby"
       lore: "<info>Le lobby le moins rempli."

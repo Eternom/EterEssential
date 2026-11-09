@@ -91,6 +91,11 @@ public class MenuCommand implements TabExecutor {
         return true;
     }
 
+    /** Choisir un joueur pour une commande avec {player} (ex : /tpa sans pseudo) ; Retour ferme le menu. */
+    public void pickPlayer(Player player, String command) {
+        MenuInputs.run(this, player, command, player::closeInventory);
+    }
+
     /** Les sous-menus. */
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {

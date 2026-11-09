@@ -12,6 +12,10 @@ import fr.eternom.eterEssential.module.network.PlayerLookup;
 import fr.eternom.eterEssential.module.tpa.TpaRequests;
 import fr.eternom.eterEssential.module.tpa.TpaService;
 import fr.eternom.eterEssential.module.tpa.TpaSettings;
+import fr.eternom.eterEssential.module.tpa.TpaConfig;
+import fr.eternom.eterEssential.module.tpa.TpaLists;
+import fr.eternom.eterEssential.module.tpa.TpaLog;
+import fr.eternom.eterEssential.module.tpa.TpaReminders;
 import fr.eternom.eterLib.EterLib;
 import fr.eternom.eterLib.helper.cache.RedisCache;
 import fr.eternom.eterLib.helper.message.Messages;
@@ -26,7 +30,7 @@ import java.time.Duration;
 public final class Main extends JavaPlugin {
 
     /** Version minimale d'EterLib : textes communs et outils partagés (Frame, Money, NetworkBus) depuis 1.6.0. */
-    private static final String REQUIRED_ETERLIB = "1.19.0";
+    private static final String REQUIRED_ETERLIB = "1.21.0";
 
     /** Préfixe des tables d'EterEssential dans la base commune : eteressential_players... */
     private static final String TABLE_PREFIX = "eteressential_";
@@ -59,9 +63,22 @@ public final class Main extends JavaPlugin {
         bus = lib.network(this, "eteressential", messages);
         lookup = new PlayerLookup(this, lib.getPlayers(), messages, lib.getServerName());
 
-        TpaRequests requests = new TpaRequests(redis, Duration.ofSeconds(Math.max(10, getConfig().getInt("tpa.expire-seconds", 60))));
-        TpaSettings tpaSettings = new TpaSettings(database);
-        tpa = new TpaService(this, lib.getTeleports(), bus, lookup, requests, tpaSettings, messages);
+        TpaConfig tpaConfig = TpaConfig.load(getConfig().getConfigurationSection("tpa"));
+        TpaRequests requests = new TpaRequests(redis, tpaConfig.ttl(), tpaConfig.hereTtl(), tpaConfig.maxReceived(), tpaConfig.spam());
+        TpaSettings tpaSettings = new TpaSettings(database, redis);
+        TpaLog tpaLog = new TpaLog(database);
+        tpa = new TpaService(this, lib.getTeleports(), lib.getCombat(), bus, lookup, requests, tpaSettings, new TpaLists(database), tpaLog,
+                tpaConfig, messages);
+        TpaReminders reminders = new TpaReminders(this, tpa, messages);
+        tpa.setReminders(reminders);
+        getServer().getPluginManager().registerEvents(reminders, this);
+        getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
+            try {
+                tpaLog.purge(tpaConfig.logDays());
+            } catch (RuntimeException e) {
+                getLogger().warning("Journal des tpa non purgé : " + e.getMessage());
+            }
+        }, 20L * 60, 20L * 60 * 60 * 24);
         back = new BackStore(redis);
         furnace = new PortableFurnace(this, new FurnaceStore(database), new FurnaceSimulation(), messages, redis);
         // Premier passage d'un joueur sur le réseau : accueil et annonce (newcomers.announce : network, server ou none)

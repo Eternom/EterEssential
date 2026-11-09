@@ -24,7 +24,7 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:26.2.build.129-stable")
 
     // Socle commun : base, Redis, langues, menus, joueurs du réseau, téléportation (plugin EterLib installé sur le serveur)
-    compileOnly("com.github.Eternom:EterLib:1.20.1")
+    compileOnly("com.github.Eternom:EterLib:1.21.0")
     // /invsee et /endersee d'un joueur ailleurs : l'API d'EterSync
     compileOnly("com.github.Eternom:EterSync:1.2.1")
     // Infos du profil (/menu) : l'API des plugins qui les tiennent (facultatifs)
@@ -34,6 +34,17 @@ dependencies {
     compileOnly("com.github.Eternom:EterClan:1.1.0")
     // Argent : l'API d'EterEconomy (chaque mouvement avec sa source)
     compileOnly("com.github.Eternom:EterEconomy:2.2.2")
+
+    // Tests : les demandes de tpa (gradlew test), avec EterLib (RedisCache) sur le chemin des tests
+    testImplementation("io.papermc.paper:paper-api:26.2.build.129-stable")
+    testImplementation("com.github.Eternom:EterLib:1.21.0")
+    testImplementation(platform("org.junit:junit-bom:5.11.4"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 java {
