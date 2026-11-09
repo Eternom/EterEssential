@@ -3,7 +3,7 @@ package fr.eternom.eterEssential.module.menu;
 import fr.eternom.eterClan.api.ClanApi;
 import fr.eternom.eterEconomy.api.EconomyApi;
 import fr.eternom.eterLib.helper.message.Messages;
-import fr.eternom.eterMarket.api.MarketApi;
+import fr.eternom.eterJob.api.JobApi;
 import fr.eternom.eterReward.api.RewardApi;
 import fr.eternom.eterSuccess.api.SuccessApi;
 import net.kyori.adventure.text.Component;
@@ -26,7 +26,7 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
     /** Bloquant (base) : hors du thread principal. */
     static ProfileInfo read(UUID player) {
         String balance = EconomyApi.get().map(economy -> economy.format(economy.balance(player))).orElse(null);
-        String job = enabled("EterMarket") ? Market.job(player) : null;
+        String job = enabled("EterJob") ? Jobs.job(player) : null;
         boolean clans = enabled("EterClan");
         String clan = clans ? Clans.clan(player) : null;
         int passTier = enabled("EterReward") ? Rewards.passTier(player) : NONE;
@@ -36,7 +36,7 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
         return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank);
     }
 
-    /** Les lignes à afficher, dans la langue du joueur. Thread principal (le nom du métier vient d'EterMarket). */
+    /** Les lignes à afficher, dans la langue du joueur. Thread principal (le nom du métier et du rang viennent d'EterJob). */
     List<Component> lines(Messages messages, Player viewer) {
         List<Component> lines = new ArrayList<>();
         if (balance != null) {
@@ -44,7 +44,7 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
         }
         if (job != null) {
             lines.add(job.isEmpty() ? messages.get(viewer, "menu.profile.no-job")
-                    : messages.get(viewer, "menu.profile.job", "value", Market.name(viewer, job)));
+                    : messages.get(viewer, "menu.profile.job", "value", Jobs.name(viewer, job)));
         }
         if (clans) {
             lines.add(clan == null ? messages.get(viewer, "menu.profile.no-clan") : messages.get(viewer, "menu.profile.clan", "value", clan));
@@ -66,14 +66,17 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
         return Bukkit.getPluginManager().isPluginEnabled(plugin);
     }
 
-    private static final class Market {
-        /** "" : pas de métier ; null : rien à lire. */
+    private static final class Jobs {
+        /** "métier|rang" ; "" : pas de métier ; null : rien à lire. */
         static String job(UUID player) {
-            return MarketApi.get().map(api -> api.job(player).orElse("")).orElse(null);
+            return JobApi.get().map(api -> api.job(player).map(job -> job + "|" + api.rank(player, job)).orElse("")).orElse(null);
         }
 
+        /** « Mineur · Artisan ». */
         static String name(Player viewer, String job) {
-            return MarketApi.get().map(api -> api.jobName(viewer, job)).orElse(job);
+            String[] parts = job.split("\|", 2);
+            return JobApi.get().map(api -> api.jobName(viewer, parts[0])
+                    + (parts.length > 1 ? " · " + api.rankName(viewer, parts[1]) : "")).orElse(parts[0]);
         }
     }
 

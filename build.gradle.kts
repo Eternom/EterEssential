@@ -28,7 +28,7 @@ dependencies {
     // /invsee et /endersee d'un joueur ailleurs : l'API d'EterSync
     compileOnly("com.github.Eternom:EterSync:1.2.1")
     // Infos du profil (/menu) : l'API des plugins qui les tiennent (facultatifs)
-    compileOnly("com.github.Eternom:EterMarket:1.6.1")
+    compileOnly("com.github.Eternom:EterJob:2.0.0")
     compileOnly("com.github.Eternom:EterReward:1.4.1")
     compileOnly("com.github.Eternom:EterSuccess:1.5.0")
     compileOnly("com.github.Eternom:EterClan:1.1.0")

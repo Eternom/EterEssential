@@ -14,7 +14,7 @@ Document développeur, à tenir à jour avec le code.
 - **EterEconomy 2.2.2+** (`depend`, son API `EconomyApi`) pour `/money`, `/pay`, `/eco` et la perte à la mort. Soldes en
   base, mouvements atomiques : rien à régler pour le multi-serveur.
 - **EterSync 1.2.1+** (facultatif) : `/invsee` et `/endersee` d'un joueur ailleurs ou hors ligne.
-- **EterMarket, EterClan, EterReward, EterSuccess** (facultatifs, `softdepend`) : les infos de la tête de `/menu`.
+- **EterJob, EterClan, EterReward, EterSuccess** (facultatifs, `softdepend`) : les infos de la tête de `/menu`.
 
 ## Fonctionnement
 
@@ -60,7 +60,7 @@ commande d'un autre plugin ou ouvre un sous-menu ; il n'est montré que s'il ser
 sous-menu non vide) ; si un bouton d'une ligne est caché, les autres de la ligne se recentrent, symétriques (un nombre pair laisse la case du milieu vide). `hide-on-lobby` cache un bouton sur un lobby : à la même case, Spawn sur un lobby, « Retour au lobby » ailleurs (`network/LobbyCommand` : /lobby est une commande du proxy, qu'un menu ne peut pas lancer ; le serveur la demande au proxy par le canal `eter:lobby`, EterVelocityLobby 1.2.5+). Une commande avec `{player}` fait choisir un joueur connecté (`PlayerPicker`, noms d'EterLib sans
 les invisibles), `{amount}` et `{text}` sont demandés dans un Dialog (`MenuInputs`) : `/pay`, `/tpa`, `/msg` sans rien
 taper. Annuler ou une saisie invalide **ramène à la page**, jamais hors du menu. La tête du joueur affiche ses infos
-(`ProfileInfo`, lues en tâche de fond par l'API d'EterEconomy, EterMarket, EterClan, EterReward et EterSuccess, chacune
+(`ProfileInfo`, lues en tâche de fond par l'API d'EterEconomy, EterJob (métier et rang), EterClan, EterReward et EterSuccess, chacune
 dans sa classe : un plugin absent ici n'affiche simplement pas sa ligne). `/menu <sous-menu>` ouvre un sous-menu : le
 bouton Retour des autres plugins y ramène (`back-command: "menu progression"`...), et un `back-command` vide ramène au
 menu central (EterLib 1.11.1) : on navigue partout sans taper de commande.
