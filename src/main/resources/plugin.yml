@@ -62,7 +62,7 @@ commands:
   menu:
     description: Le menu central (tout le serveur, sans commandes).
     usage: /menu [sous-menu]
-    aliases: [profil, profile]
+    aliases: [profile]
     permission: eteressential.menu
 
   lobby:

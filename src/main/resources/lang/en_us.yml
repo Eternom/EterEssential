@@ -137,7 +137,7 @@ newcomer:
   subtitle: "<info>Sneak and press <accent>F</accent> to open the menu"
   guide-intro: "<success>Welcome to Eternom, <accent><player></accent>! The essentials to get started:"
   guide-menu: "<dark_gray>▸ <info>The <accent>menu</accent>: sneak + <accent>F</accent>, or <accent><click:run_command:'/menu'>/menu</click></accent>"
-  guide-steps: "<dark_gray>▸ <info>The <accent><click:run_command:'/succes'>First steps</click></accent> <info>guide you step by step, and pay you"
+  guide-steps: "<dark_gray>▸ <info>The <accent><click:run_command:'/achievements'>First steps</click></accent> <info>guide you step by step, and pay you"
   guide-job: "<dark_gray>▸ <info>Pick a <accent>job</accent> from the lobby NPCs: it's the server's real income"
   guide-wiki: "<dark_gray>▸ <info>A question? The <accent><click:open_url:'https://craft.eternom.fr/wiki'>wiki</click></accent>, or ask in the chat"
   # To everyone: <player> = the newcomer
@@ -366,7 +366,7 @@ menu:
     progression:
       name: "<primary>Progression"
       lore: "<info>Achievements, challenges, leaderboards, season pass, daily reward."
-    voyager:
+    travel:
       name: "<primary>Travel"
       lore: "<info>Homes, resource world, teleport, servers."
     clan:
@@ -375,7 +375,7 @@ menu:
     social:
       name: "<primary>Social"
       lore: "<info>Chat, private messages, reports."
-    outils:
+    tools:
       name: "<primary>Tools"
       lore: "<info>Crafting table, anvil, ender chest, portable furnace..."
     succes:
@@ -447,7 +447,7 @@ menu:
     four:
       name: "<accent>Portable furnace"
       lore: "<info>It keeps cooking while you're away."
-    economie:
+    economy:
       name: "<primary>Economy"
       lore: "<info>Your balance, pay a player, the richest."
     money:

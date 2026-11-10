@@ -137,7 +137,7 @@ newcomer:
   subtitle: "<info>Accroupis-toi et appuie sur <accent>F</accent> pour ouvrir le menu"
   guide-intro: "<success>Bienvenue sur Eternom, <accent><player></accent> ! L'essentiel pour bien démarrer :"
   guide-menu: "<dark_gray>▸ <info>Le <accent>menu</accent> : accroupis-toi + <accent>F</accent>, ou <accent><click:run_command:'/menu'>/menu</click></accent>"
-  guide-steps: "<dark_gray>▸ <info>Les <accent><click:run_command:'/succes'>Premiers pas</click></accent> <info>te guident étape par étape, et rapportent de l'argent"
+  guide-steps: "<dark_gray>▸ <info>Les <accent><click:run_command:'/achievements'>Premiers pas</click></accent> <info>te guident étape par étape, et rapportent de l'argent"
   guide-job: "<dark_gray>▸ <info>Choisis un <accent>métier</accent> auprès des PNJ du lobby : c'est le vrai revenu du serveur"
   guide-wiki: "<dark_gray>▸ <info>Une question ? Le <accent><click:open_url:'https://craft.eternom.fr/wiki'>wiki</click></accent>, ou demande dans le chat"
   # À tous : <player> = le nouveau
@@ -391,7 +391,7 @@ menu:
     progression:
       name: "<primary>Progression"
       lore: "<info>Succès, défis, classements, pass de saison, récompense du jour."
-    voyager:
+    travel:
       name: "<primary>Voyager"
       lore: "<info>Homes, monde ressource, téléportation, serveurs."
     clan:
@@ -400,7 +400,7 @@ menu:
     social:
       name: "<primary>Social"
       lore: "<info>Chat, messages privés, signalements."
-    outils:
+    tools:
       name: "<primary>Outils"
       lore: "<info>Établi, enclume, coffre de l'Ender, four portatif..."
     succes:
@@ -472,7 +472,7 @@ menu:
     four:
       name: "<accent>Four portatif"
       lore: "<info>Il cuit même quand tu n'es pas là."
-    economie:
+    economy:
       name: "<primary>Économie"
       lore: "<info>Ton solde, payer un joueur, les plus riches."
     money:

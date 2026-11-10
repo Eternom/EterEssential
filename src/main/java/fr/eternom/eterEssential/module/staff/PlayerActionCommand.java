@@ -134,10 +134,10 @@ public class PlayerActionCommand implements TabExecutor {
 
     private static GameMode parseMode(String text) {
         return switch (text.toLowerCase(Locale.ROOT)) {
-            case "0", "s", "survival", "survie" -> GameMode.SURVIVAL;
-            case "1", "c", "creative", "creatif", "créatif" -> GameMode.CREATIVE;
-            case "2", "a", "adventure", "aventure" -> GameMode.ADVENTURE;
-            case "3", "sp", "spectator", "spectateur" -> GameMode.SPECTATOR;
+            case "0", "s", "survival" -> GameMode.SURVIVAL;
+            case "1", "c", "creative" -> GameMode.CREATIVE;
+            case "2", "a", "adventure" -> GameMode.ADVENTURE;
+            case "3", "sp", "spectator" -> GameMode.SPECTATOR;
             default -> null;
         };
     }

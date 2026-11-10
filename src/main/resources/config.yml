@@ -93,12 +93,12 @@ menu:
   # moins un outil (grade, pass). Le reste est dans les sous-menus : la page reste facile à lire.
   main:
     progression: { slot: 11, icon: EXPERIENCE_BOTTLE, menu: progression }
-    voyager: { slot: 12, icon: COMPASS, menu: voyager }
+    travel: { slot: 12, icon: COMPASS, menu: travel }
     social: { slot: 13, icon: BELL, menu: social }
     clan: { slot: 14, icon: WHITE_BANNER, command: "clan" }
-    economie: { slot: 15, icon: GOLD_INGOT, menu: economie }
+    economy: { slot: 15, icon: GOLD_INGOT, menu: economy }
     kits: { slot: 21, icon: BARREL, command: "kit" }
-    outils: { slot: 23, icon: ANVIL, menu: outils }
+    tools: { slot: 23, icon: ANVIL, menu: tools }
     homes: { slot: 29, icon: RED_BED, command: "homes" }
     spawn: { slot: 30, icon: BEACON, command: "spawn" }
     lobby: { slot: 30, icon: OAK_DOOR, command: "lobby", hide-on-lobby: true }
@@ -107,14 +107,14 @@ menu:
     pass: { slot: 33, icon: NETHER_STAR, command: "pass" }
   submenus:
     progression:
-      succes: { slot: 20, icon: GOLDEN_APPLE, command: "succes" }
-      defis: { slot: 21, icon: TARGET, command: "defis" }
-      classement: { slot: 22, icon: GOLDEN_HELMET, command: "classement" }
+      succes: { slot: 20, icon: GOLDEN_APPLE, command: "achievements" }
+      defis: { slot: 21, icon: TARGET, command: "challenges" }
+      classement: { slot: 22, icon: GOLDEN_HELMET, command: "ranking" }
       pass: { slot: 23, icon: NETHER_STAR, command: "pass" }
       daily: { slot: 24, icon: CHEST, command: "daily" }
-    voyager:
+    travel:
       homes: { slot: 20, icon: RED_BED, command: "homes" }
-      ressource: { slot: 21, icon: GRASS_BLOCK, command: "ressource" }
+      ressource: { slot: 21, icon: GRASS_BLOCK, command: "resource" }
       rtp: { slot: 22, icon: ENDER_PEARL, command: "rtp" }
       tpa: { slot: 23, icon: LEAD, command: "tpa {player}" }
       tpahere: { slot: 24, icon: FISHING_ROD, command: "tpahere {player}" }
@@ -129,12 +129,12 @@ menu:
       report: { slot: 24, icon: REDSTONE_TORCH, command: "report" }
       msg: { slot: 30, icon: WRITABLE_BOOK, command: "msg {player} {text}" }
       visibility: { slot: 31, icon: ENDER_EYE, command: "visibility" }
-      appel: { slot: 32, icon: BOOK, command: "appel" }
-    economie:
+      appel: { slot: 32, icon: BOOK, command: "appeal" }
+    economy:
       money: { slot: 20, icon: GOLD_NUGGET, command: "money" }
       pay: { slot: 22, icon: EMERALD, command: "pay {player} {amount}" }
-      richesse: { slot: 24, icon: GOLD_BLOCK, command: "classement" }
-    outils:
+      richesse: { slot: 24, icon: GOLD_BLOCK, command: "ranking" }
+    tools:
       craft: { slot: 20, icon: CRAFTING_TABLE, command: "craft" }
       anvil: { slot: 21, icon: ANVIL, command: "anvil" }
       smithing: { slot: 22, icon: SMITHING_TABLE, command: "smithing" }
