@@ -103,7 +103,7 @@ menu:
     tools: { slot: 23, icon: ANVIL, menu: tools }
     homes: { slot: 29, icon: RED_BED, command: "homes" }
     spawn: { slot: 30, icon: BEACON, command: "spawn" }
-    lobby: { slot: 30, icon: OAK_DOOR, command: "lobby", hide-on-lobby: true }
+    lobby: { slot: 30, icon: LODESTONE, command: "lobby", hide-on-lobby: true }
     rtp: { slot: 31, icon: ENDER_PEARL, command: "rtp" }
     daily: { slot: 32, icon: CHEST, command: "daily" }
     pass: { slot: 33, icon: NETHER_STAR, command: "pass" }
@@ -127,6 +127,8 @@ menu:
       tparequests: { slot: 30, icon: WRITABLE_BOOK, command: "tpa list" }
       tptoggle: { slot: 31, icon: ENDER_EYE, command: "tptoggle" }
       tpaclan: { slot: 32, icon: WHITE_BANNER, command: "tpaclan" }
+      spawn: { slot: 33, icon: BEACON, command: "spawn" }
+      lobby: { slot: 34, icon: LODESTONE, command: "lobby", hide-on-lobby: true }
     social:
       chat: { slot: 20, icon: OAK_SIGN, command: "chat" }
       ignore: { slot: 21, icon: BARRIER, command: "ignore" }
@@ -137,6 +139,7 @@ menu:
       visibility: { slot: 31, icon: ENDER_EYE, command: "visibility" }
       appel: { slot: 32, icon: BOOK, command: "appeal" }
       friends: { slot: 33, icon: PLAYER_HEAD, command: "friend" }
+      clan: { slot: 34, icon: WHITE_BANNER, command: "clan" }
     economy:
       money: { slot: 20, icon: GOLD_NUGGET, command: "money" }
       pay: { slot: 22, icon: EMERALD, command: "pay {player} {amount}" }

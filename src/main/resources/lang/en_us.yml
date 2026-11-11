@@ -368,13 +368,13 @@ menu:
       lore: "<info>Job, quests, achievements, challenges, leaderboards, pass, daily reward."
     travel:
       name: "<primary>Travel"
-      lore: "<info>Homes, resource world, teleport, servers."
+      lore: "<info>Homes, resource world, teleport, spawn, lobby."
     clan:
       name: "<primary>Clan"
       lore: "<info>Your clan, its land and its bank."
     social:
       name: "<primary>Social"
-      lore: "<info>Friends, chat, private messages, reports."
+      lore: "<info>Friends, clan, chat, private messages, reports."
     tools:
       name: "<primary>Tools"
       lore: "<info>Crafting table, anvil, ender chest, portable furnace..."

@@ -393,13 +393,13 @@ menu:
       lore: "<info>Métier, quêtes, succès, défis, classements, pass, récompense du jour."
     travel:
       name: "<primary>Voyager"
-      lore: "<info>Homes, monde ressource, téléportation, serveurs."
+      lore: "<info>Homes, monde ressource, téléportation, spawn, lobby."
     clan:
       name: "<primary>Clan"
       lore: "<info>Ton clan, ses terres et sa banque."
     social:
       name: "<primary>Social"
-      lore: "<info>Amis, chat, messages privés, signalements."
+      lore: "<info>Amis, clan, chat, messages privés, signalements."
     tools:
       name: "<primary>Outils"
       lore: "<info>Établi, enclume, coffre de l'Ender, four portatif..."
