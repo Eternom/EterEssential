@@ -72,8 +72,9 @@ public class MainMenu implements Menu {
         }
         if (main) {
             inventory.setItem(HEAD, profile(viewer, List.of()));
-            Tasks.async(menus.plugin(), viewer, () -> ProfileInfo.read(viewer.getUniqueId()), info -> {
+            Tasks.async(menus.plugin(), viewer, () -> ProfileInfo.read(viewer.getUniqueId()), read -> {
                 if (viewer.getOpenInventory().getTopInventory().getHolder() == this) {
+                    ProfileInfo info = read.withQuestsReady(viewer);
                     inventory.setItem(HEAD, profile(viewer, info.lines(messages, viewer)));
                     highlight(viewer, info);
                 }
@@ -107,7 +108,8 @@ public class MainMenu implements Menu {
             String command = button.command() == null ? "" : button.command().split(" ")[0];
             boolean progression = "progression".equals(button.submenu());
             boolean waiting = info.dailyReady() && (command.equals("daily") || progression)
-                    || info.questBox() > 0 && (command.equals("quests") || progression);
+                    || (info.questBox() > 0 || info.questsReady() > 0) && (command.equals("quests") || progression)
+                    || (info.passRewards() > 0 || info.parcels() > 0) && (command.equals("pass") || progression);
             ItemStack item = inventory.getItem(entry.getKey());
             if (!waiting || item == null) {
                 continue;
