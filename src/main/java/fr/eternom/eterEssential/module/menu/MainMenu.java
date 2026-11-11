@@ -113,7 +113,8 @@ public class MainMenu implements Menu {
             boolean progression = "progression".equals(button.submenu());
             boolean waiting = info.dailyReady() && (command.equals("daily") || progression)
                     || (info.questBox() > 0 || info.questsReady() > 0) && (command.equals("quests") || progression)
-                    || (info.passRewards() > 0 || info.parcels() > 0) && (command.equals("pass") || progression);
+                    || (info.passRewards() > 0 || info.parcels() > 0) && (command.equals("pass") || progression)
+                    || info.firstStep() != null && (command.equals("achievements") || progression);
             ItemStack item = inventory.getItem(entry.getKey());
             if (!waiting || item == null) {
                 continue;

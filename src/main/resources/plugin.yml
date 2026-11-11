@@ -107,6 +107,11 @@ commands:
     permission: eteressential.furnace
 
   # Informations
+  where:
+    description: Où tu es : serveur, monde, coordonnées, biome, terrain.
+    usage: /where
+    aliases: [whereami]
+    permission: eteressential.where
   list:
     description: Joueurs en ligne, par serveur.
     usage: /list
@@ -224,6 +229,8 @@ permissions:
   # Informations sur les joueurs : à accorder par grade (personne par défaut)
   eteressential.list:
     default: op
+  eteressential.where:
+    default: true
   eteressential.find:
     default: op
   eteressential.seen:

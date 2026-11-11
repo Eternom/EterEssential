@@ -367,6 +367,7 @@ menu:
   shortcut-on: "<success>Menu shortcut on: <accent>sneak + F</accent>."
   shortcut-off: "<info>Menu shortcut off. <dark_gray>/menu shortcut to turn it back on."
   todo:
+    first-steps: "<dark_gray>▸ <success><step> <dark_gray>(/achievements)"
     title: "<accent>To do now:"
     daily: "<dark_gray>▸ <success>Your daily reward is waiting <dark_gray>(/daily)"
     quest-box: "<dark_gray>▸ <success><count> item(s) in your quest box <dark_gray>(/quests box)"
@@ -566,3 +567,17 @@ menu:
       title: "<primary>Message"
       label: "Message"
       invalid: "<error>The message is empty."
+
+where:
+  header: "<primary>Where am I?"
+  server: "<dark_gray>▸ <info>Server: <accent><server>"
+  world: "<dark_gray>▸ <info>World: <accent><world></accent> <dark_gray>(<x>, <y>, <z>)"
+  biome: "<dark_gray>▸ <info>Biome: <accent><biome>"
+  wild: "<dark_gray>▸ <info>Land: <accent>wilderness</accent>, nobody owns it"
+  claim-build: "<dark_gray>▸ <info>Land: a clan's, <success>you can build"
+  claim-locked: "<dark_gray>▸ <info>Land: a clan's, <error>you cannot build"
+  dimension:
+    normal: "the overworld"
+    nether: "the Nether"
+    the_end: "the End"
+    custom: "a separate world"

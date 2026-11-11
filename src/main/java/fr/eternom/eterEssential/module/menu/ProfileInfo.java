@@ -20,7 +20,7 @@ import java.util.UUID;
  * erreur) n'est simplement pas affichée.
  */
 record ProfileInfo(String balance, String job, String clan, boolean clans, int passTier, int streak, int points, int rank,
-                   boolean dailyReady, int questBox, int passRewards, int parcels, int questsReady) {
+                   boolean dailyReady, int questBox, int passRewards, int parcels, int questsReady, String firstStep) {
 
     private static final int NONE = -1;
 
@@ -38,7 +38,7 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
         int questBox = enabled("EterQuest") ? Quests.box(player) : 0;
         int passRewards = enabled("EterReward") ? Rewards.passRewards(player) : 0;
         int parcels = enabled("EterReward") ? Rewards.parcels(player) : 0;
-        return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank, dailyReady, questBox, passRewards, parcels, 0);
+        return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank, dailyReady, questBox, passRewards, parcels, 0, null);
     }
 
     /** Les lignes à afficher, dans la langue du joueur. Thread principal (le nom du métier et du rang viennent d'EterJob). */
@@ -68,6 +68,9 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
         if (todo()) {
             lines.add(Component.empty());
             lines.add(messages.get(viewer, "menu.todo.title"));
+            if (firstStep != null) {
+                lines.add(messages.get(viewer, "menu.todo.first-steps", "step", firstStep));
+            }
             if (dailyReady) {
                 lines.add(messages.get(viewer, "menu.todo.daily"));
             }
@@ -87,15 +90,16 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
         return lines;
     }
 
-    /** Les quêtes prêtes à rendre, lues sur le thread principal (objets portés compris). */
+    /** Ce qui se lit sur le thread principal : quêtes prêtes à rendre (objets portés compris), prochaine étape des Premiers pas. */
     ProfileInfo withQuestsReady(Player viewer) {
         int ready = enabled("EterQuest") ? Quests.ready(viewer) : 0;
-        return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank, dailyReady, questBox, passRewards, parcels, ready);
+        String step = enabled("EterSuccess") ? Success.nextStep(viewer) : null;
+        return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank, dailyReady, questBox, passRewards, parcels, ready, step);
     }
 
     /** Quelque chose attend le joueur. */
     boolean todo() {
-        return dailyReady || questBox > 0 || passRewards > 0 || parcels > 0 || questsReady > 0;
+        return dailyReady || questBox > 0 || passRewards > 0 || parcels > 0 || questsReady > 0 || firstStep != null;
     }
 
     private static boolean enabled(String plugin) {
@@ -161,6 +165,10 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
 
         static int rank(UUID player) {
             return SuccessApi.get().map(api -> api.rank(player)).orElse(NONE);
+        }
+
+        static String nextStep(Player player) {
+            return SuccessApi.get().flatMap(api -> api.nextStep(player)).orElse(null);
         }
     }
 }

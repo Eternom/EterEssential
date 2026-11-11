@@ -392,6 +392,7 @@ menu:
   shortcut-on: "<success>Raccourci du menu activé : <accent>accroupi + F</accent>."
   shortcut-off: "<info>Raccourci du menu coupé. <dark_gray>/menu shortcut pour le remettre."
   todo:
+    first-steps: "<dark_gray>▸ <success><step> <dark_gray>(/achievements)"
     title: "<accent>À faire maintenant :"
     daily: "<dark_gray>▸ <success>Ta récompense du jour t'attend <dark_gray>(/daily)"
     quest-box: "<dark_gray>▸ <success><count> objet(s) dans ta boîte des quêtes <dark_gray>(/quests box)"
@@ -591,3 +592,17 @@ menu:
       title: "<primary>Message"
       label: "Message"
       invalid: "<error>Le message est vide."
+
+where:
+  header: "<primary>Où suis-je ?"
+  server: "<dark_gray>▸ <info>Serveur : <accent><server>"
+  world: "<dark_gray>▸ <info>Monde : <accent><world></accent> <dark_gray>(<x>, <y>, <z>)"
+  biome: "<dark_gray>▸ <info>Biome : <accent><biome>"
+  wild: "<dark_gray>▸ <info>Terrain : <accent>nature libre</accent>, personne ne le possède"
+  claim-build: "<dark_gray>▸ <info>Terrain : un clan, <success>tu peux construire"
+  claim-locked: "<dark_gray>▸ <info>Terrain : un clan, <error>tu ne peux pas construire"
+  dimension:
+    normal: "le monde normal"
+    nether: "le Nether"
+    the_end: "l'End"
+    custom: "un monde à part"

@@ -30,7 +30,7 @@ dependencies {
     // Infos du profil (/menu) : l'API des plugins qui les tiennent (facultatifs)
     compileOnly("com.github.Eternom:EterJob:2.0.0")
     compileOnly("com.github.Eternom:EterReward:1.16.0")
-    compileOnly("com.github.Eternom:EterSuccess:1.5.0")
+    compileOnly("com.github.Eternom:EterSuccess:1.9.0")
     compileOnly("com.github.Eternom:EterClan:1.1.0")
     // « À faire » du /menu : objets dans la boîte des quêtes
     compileOnly("com.github.Eternom:EterQuest:1.1.0")
