@@ -111,6 +111,18 @@ menu:
     daily: { slot: 32, icon: CHEST, command: "daily" }
     pass: { slot: 33, icon: NETHER_STAR, command: "pass" }
   submenus:
+    # Ce qu'on peut faire avec un joueur : /menu player <pseudo> (et l'API openPlayer, au clic sur un joueur dans un autre
+    # menu) remplit {player} ; ouvert sans pseudo, le joueur est choisi au clic.
+    player:
+      msg: { slot: 20, icon: WRITABLE_BOOK, command: "msg {player} {text}" }
+      tpa: { slot: 21, icon: LEAD, command: "tpa {player}" }
+      tpahere: { slot: 22, icon: FISHING_ROD, command: "tpahere {player}" }
+      pay: { slot: 23, icon: EMERALD, command: "pay {player} {amount}" }
+      friend-add: { slot: 24, icon: PLAYER_HEAD, command: "friend add {player}" }
+      player-stats: { slot: 30, icon: SPYGLASS, command: "stats {player}" }
+      player-find: { slot: 31, icon: COMPASS, command: "find {player}" }
+      player-ignore: { slot: 32, icon: BARRIER, command: "ignore {player}" }
+      player-report: { slot: 33, icon: REDSTONE_TORCH, command: "report {player}" }
     settings:
       chat: { slot: 20, icon: OAK_SIGN, command: "chat" }
       notifications: { slot: 21, icon: BELL, command: "notifications" }

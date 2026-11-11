@@ -25,4 +25,12 @@ public interface EssentialApi {
 
     /** Le joueur accepte les demandes de tpa (pas de /tptoggle). Bloquant (base). */
     boolean acceptsTpa(UUID player);
+
+    /**
+     * Ouvre le menu « joueur » de /menu (message privé, tpa, payer, ami, ignorer, signaler, stats) : le même partout où on
+     * clique sur un joueur. Thread principal.
+     */
+    default void openPlayer(org.bukkit.entity.Player viewer, String name) {
+        viewer.performCommand("menu player " + name);
+    }
 }

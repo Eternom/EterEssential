@@ -20,6 +20,10 @@ public class MenuCommand implements TabExecutor {
 
     /** Identifiant de la page principale (config.yml > menu.main). */
     static final String MAIN = "main";
+    /** Page des actions sur un joueur (config.yml > menu.submenus.player). */
+    static final String PLAYER = "player";
+    /** Pseudo Java ou Bedrock (préfixe Floodgate « . »). */
+    private static final java.util.regex.Pattern NAME = java.util.regex.Pattern.compile("[.*]?[A-Za-z0-9_]{1,16}");
 
     private final JavaPlugin plugin;
     private final Messages messages;
@@ -45,7 +49,12 @@ public class MenuCommand implements TabExecutor {
 
     /** Ouvre une page (MAIN ou un sous-menu). */
     void open(Player player, String page) {
-        player.openInventory(new MainMenu(this, player, pages.containsKey(page) ? page : MAIN).getInventory());
+        open(player, page, null);
+    }
+
+    /** Une page qui vise un joueur (target, pseudo) : {player} rempli d'office ; null : choisi au clic. */
+    void open(Player player, String page, String target) {
+        player.openInventory(new MainMenu(this, player, pages.containsKey(page) ? page : MAIN, target).getInventory());
     }
 
     /** config.yml > menu.main (page principale) et menu.submenus.<id> (sous-menus) : id -> slot, icon, command ou menu. */
@@ -102,6 +111,17 @@ public class MenuCommand implements TabExecutor {
             messages.send(sender, "command.players-only");
             return true;
         }
+        // /menu player <pseudo> : ce qu'on peut faire avec ce joueur (le même menu partout où on clique sur un joueur)
+        if (args.length >= 2 && args[0].equalsIgnoreCase(PLAYER) && pages.containsKey(PLAYER)) {
+            if (!NAME.matcher(args[1]).matches()) {
+                messages.send(player, "player.unknown", "player", args[1]);
+            } else if (args[1].equalsIgnoreCase(player.getName())) {
+                open(player, MAIN);
+            } else {
+                open(player, PLAYER, args[1]);
+            }
+            return true;
+        }
         if (args.length > 0 && args[0].equalsIgnoreCase("shortcut")) {
             messages.send(player, MenuShortcut.toggle(player) ? "menu.shortcut-on" : "menu.shortcut-off");
             return true;
@@ -118,6 +138,9 @@ public class MenuCommand implements TabExecutor {
     /** Les sous-menus. */
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length == 2 && args[0].equalsIgnoreCase(PLAYER)) {
+            return fr.eternom.eterLib.EterLib.get().getOnlineNames().complete(args[1]);
+        }
         return args.length == 1 ? java.util.stream.Stream.concat(pages.keySet().stream().filter(page -> !page.equals(MAIN)), java.util.stream.Stream.of("shortcut"))
                 .filter(page -> page.startsWith(args[0])).sorted().toList()
                 : List.of();

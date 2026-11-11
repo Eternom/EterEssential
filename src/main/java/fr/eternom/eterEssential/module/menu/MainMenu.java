@@ -47,16 +47,29 @@ public class MainMenu implements Menu {
     private final String page;
     private final Inventory inventory;
     private final Map<Integer, Button> shown = new HashMap<>();
+    /** Joueur visé (/menu player &lt;pseudo&gt;) : remplace {player} dans les commandes ; null : choisi au clic. */
+    private final String target;
 
     /** page : "main" pour le menu central, sinon l'identifiant du sous-menu. */
     MainMenu(MenuCommand menus, Player viewer, String page) {
+        this(menus, viewer, page, null);
+    }
+
+    MainMenu(MenuCommand menus, Player viewer, String page, String target) {
         this.menus = menus;
         this.messages = menus.messages();
         this.page = page;
+        this.target = target;
         boolean main = page.equals(MenuCommand.MAIN);
         this.inventory = Bukkit.createInventory(this, SIZE, main ? messages.get(viewer, "menu.title")
+                : target != null ? messages.get(viewer, "menu.player-title", "player", target)
                 : messages.get(viewer, "menu.sub-title", "menu", messages.plain(viewer, "menu.button." + page + ".name")));
         Frame.draw(inventory, Material.ORANGE_STAINED_GLASS_PANE);
+        Player online = target == null ? null : Bukkit.getPlayerExact(target);
+        if (online != null) {
+            inventory.setItem(HEAD, Items.head(online.getPlayerProfile(), messages.get(viewer, "menu.player", "player", online.getName()),
+                    List.of()));
+        }
         if (main) {
             inventory.setItem(HEAD, profile(viewer, List.of()));
             Tasks.async(menus.plugin(), viewer, () -> ProfileInfo.read(viewer.getUniqueId()), info -> {
@@ -74,8 +87,9 @@ public class MainMenu implements Menu {
                 lore.add(messages.get(viewer, "menu.button." + button.id() + ".lore"));
             }
             lore.add(Component.empty());
-            lore.add(button.submenu() != null || MenuInputs.asks(button.command()) ? messages.get(viewer, "menu.open-sub")
-                    : messages.get(viewer, "menu.open", "command", "/" + button.command()));
+            String command = command(button);
+            lore.add(button.submenu() != null || MenuInputs.asks(command) ? messages.get(viewer, "menu.open-sub")
+                    : messages.get(viewer, "menu.open", "command", "/" + command));
             inventory.setItem(placed.getKey(), Items.item(button.icon(), messages.get(viewer, "menu.button." + button.id() + ".name"), lore));
             shown.put(placed.getKey(), button);
         }
@@ -189,8 +203,13 @@ public class MainMenu implements Menu {
             menus.open(player, button.submenu());
         } else {
             // Annuler une saisie ramène sur cette page, pas hors du menu
-            MenuInputs.run(menus, player, button.command(), () -> menus.open(player, page));
+            MenuInputs.run(menus, player, command(button), () -> menus.open(player, page, target));
         }
+    }
+
+    /** La commande du bouton, {player} déjà rempli quand le menu vise un joueur. */
+    private String command(Button button) {
+        return button.command() == null || target == null ? button.command() : button.command().replace("{player}", target);
     }
 
     @Override

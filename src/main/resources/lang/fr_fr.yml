@@ -385,6 +385,7 @@ vote:
 menu:
   title: "<primary>Menu"
   sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
+  player-title: "<primary>Joueur <dark_gray>·</dark_gray> <player>"
   player: "<accent><player>"
   player-lore: "<info>Tout le serveur est ici. Raccourci : <accent>accroupi + F</accent> <dark_gray>(/menu shortcut pour le couper)"
   shortcut-on: "<success>Raccourci du menu activé : <accent>accroupi + F</accent>."
@@ -524,6 +525,24 @@ menu:
     shortcut:
       name: "<accent>Raccourci du menu"
       lore: "<info>Couper ou remettre accroupi + F."
+    player:
+      name: "<primary>Joueur"
+      lore: "<info>Message, téléportation, payer, ami, signaler..."
+    friend-add:
+      name: "<accent>Ajouter en ami"
+      lore: "<info>Envoyer une demande d'ami."
+    player-stats:
+      name: "<accent>Ses statistiques"
+      lore: "<info>Temps de jeu, récoltes, combats."
+    player-find:
+      name: "<accent>Où est-il ?"
+      lore: "<info>Son serveur, ou sa dernière connexion."
+    player-ignore:
+      name: "<accent>Ignorer"
+      lore: "<info>Ne plus voir ses messages (ou ne plus l'ignorer)."
+    player-report:
+      name: "<accent>Signaler"
+      lore: "<info>Prévenir le staff d'un problème avec ce joueur."
     job:
       name: "<accent>Mon métier"
       lore: "<info>Quêtes du jour, guilde, avantages, classement."

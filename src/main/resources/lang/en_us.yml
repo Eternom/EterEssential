@@ -360,6 +360,7 @@ vote:
 menu:
   title: "<primary>Menu"
   sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
+  player-title: "<primary>Player <dark_gray>·</dark_gray> <player>"
   player: "<accent><player>"
   player-lore: "<info>The whole server is here. Shortcut: <accent>sneak + F</accent> <dark_gray>(/menu shortcut to turn it off)"
   shortcut-on: "<success>Menu shortcut on: <accent>sneak + F</accent>."
@@ -499,6 +500,24 @@ menu:
     shortcut:
       name: "<accent>Menu shortcut"
       lore: "<info>Turn sneak + F off or on."
+    player:
+      name: "<primary>Player"
+      lore: "<info>Message, teleport, pay, friend, report..."
+    friend-add:
+      name: "<accent>Add as friend"
+      lore: "<info>Send a friend request."
+    player-stats:
+      name: "<accent>Their statistics"
+      lore: "<info>Playtime, harvests, fights."
+    player-find:
+      name: "<accent>Where are they?"
+      lore: "<info>Their server, or their last login."
+    player-ignore:
+      name: "<accent>Ignore"
+      lore: "<info>Stop seeing their messages (or stop ignoring them)."
+    player-report:
+      name: "<accent>Report"
+      lore: "<info>Tell the staff about a problem with this player."
     job:
       name: "<accent>My job"
       lore: "<info>Daily quests, guild, perks, leaderboard."
