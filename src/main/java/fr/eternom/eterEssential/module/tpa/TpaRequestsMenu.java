@@ -1,5 +1,7 @@
 package fr.eternom.eterEssential.module.tpa;
 
+import fr.eternom.eterLib.EterLib;
+import fr.eternom.eterLib.helper.gui.BackButton;
 import fr.eternom.eterEssential.module.tpa.TpaRequests.Request;
 import fr.eternom.eterLib.helper.gui.Frame;
 import fr.eternom.eterLib.helper.gui.Items;
@@ -28,6 +30,8 @@ class TpaRequestsMenu implements Menu {
     private final TpaService tpa;
     private final Inventory inventory;
     private final Map<Integer, Request> requestAt = new HashMap<>();
+    // Retour vers le menu d'où il vient (/menu > Voyager), Fermer s'il a été ouvert par /tpa list
+    private final BackButton back = EterLib.get().backButton("");
 
     TpaRequestsMenu(TpaService tpa, Messages messages, Player viewer, List<Request> requests) {
         this.tpa = tpa;
@@ -44,7 +48,7 @@ class TpaRequestsMenu implements Menu {
                                     "server", request.server() == null || request.server().isBlank() ? "?" : request.server()),
                             messages.get(viewer, "tpa.menu.click"))));
         }
-        inventory.setItem(CLOSE, Items.item(Material.BARRIER, messages.get(viewer, "menu.close"), List.of()));
+        inventory.setItem(CLOSE, back.item(viewer));
     }
 
     @Override
@@ -59,7 +63,7 @@ class TpaRequestsMenu implements Menu {
                 tpa.accept(player, request);
             }
         } else if (slot == CLOSE) {
-            player.closeInventory();
+            back.click(player);
         }
     }
 
