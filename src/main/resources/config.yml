@@ -136,6 +136,7 @@ menu:
       shortcut: { slot: 32, icon: TRIPWIRE_HOOK, command: "menu shortcut" }
       welcome: { slot: 31, icon: ENCHANTED_BOOK, command: "welcome" }
       rules: { slot: 33, icon: WRITTEN_BOOK, command: "rules" }
+      compact: { slot: 34, icon: ITEM_FRAME, command: "menu compact" }
     progression:
       succes: { slot: 20, icon: GOLDEN_APPLE, command: "achievements" }
       defis: { slot: 21, icon: TARGET, command: "challenges" }
@@ -146,6 +147,7 @@ menu:
       quests: { slot: 31, icon: KNOWLEDGE_BOOK, command: "quests" }
       stats: { slot: 32, icon: SPYGLASS, command: "stats" }
       vote: { slot: 33, icon: SUNFLOWER, command: "vote" }
+      sponsor: { slot: 34, icon: CAKE, command: "sponsor" }
     travel:
       homes: { slot: 20, icon: RED_BED, command: "homes" }
       ressource: { slot: 21, icon: GRASS_BLOCK, command: "resource" }

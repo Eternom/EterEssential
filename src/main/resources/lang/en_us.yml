@@ -367,6 +367,8 @@ menu:
   player-lore: "<info>The whole server is here. Shortcut: <accent>sneak + F</accent> <dark_gray>(/menu shortcut to turn it off)"
   shortcut-on: "<success>Menu shortcut on: <accent>sneak + F</accent>."
   shortcut-off: "<info>Menu shortcut off. <dark_gray>/menu shortcut to turn it back on."
+  compact-on: "<success>Compact display: menu descriptions are shortened. <dark_gray>/menu compact to go back."
+  compact-off: "<info>Full menu display. <dark_gray>/menu compact to shorten them."
   todo:
     first-steps: "<dark_gray>▸ <success><step> <dark_gray>(/achievements)"
     title: "<accent>To do now:"
@@ -512,6 +514,12 @@ menu:
     rules:
       name: "<accent>Rules"
       lore: "<info>The server rules."
+    compact:
+      name: "<accent>Compact display"
+      lore: "<info>Shorter descriptions (small screens, mobile). On by default on Bedrock."
+    sponsor:
+      name: "<accent>Referral"
+      lore: "<info>Your sponsor, your godchildren, and what it pays."
     player:
       name: "<primary>Player"
       lore: "<info>Message, teleport, pay, friend, report..."

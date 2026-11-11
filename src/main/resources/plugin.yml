@@ -61,7 +61,7 @@ commands:
   # Menu central, avec ses sous-menus
   menu:
     description: Le menu central (tout le serveur, sans commandes).
-    usage: /menu [sous-menu|shortcut|player <joueur>]
+    usage: /menu [sous-menu|shortcut|compact|player <joueur>]
     aliases: [profile]
     permission: eteressential.menu
 

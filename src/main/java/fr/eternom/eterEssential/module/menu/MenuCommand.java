@@ -122,6 +122,10 @@ public class MenuCommand implements TabExecutor {
             }
             return true;
         }
+        if (args.length > 0 && args[0].equalsIgnoreCase("compact")) {
+            messages.send(player, fr.eternom.eterLib.helper.gui.Compact.toggle(player) ? "menu.compact-on" : "menu.compact-off");
+            return true;
+        }
         if (args.length > 0 && args[0].equalsIgnoreCase("shortcut")) {
             messages.send(player, MenuShortcut.toggle(player) ? "menu.shortcut-on" : "menu.shortcut-off");
             return true;
@@ -141,7 +145,7 @@ public class MenuCommand implements TabExecutor {
         if (args.length == 2 && args[0].equalsIgnoreCase(PLAYER)) {
             return fr.eternom.eterLib.EterLib.get().getOnlineNames().complete(args[1]);
         }
-        return args.length == 1 ? java.util.stream.Stream.concat(pages.keySet().stream().filter(page -> !page.equals(MAIN)), java.util.stream.Stream.of("shortcut"))
+        return args.length == 1 ? java.util.stream.Stream.concat(pages.keySet().stream().filter(page -> !page.equals(MAIN)), java.util.stream.Stream.of("shortcut", "compact"))
                 .filter(page -> page.startsWith(args[0])).sorted().toList()
                 : List.of();
     }

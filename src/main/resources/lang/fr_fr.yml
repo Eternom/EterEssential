@@ -392,6 +392,8 @@ menu:
   player-lore: "<info>Tout le serveur est ici. Raccourci : <accent>accroupi + F</accent> <dark_gray>(/menu shortcut pour le couper)"
   shortcut-on: "<success>Raccourci du menu activé : <accent>accroupi + F</accent>."
   shortcut-off: "<info>Raccourci du menu coupé. <dark_gray>/menu shortcut pour le remettre."
+  compact-on: "<success>Affichage compact : les descriptions des menus sont raccourcies. <dark_gray>/menu compact pour revenir."
+  compact-off: "<info>Affichage complet des menus. <dark_gray>/menu compact pour les raccourcir."
   todo:
     first-steps: "<dark_gray>▸ <success><step> <dark_gray>(/achievements)"
     title: "<accent>À faire maintenant :"
@@ -537,6 +539,12 @@ menu:
     rules:
       name: "<accent>Règles"
       lore: "<info>Les règles du serveur."
+    compact:
+      name: "<accent>Affichage compact"
+      lore: "<info>Des descriptions plus courtes (petits écrans, mobile). Activé d'office sur Bedrock."
+    sponsor:
+      name: "<accent>Parrainage"
+      lore: "<info>Ton parrain, tes filleuls, et ce que ça rapporte."
     player:
       name: "<primary>Joueur"
       lore: "<info>Message, téléportation, payer, ami, signaler..."
