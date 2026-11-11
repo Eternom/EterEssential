@@ -554,6 +554,7 @@ menu:
       name: "<accent>My friends"
       lore: "<info>Who is online, requests, join a friend."
   profile:
+    reputation: "<info>Reputation: <accent><value></accent> <dark_gray>(quests, helping villagers)"
     balance: "<info>Balance: <accent><value>"
     job: "<info>Job: <accent><value>"
     no-job: "<info>Job: <dark_gray>none"

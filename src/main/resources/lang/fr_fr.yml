@@ -579,6 +579,7 @@ menu:
       name: "<accent>Mes amis"
       lore: "<info>Qui est en ligne, les demandes, rejoindre un ami."
   profile:
+    reputation: "<info>Réputation : <accent><value></accent> <dark_gray>(quêtes, aide aux villageois)"
     balance: "<info>Solde : <accent><value>"
     job: "<info>Métier : <accent><value>"
     no-job: "<info>Métier : <dark_gray>aucun"

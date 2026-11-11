@@ -20,7 +20,7 @@ import java.util.UUID;
  * erreur) n'est simplement pas affichée.
  */
 record ProfileInfo(String balance, String job, String clan, boolean clans, int passTier, int streak, int points, int rank,
-                   boolean dailyReady, int questBox, int passRewards, int parcels, int questsReady, String firstStep) {
+                   boolean dailyReady, int questBox, int passRewards, int parcels, int questsReady, String firstStep, double reputation) {
 
     private static final int NONE = -1;
 
@@ -38,7 +38,7 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
         int questBox = enabled("EterQuest") ? Quests.box(player) : 0;
         int passRewards = enabled("EterReward") ? Rewards.passRewards(player) : 0;
         int parcels = enabled("EterReward") ? Rewards.parcels(player) : 0;
-        return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank, dailyReady, questBox, passRewards, parcels, 0, null);
+        return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank, dailyReady, questBox, passRewards, parcels, 0, null, reputation(player));
     }
 
     /** Les lignes à afficher, dans la langue du joueur. Thread principal (le nom du métier et du rang viennent d'EterJob). */
@@ -59,6 +59,9 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
         }
         if (streak != NONE) {
             lines.add(messages.get(viewer, "menu.profile.daily", "value", String.valueOf(streak)));
+        }
+        if (reputation > 0) {
+            lines.add(messages.get(viewer, "menu.profile.reputation", "value", String.valueOf(Math.round(reputation))));
         }
         if (points != NONE) {
             lines.add(rank > 0 ? messages.get(viewer, "menu.profile.success-rank", "value", String.valueOf(points), "rank", String.valueOf(rank))
@@ -94,12 +97,21 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
     ProfileInfo withQuestsReady(Player viewer) {
         int ready = enabled("EterQuest") ? Quests.ready(viewer) : 0;
         String step = enabled("EterSuccess") ? Success.nextStep(viewer) : null;
-        return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank, dailyReady, questBox, passRewards, parcels, ready, step);
+        return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank, dailyReady, questBox, passRewards, parcels, ready, step, reputation);
     }
 
     /** Quelque chose attend le joueur. */
     boolean todo() {
         return dailyReady || questBox > 0 || passRewards > 0 || parcels > 0 || questsReady > 0 || firstStep != null;
+    }
+
+    /** Bloquant : la réputation du réseau (EterLib), 0 si illisible. */
+    private static double reputation(UUID player) {
+        try {
+            return fr.eternom.eterLib.EterLib.get().getReputation().get(player);
+        } catch (RuntimeException | LinkageError e) {
+            return 0;
+        }
     }
 
     private static boolean enabled(String plugin) {
