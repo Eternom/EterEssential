@@ -560,7 +560,7 @@ menu:
     cancel: "<error>Cancel"
     amount:
       title: "<primary>Amount"
-      label: "Amount"
+      label: "Amount (e.g. 150 or 12.50)"
       invalid: "<error>Invalid amount: a positive number (e.g. <accent>150</accent> or <accent>12.50</accent>)."
     text:
       title: "<primary>Message"

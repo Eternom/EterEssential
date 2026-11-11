@@ -98,11 +98,11 @@ menu:
   main:
     progression: { slot: 11, icon: EXPERIENCE_BOTTLE, menu: progression }
     travel: { slot: 12, icon: COMPASS, menu: travel }
-    social: { slot: 13, icon: BELL, menu: social }
+    social: { slot: 13, icon: CAMPFIRE, menu: social }
     clan: { slot: 14, icon: WHITE_BANNER, command: "clan" }
     economy: { slot: 15, icon: GOLD_INGOT, menu: economy }
     kits: { slot: 21, icon: BARREL, command: "kit" }
-    tools: { slot: 23, icon: ANVIL, menu: tools }
+    tools: { slot: 23, icon: BRUSH, menu: tools }
     settings: { slot: 25, icon: COMPARATOR, menu: settings }
     homes: { slot: 29, icon: RED_BED, command: "homes" }
     spawn: { slot: 30, icon: BEACON, command: "spawn" }
@@ -120,16 +120,16 @@ menu:
       pay: { slot: 23, icon: EMERALD, command: "pay {player} {amount}" }
       friend-add: { slot: 24, icon: PLAYER_HEAD, command: "friend add {player}" }
       player-stats: { slot: 30, icon: SPYGLASS, command: "stats {player}" }
-      player-find: { slot: 31, icon: COMPASS, command: "find {player}" }
-      player-ignore: { slot: 32, icon: BARRIER, command: "ignore {player}" }
+      player-find: { slot: 31, icon: MAP, command: "find {player}" }
+      player-ignore: { slot: 32, icon: STRUCTURE_VOID, command: "ignore {player}" }
       player-report: { slot: 33, icon: REDSTONE_TORCH, command: "report {player}" }
     settings:
       chat: { slot: 20, icon: OAK_SIGN, command: "chat" }
       notifications: { slot: 21, icon: BELL, command: "notifications" }
       msgtoggle: { slot: 22, icon: PAPER, command: "msgtoggle" }
-      tptoggle: { slot: 23, icon: ENDER_EYE, command: "tptoggle" }
-      visibility: { slot: 24, icon: SPYGLASS, command: "visibility" }
-      ignore: { slot: 30, icon: BARRIER, command: "ignore" }
+      tptoggle: { slot: 23, icon: CHAIN, command: "tptoggle" }
+      visibility: { slot: 24, icon: ENDER_EYE, command: "visibility" }
+      ignore: { slot: 30, icon: STRUCTURE_VOID, command: "ignore" }
       shortcut: { slot: 32, icon: TRIPWIRE_HOOK, command: "menu shortcut" }
     progression:
       succes: { slot: 20, icon: GOLDEN_APPLE, command: "achievements" }
@@ -138,7 +138,7 @@ menu:
       pass: { slot: 23, icon: NETHER_STAR, command: "pass" }
       daily: { slot: 24, icon: CHEST, command: "daily" }
       job: { slot: 30, icon: IRON_PICKAXE, command: "job" }
-      quests: { slot: 31, icon: WRITABLE_BOOK, command: "quests" }
+      quests: { slot: 31, icon: KNOWLEDGE_BOOK, command: "quests" }
       stats: { slot: 32, icon: SPYGLASS, command: "stats" }
       vote: { slot: 33, icon: SUNFLOWER, command: "vote" }
     travel:
@@ -147,14 +147,14 @@ menu:
       rtp: { slot: 22, icon: ENDER_PEARL, command: "rtp" }
       tpa: { slot: 23, icon: LEAD, command: "tpa {player}" }
       tpahere: { slot: 24, icon: FISHING_ROD, command: "tpahere {player}" }
-      tparequests: { slot: 30, icon: WRITABLE_BOOK, command: "tpa list" }
-      tptoggle: { slot: 31, icon: ENDER_EYE, command: "tptoggle" }
-      tpaclan: { slot: 32, icon: WHITE_BANNER, command: "tpaclan" }
+      tparequests: { slot: 30, icon: RECOVERY_COMPASS, command: "tpa list" }
+      tptoggle: { slot: 31, icon: CHAIN, command: "tptoggle" }
+      tpaclan: { slot: 32, icon: ORANGE_BANNER, command: "tpaclan" }
       spawn: { slot: 33, icon: BEACON, command: "spawn" }
       lobby: { slot: 34, icon: LODESTONE, command: "lobby", hide-on-lobby: true }
     social:
       chat: { slot: 20, icon: OAK_SIGN, command: "chat" }
-      ignore: { slot: 21, icon: BARRIER, command: "ignore" }
+      ignore: { slot: 21, icon: STRUCTURE_VOID, command: "ignore" }
       notifications: { slot: 22, icon: BELL, command: "notifications" }
       msgtoggle: { slot: 23, icon: PAPER, command: "msgtoggle" }
       report: { slot: 24, icon: REDSTONE_TORCH, command: "report" }

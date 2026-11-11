@@ -585,7 +585,7 @@ menu:
     cancel: "<error>Annuler"
     amount:
       title: "<primary>Montant"
-      label: "Montant"
+      label: "Montant (ex : 150 ou 12,50)"
       invalid: "<error>Montant invalide : un nombre positif (ex : <accent>150</accent> ou <accent>12.50</accent>)."
     text:
       title: "<primary>Message"
