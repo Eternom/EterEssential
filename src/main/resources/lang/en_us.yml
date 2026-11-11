@@ -357,7 +357,9 @@ menu:
   title: "<primary>Menu"
   sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
   player: "<accent><player>"
-  player-lore: "<info>The whole server is here. Shortcut: <accent>sneak + F</accent>."
+  player-lore: "<info>The whole server is here. Shortcut: <accent>sneak + F</accent> <dark_gray>(/menu shortcut to turn it off)"
+  shortcut-on: "<success>Menu shortcut on: <accent>sneak + F</accent>."
+  shortcut-off: "<info>Menu shortcut off. <dark_gray>/menu shortcut to turn it back on."
   open: "<accent>Click <dark_gray>· <info>open <dark_gray>(<command>)"
   open-sub: "<accent>Click <dark_gray>· <info>open"
   close: "<error>Close"
@@ -482,6 +484,12 @@ menu:
     appel:
       name: "<accent>My appeals"
       lore: "<info>Contest a sanction."
+    settings:
+      name: "<primary>Settings"
+      lore: "<info>Chat, notifications, private messages, teleport, visibility, shortcut."
+    shortcut:
+      name: "<accent>Menu shortcut"
+      lore: "<info>Turn sneak + F off or on."
     job:
       name: "<accent>My job"
       lore: "<info>Daily quests, guild, perks, leaderboard."

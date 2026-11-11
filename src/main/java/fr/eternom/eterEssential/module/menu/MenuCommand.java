@@ -102,6 +102,10 @@ public class MenuCommand implements TabExecutor {
             messages.send(sender, "command.players-only");
             return true;
         }
+        if (args.length > 0 && args[0].equalsIgnoreCase("shortcut")) {
+            messages.send(player, MenuShortcut.toggle(player) ? "menu.shortcut-on" : "menu.shortcut-off");
+            return true;
+        }
         open(player, args.length > 0 ? args[0] : MAIN);
         return true;
     }
@@ -114,7 +118,8 @@ public class MenuCommand implements TabExecutor {
     /** Les sous-menus. */
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        return args.length == 1 ? pages.keySet().stream().filter(page -> !page.equals(MAIN) && page.startsWith(args[0])).sorted().toList()
+        return args.length == 1 ? java.util.stream.Stream.concat(pages.keySet().stream().filter(page -> !page.equals(MAIN)), java.util.stream.Stream.of("shortcut"))
+                .filter(page -> page.startsWith(args[0])).sorted().toList()
                 : List.of();
     }
 }

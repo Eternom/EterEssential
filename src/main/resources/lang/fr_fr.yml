@@ -382,7 +382,9 @@ menu:
   title: "<primary>Menu"
   sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
   player: "<accent><player>"
-  player-lore: "<info>Tout le serveur est ici. Raccourci : <accent>accroupi + F</accent>."
+  player-lore: "<info>Tout le serveur est ici. Raccourci : <accent>accroupi + F</accent> <dark_gray>(/menu shortcut pour le couper)"
+  shortcut-on: "<success>Raccourci du menu activé : <accent>accroupi + F</accent>."
+  shortcut-off: "<info>Raccourci du menu coupé. <dark_gray>/menu shortcut pour le remettre."
   open: "<accent>Clic <dark_gray>· <info>ouvrir <dark_gray>(<command>)"
   open-sub: "<accent>Clic <dark_gray>· <info>ouvrir"
   close: "<error>Fermer"
@@ -507,6 +509,12 @@ menu:
     appel:
       name: "<accent>Mes appels"
       lore: "<info>Contester une sanction."
+    settings:
+      name: "<primary>Paramètres"
+      lore: "<info>Chat, notifications, messages privés, téléportation, visibilité, raccourci."
+    shortcut:
+      name: "<accent>Raccourci du menu"
+      lore: "<info>Couper ou remettre accroupi + F."
     job:
       name: "<accent>Mon métier"
       lore: "<info>Quêtes du jour, guilde, avantages, classement."
