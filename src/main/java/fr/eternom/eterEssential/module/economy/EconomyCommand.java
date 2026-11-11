@@ -1,6 +1,9 @@
 package fr.eternom.eterEssential.module.economy;
 
 import fr.eternom.eterLib.EterLib;
+import fr.eternom.eterLib.helper.gui.Dialogs;
+import io.papermc.paper.registry.data.dialog.DialogBase;
+import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import fr.eternom.eterLib.helper.cache.NetworkBus;
 import fr.eternom.eterEssential.module.network.PlayerLookup;
 import fr.eternom.eterLib.helper.economy.Money;
@@ -107,6 +110,24 @@ public class EconomyCommand implements TabExecutor {
                 messages.send(player, "pay.self");
                 return;
             }
+            // Gros montant (pay.confirm-above, 0 : jamais) : confirmation commune avant d'envoyer (faute de frappe, arnaque)
+            double confirmAbove = plugin.getConfig().getDouble("pay.confirm-above", 5000);
+            if (confirmAbove > 0 && amount >= confirmAbove) {
+                String shown = economy.format(amount);
+                DialogBase dialog = DialogBase.builder(messages.get(player, "pay.confirm.title"))
+                        .body(List.of(DialogBody.plainMessage(messages.get(player, "pay.confirm.body", "player", target.name(),
+                                "amount", shown)))).build();
+                Dialogs.show(plugin, player, dialog, messages.get(player, "pay.confirm.button", "amount", shown),
+                        messages.get(player, "dialog.cancel"), response -> send(player, economy, target, amount), () -> { });
+                return;
+            }
+            send(player, economy, target, amount);
+        });
+    }
+
+    /** Envoie amount à target (après les vérifications de pay, et la confirmation s'il en fallait une). */
+    private void send(Player player, EconomyApi economy, NetworkPlayer target, double amount) {
+        {
             String formatted = economy.format(amount);
             UUID uuid = player.getUniqueId();
             long[] left = {0};
@@ -125,7 +146,7 @@ public class EconomyCommand implements TabExecutor {
                     case FAILED -> messages.send(player, "pay.failed");
                 }
             }, () -> messages.send(player, "error.generic"));
-        });
+        }
     }
 
     /** Bloquant. Retire puis verse ; si le versement échoue, l'expéditeur est remboursé. */

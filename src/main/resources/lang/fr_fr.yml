@@ -286,6 +286,10 @@ money:
 
 pay:
   usage: '<error>Utilisation : <accent>/pay \<joueur> \<montant>'
+  confirm:
+    title: "<primary>Envoyer de l'argent"
+    body: "<info>Envoyer <accent><amount></accent> à <accent><player></accent> ? Un envoi ne peut pas être annulé."
+    button: "<success>Envoyer <amount>"
   too-new: "<error>Tu pourras envoyer de l'argent après <accent><hours> h</accent> de jeu : encore <accent><time></accent>."
   invalid-amount: "<error>Montant invalide : <accent><amount></accent>."
   self: "<error>Tu ne peux pas te payer toi-même."

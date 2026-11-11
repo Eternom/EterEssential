@@ -43,6 +43,8 @@ tpa:
 # compte de récolter récompenses du jour, kits et votes pour tout envoyer au compte principal. 0 : pas de limite.
 pay:
   min-playtime-hours: 5
+  # Confirmation (fenêtre) avant d'envoyer ce montant ou plus avec /pay ; 0 : jamais.
+  confirm-above: 5000
 
 # /vote : la page de vote du site (Azuriom, plugin Vote). Seule cette page compte les votes et donne les récompenses :
 # ne pas mettre les liens des sites de vote eux-mêmes. Vide : /vote prévient que le vote n'est pas configuré.

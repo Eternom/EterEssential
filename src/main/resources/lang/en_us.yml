@@ -261,6 +261,10 @@ money:
 
 pay:
   usage: '<error>Usage: <accent>/pay \<player> \<amount>'
+  confirm:
+    title: "<primary>Send money"
+    body: "<info>Send <accent><amount></accent> to <accent><player></accent>? A payment cannot be undone."
+    button: "<success>Send <amount>"
   too-new: "<error>You can send money after <accent><hours> h</accent> of play: <accent><time></accent> to go."
   invalid-amount: "<error>Invalid amount: <accent><amount></accent>."
   self: "<error>You can't pay yourself."
