@@ -105,7 +105,7 @@ tpa:
     wants: "<info>Veut venir vers toi"
     wants-here: "<info>Te demande de venir vers lui"
     time: "<dark_gray>▸ <info>Encore <accent><seconds> s</accent> <dark_gray>· <server>"
-    click: "<dark_gray>▸ <info>Clic gauche : accepter · droit : refuser"
+    click: "<accent>Clic gauche <dark_gray>· <info>accepter <dark_gray>· <accent>clic droit <dark_gray>· <info>refuser"
   log:
     usage: '<error>Utilisation : <accent>/tpalog \<joueur>'
     no-permission: "<error>Réservé au staff."

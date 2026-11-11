@@ -105,7 +105,7 @@ tpa:
     wants: "<info>Wants to come to you"
     wants-here: "<info>Asks you to come to them"
     time: "<dark_gray>▸ <info><accent><seconds> s</accent> left <dark_gray>· <server>"
-    click: "<dark_gray>▸ <info>Left click: accept · right: deny"
+    click: "<accent>Left click <dark_gray>· <info>accept <dark_gray>· <accent>right click <dark_gray>· <info>deny"
   log:
     usage: '<error>Usage: <accent>/tpalog \<player>'
     no-permission: "<error>Staff only."
