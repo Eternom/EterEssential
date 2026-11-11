@@ -385,6 +385,11 @@ menu:
   player-lore: "<info>Tout le serveur est ici. Raccourci : <accent>accroupi + F</accent> <dark_gray>(/menu shortcut pour le couper)"
   shortcut-on: "<success>Raccourci du menu activé : <accent>accroupi + F</accent>."
   shortcut-off: "<info>Raccourci du menu coupé. <dark_gray>/menu shortcut pour le remettre."
+  todo:
+    title: "<accent>À faire maintenant :"
+    daily: "<dark_gray>▸ <success>Ta récompense du jour t'attend <dark_gray>(/daily)"
+    quest-box: "<dark_gray>▸ <success><count> objet(s) dans ta boîte des quêtes <dark_gray>(/quests box)"
+    badge: "<success>✔ Quelque chose t'attend ici"
   open: "<accent>Clic <dark_gray>· <info>ouvrir <dark_gray>(<command>)"
   open-sub: "<accent>Clic <dark_gray>· <info>ouvrir"
   close: "<error>Fermer"

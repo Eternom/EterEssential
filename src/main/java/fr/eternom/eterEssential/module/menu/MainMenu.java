@@ -62,6 +62,7 @@ public class MainMenu implements Menu {
             Tasks.async(menus.plugin(), viewer, () -> ProfileInfo.read(viewer.getUniqueId()), info -> {
                 if (viewer.getOpenInventory().getTopInventory().getHolder() == this) {
                     inventory.setItem(HEAD, profile(viewer, info.lines(messages, viewer)));
+                    highlight(viewer, info);
                 }
             }, () -> {
             });
@@ -80,6 +81,31 @@ public class MainMenu implements Menu {
         }
         inventory.setItem(BACK, main ? Items.item(Material.BARRIER, messages.get(viewer, "menu.close"), List.of())
                 : Items.item(Material.OAK_DOOR, messages.get(viewer, "menu.back"), List.of()));
+    }
+
+    /**
+     * Pastilles : les boutons de ce qui attend le joueur brillent, avec une ligne en tête de lore (récompense du jour,
+     * boîte des quêtes ; Progression, qui les contient).
+     */
+    private void highlight(Player viewer, ProfileInfo info) {
+        for (Map.Entry<Integer, Button> entry : shown.entrySet()) {
+            Button button = entry.getValue();
+            String command = button.command() == null ? "" : button.command().split(" ")[0];
+            boolean progression = "progression".equals(button.submenu());
+            boolean waiting = info.dailyReady() && (command.equals("daily") || progression)
+                    || info.questBox() > 0 && (command.equals("quests") || progression);
+            ItemStack item = inventory.getItem(entry.getKey());
+            if (!waiting || item == null) {
+                continue;
+            }
+            item.editMeta(meta -> {
+                meta.setEnchantmentGlintOverride(true);
+                List<Component> lore = meta.lore() == null ? new ArrayList<>() : new ArrayList<>(meta.lore());
+                lore.add(0, messages.get(viewer, "menu.todo.badge"));
+                meta.lore(lore);
+            });
+            inventory.setItem(entry.getKey(), item);
+        }
     }
 
     /** La tête du joueur : son nom, puis ses infos (lues en tâche de fond). */

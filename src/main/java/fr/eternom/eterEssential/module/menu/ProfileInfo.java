@@ -19,7 +19,8 @@ import java.util.UUID;
  * classe, chargée seulement s'il tourne ici (sinon NoClassDefFoundError). Une info absente (plugin pas sur ce serveur,
  * erreur) n'est simplement pas affichée.
  */
-record ProfileInfo(String balance, String job, String clan, boolean clans, int passTier, int streak, int points, int rank) {
+record ProfileInfo(String balance, String job, String clan, boolean clans, int passTier, int streak, int points, int rank,
+                   boolean dailyReady, int questBox) {
 
     private static final int NONE = -1;
 
@@ -33,7 +34,9 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
         int streak = enabled("EterReward") ? Rewards.streak(player) : NONE;
         int points = enabled("EterSuccess") ? Success.points(player) : NONE;
         int rank = points > 0 ? Success.rank(player) : NONE;
-        return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank);
+        boolean dailyReady = enabled("EterReward") && Rewards.dailyReady(player);
+        int questBox = enabled("EterQuest") ? Quests.box(player) : 0;
+        return new ProfileInfo(balance, job, clan, clans, passTier, streak, points, rank, dailyReady, questBox);
     }
 
     /** Les lignes à afficher, dans la langue du joueur. Thread principal (le nom du métier et du rang viennent d'EterJob). */
@@ -59,7 +62,23 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
             lines.add(rank > 0 ? messages.get(viewer, "menu.profile.success-rank", "value", String.valueOf(points), "rank", String.valueOf(rank))
                     : messages.get(viewer, "menu.profile.success", "value", String.valueOf(points)));
         }
+        // À faire maintenant : ce qui attend le joueur (les boutons concernés brillent, MainMenu)
+        if (todo()) {
+            lines.add(Component.empty());
+            lines.add(messages.get(viewer, "menu.todo.title"));
+            if (dailyReady) {
+                lines.add(messages.get(viewer, "menu.todo.daily"));
+            }
+            if (questBox > 0) {
+                lines.add(messages.get(viewer, "menu.todo.quest-box", "count", String.valueOf(questBox)));
+            }
+        }
         return lines;
+    }
+
+    /** Quelque chose attend le joueur. */
+    boolean todo() {
+        return dailyReady || questBox > 0;
     }
 
     private static boolean enabled(String plugin) {
@@ -93,6 +112,16 @@ record ProfileInfo(String balance, String job, String clan, boolean clans, int p
 
         static int streak(UUID player) {
             return RewardApi.get().map(api -> api.streak(player)).orElse(NONE);
+        }
+
+        static boolean dailyReady(UUID player) {
+            return RewardApi.get().map(api -> !api.claimedToday(player)).orElse(false);
+        }
+    }
+
+    private static final class Quests {
+        static int box(UUID player) {
+            return fr.eternom.eterQuest.api.QuestApi.get().map(api -> api.boxCount(player)).orElse(0);
         }
     }
 
