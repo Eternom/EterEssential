@@ -383,6 +383,7 @@ vote:
   unset: "<error>Le vote n'est pas encore configuré sur ce serveur."
 
 menu:
+  page-of: "<dark_gray>Page <page>/<pages>"
   title: "<primary>Menu"
   sub-title: "<primary>Menu <dark_gray>·</dark_gray> <menu>"
   player-title: "<primary>Joueur <dark_gray>·</dark_gray> <player>"

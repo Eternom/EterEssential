@@ -1,5 +1,6 @@
 package fr.eternom.eterEssential.module.menu;
 
+import fr.eternom.eterLib.helper.gui.BackButton;
 import fr.eternom.eterLib.helper.gui.Frame;
 import fr.eternom.eterLib.helper.gui.Items;
 import fr.eternom.eterLib.helper.gui.Menu;
@@ -49,6 +50,8 @@ public class MainMenu implements Menu {
     private final Map<Integer, Button> shown = new HashMap<>();
     /** Joueur visé (/menu player &lt;pseudo&gt;) : remplace {player} dans les commandes ; null : choisi au clic. */
     private final String target;
+    /** Retour d'une page « joueur » : vers le menu d'où il vient (liste d'amis, profil du hub...), à la même page. */
+    private final BackButton back = fr.eternom.eterLib.EterLib.get().backButton("");
 
     /** page : "main" pour le menu central, sinon l'identifiant du sous-menu. */
     MainMenu(MenuCommand menus, Player viewer, String page) {
@@ -95,6 +98,7 @@ public class MainMenu implements Menu {
             shown.put(placed.getKey(), button);
         }
         inventory.setItem(BACK, main ? Items.item(Material.BARRIER, messages.get(viewer, "menu.close"), List.of())
+                : target != null ? back.item(viewer)
                 : Items.item(Material.OAK_DOOR, messages.get(viewer, "menu.back"), List.of()));
     }
 
@@ -188,6 +192,10 @@ public class MainMenu implements Menu {
     @Override
     public void onClick(Player player, int slot, ClickType click) {
         if (slot == BACK) {
+            if (target != null) {
+                back.click(player);
+                return;
+            }
             Sounds.click(player);
             if (page.equals(MenuCommand.MAIN)) {
                 player.closeInventory();

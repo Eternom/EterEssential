@@ -24,9 +24,9 @@ class PlayerPicker implements Menu {
 
     private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25,
             28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43};
-    private static final int PREVIOUS = 48;
+    private static final int PREVIOUS = 45;
     private static final int BACK = 49;
-    private static final int NEXT = 50;
+    private static final int NEXT = 53;
 
     private final MenuCommand menus;
     private final String command;
@@ -60,10 +60,10 @@ class PlayerPicker implements Menu {
             inventory.setItem(22, Items.item(Material.BARRIER, messages.get(viewer, "menu.picker.nobody"), List.of()));
         }
         if (page > 0) {
-            inventory.setItem(PREVIOUS, Items.item(Material.ARROW, messages.get(viewer, "menu.picker.previous"), List.of()));
+            inventory.setItem(PREVIOUS, Items.item(Material.ARROW, messages.get(viewer, "menu.picker.previous"), List.of(messages.get(viewer, "menu.page-of", "page", String.valueOf(page + 1), "pages", String.valueOf(Math.max(1, (online.size() + SLOTS.length - 1) / SLOTS.length))))));
         }
         if (hasNext) {
-            inventory.setItem(NEXT, Items.item(Material.ARROW, messages.get(viewer, "menu.picker.next"), List.of()));
+            inventory.setItem(NEXT, Items.item(Material.ARROW, messages.get(viewer, "menu.picker.next"), List.of(messages.get(viewer, "menu.page-of", "page", String.valueOf(page + 1), "pages", String.valueOf(Math.max(1, (online.size() + SLOTS.length - 1) / SLOTS.length))))));
         }
         inventory.setItem(BACK, Items.item(Material.OAK_DOOR, messages.get(viewer, "menu.back"), List.of()));
     }
