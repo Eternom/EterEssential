@@ -131,6 +131,8 @@ menu:
       visibility: { slot: 24, icon: ENDER_EYE, command: "visibility" }
       ignore: { slot: 30, icon: STRUCTURE_VOID, command: "ignore" }
       shortcut: { slot: 32, icon: TRIPWIRE_HOOK, command: "menu shortcut" }
+      welcome: { slot: 31, icon: ENCHANTED_BOOK, command: "welcome" }
+      rules: { slot: 33, icon: WRITTEN_BOOK, command: "rules" }
     progression:
       succes: { slot: 20, icon: GOLDEN_APPLE, command: "achievements" }
       defis: { slot: 21, icon: TARGET, command: "challenges" }

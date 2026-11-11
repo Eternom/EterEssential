@@ -38,7 +38,7 @@ public class Newcomers implements Listener {
     /** Après l'arrivée : EterLib a noté la première connexion, et les messages d'accueil sont passés. */
     private static final long DELAY_TICKS = 3 * 20;
     private static final List<String> GUIDE = List.of("newcomer.guide-intro", "newcomer.guide-menu", "newcomer.guide-steps",
-            "newcomer.guide-job", "newcomer.guide-wiki");
+            "newcomer.guide-job", "newcomer.guide-books", "newcomer.guide-wiki");
 
     private final JavaPlugin plugin;
     private final Database database;

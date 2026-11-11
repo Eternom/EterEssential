@@ -107,6 +107,16 @@ commands:
     permission: eteressential.furnace
 
   # Informations
+  welcome:
+    description: Le guide du serveur (livre).
+    usage: /welcome
+    aliases: [guide]
+    permission: eteressential.books
+  rules:
+    description: Les règles du serveur (livre) ; /rules accept pour les accepter.
+    usage: /rules [accept]
+    aliases: [regles]
+    permission: eteressential.books
   where:
     description: Où tu es : serveur, monde, coordonnées, biome, terrain.
     usage: /where
@@ -230,6 +240,8 @@ permissions:
   eteressential.list:
     default: op
   eteressential.where:
+    default: true
+  eteressential.books:
     default: true
   eteressential.find:
     default: op

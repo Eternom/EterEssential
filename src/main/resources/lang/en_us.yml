@@ -139,6 +139,7 @@ newcomer:
   guide-menu: "<dark_gray>▸ <info>The <accent>menu</accent>: sneak + <accent>F</accent>, or <accent><click:run_command:'/menu'>/menu</click></accent>"
   guide-steps: "<dark_gray>▸ <info>The <accent><click:run_command:'/achievements'>First steps</click></accent> <info>guide you step by step, and pay you"
   guide-job: "<dark_gray>▸ <info>Pick a <accent>job</accent> from the lobby NPCs: it's the server's real income"
+  guide-books: "<dark_gray>▸ <info>The guide: <accent><click:run_command:'/welcome'>/welcome</click></accent>, the rules: <accent><click:run_command:'/rules'>/rules</click></accent>"
   guide-wiki: "<dark_gray>▸ <info>A question? The <accent><click:open_url:'https://craft.eternom.fr/wiki'>wiki</click></accent>, or ask in the chat"
   # To everyone: <player> = the newcomer
   announce: "<success>✦ <accent><player></accent> <info>joins Eternom for the first time. Say hi!"
@@ -505,6 +506,12 @@ menu:
     shortcut:
       name: "<accent>Menu shortcut"
       lore: "<info>Turn sneak + F off or on."
+    welcome:
+      name: "<accent>Server guide"
+      lore: "<info>The welcome book: menu, jobs, resource world, clans."
+    rules:
+      name: "<accent>Rules"
+      lore: "<info>The server rules."
     player:
       name: "<primary>Player"
       lore: "<info>Message, teleport, pay, friend, report..."
@@ -581,3 +588,24 @@ where:
     nether: "the Nether"
     the_end: "the End"
     custom: "a separate world"
+
+# /welcome and /rules books: one key per page (page-1, page-2...), up to the first missing one. Dark colors: a book
+# page is light. <newline>: line break.
+welcome:
+  title: "Welcome"
+  page-1: "<#7A3E00><b>Welcome to Eternom</b></#7A3E00><newline><newline><black>The whole server is in the menu: <#7A3E00>sneak + F</#7A3E00>, or <#7A3E00>/menu</#7A3E00>.<newline><newline><dark_gray>Read this guide again with /welcome, or in the menu Settings."
+  page-2: "<#7A3E00><b>First steps</b></#7A3E00><newline><newline><black>Nine steps guide you: job, home, daily reward, quest... Each one pays you.<newline><newline><dark_gray>The next one is in the menu's « To do now »."
+  page-3: "<#7A3E00><b>Jobs</b></#7A3E00><newline><newline><black>Your real income. Pick one from the guild master in the lobby, or with <#7A3E00>/job</#7A3E00>.<newline><newline>Every day, quests to deliver; your level rises and unlocks perks."
+  page-4: "<#7A3E00><b>Resource world</b></#7A3E00><newline><newline><black>A world to mine, rebuilt regularly: don't build there.<newline><newline>No PvP, and you keep your inventory when you die. <#7A3E00>/resource</#7A3E00>"
+  page-5: "<#7A3E00><b>Home and clan</b></#7A3E00><newline><newline><black>Set your home: <#7A3E00>/sethome</#7A3E00>, find them: <#7A3E00>/homes</#7A3E00>.<newline><newline>A clan protects its land, shares a bank and climbs the leaderboard: <#7A3E00>/clan</#7A3E00>."
+  page-6: "<#7A3E00><b>Monsters</b></#7A3E00><newline><newline><black>Monsters have a rank, from Ordinary to Scourge: the higher it is, the harder they hit and the more they drop.<newline><newline>As a beginner, you only meet the milder ones."
+  page-7: "<#7A3E00><b>Need help?</b></#7A3E00><newline><newline><black><#7A3E00>/where</#7A3E00>: where you are.<newline><#7A3E00>/report</#7A3E00>: tell the staff.<newline>The <#7A3E00><click:open_url:'https://craft.eternom.fr/wiki'>wiki</click></#7A3E00>, or ask in chat.<newline><newline>The rules: <#7A3E00>/rules</#7A3E00>"
+
+rules:
+  title: "Rules"
+  page-1: "<#7A3E00><b>Rules</b></#7A3E00><newline><newline><black>They protect everyone's fun. The staff sanctions by severity: warning, mute, kick, ban.<newline><newline>Appeal a sanction with <#7A3E00>/appeal</#7A3E00>."
+  page-2: "<#7A3E00><b>Chat</b></#7A3E00><newline><newline><black>• No insults or threats.<newline>• No spam, flood or all-caps messages.<newline>• No advertising for another server.<newline>• No shocking content (name, skin and builds included)."
+  page-3: "<#7A3E00><b>Gameplay</b></#7A3E00><newline><newline><black>• No cheating: modified client, x-ray (detected), macros.<newline>• Found a bug? Report it, don't exploit it.<newline>• No griefing or stealing from others.<newline>• No selling for real money."
+  page-4: "<#7A3E00><b>Sanctions</b></#7A3E00><newline><newline><black>• Don't dodge a sanction (another account...).<newline>• Frozen by the staff: stay connected.<newline>• Trouble with a player? <#7A3E00>/report</#7A3E00> rather than answering back.<newline><newline><#7A3E00>/rules accept</#7A3E00>: I accept."
+  remind: "<info>Read the server rules: <accent><click:run_command:'/rules'>[Read the rules]</click></accent> <success><click:run_command:'/rules accept'>[I accept]</click></success>"
+  accepted: "<success>Thanks, and have fun on Eternom!"

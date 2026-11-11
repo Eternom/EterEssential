@@ -139,6 +139,7 @@ newcomer:
   guide-menu: "<dark_gray>▸ <info>Le <accent>menu</accent> : accroupis-toi + <accent>F</accent>, ou <accent><click:run_command:'/menu'>/menu</click></accent>"
   guide-steps: "<dark_gray>▸ <info>Les <accent><click:run_command:'/achievements'>Premiers pas</click></accent> <info>te guident étape par étape, et rapportent de l'argent"
   guide-job: "<dark_gray>▸ <info>Choisis un <accent>métier</accent> auprès des PNJ du lobby : c'est le vrai revenu du serveur"
+  guide-books: "<dark_gray>▸ <info>Le guide : <accent><click:run_command:'/welcome'>/welcome</click></accent>, les règles : <accent><click:run_command:'/rules'>/rules</click></accent>"
   guide-wiki: "<dark_gray>▸ <info>Une question ? Le <accent><click:open_url:'https://craft.eternom.fr/wiki'>wiki</click></accent>, ou demande dans le chat"
   # À tous : <player> = le nouveau
   announce: "<success>✦ <accent><player></accent> <info>rejoint Eternom pour la première fois. Souhaitez-lui la bienvenue !"
@@ -530,6 +531,12 @@ menu:
     shortcut:
       name: "<accent>Raccourci du menu"
       lore: "<info>Couper ou remettre accroupi + F."
+    welcome:
+      name: "<accent>Guide du serveur"
+      lore: "<info>Le livre de bienvenue : menu, métiers, monde ressource, clans."
+    rules:
+      name: "<accent>Règles"
+      lore: "<info>Les règles du serveur."
     player:
       name: "<primary>Joueur"
       lore: "<info>Message, téléportation, payer, ami, signaler..."
@@ -606,3 +613,24 @@ where:
     nether: "le Nether"
     the_end: "l'End"
     custom: "un monde à part"
+
+# Livres /welcome et /rules : une clé par page (page-1, page-2...), jusqu'à la première absente. Couleurs foncées : le
+# fond d'un livre est clair. <newline> : retour à la ligne.
+welcome:
+  title: "Bienvenue"
+  page-1: "<#7A3E00><b>Bienvenue sur Eternom</b></#7A3E00><newline><newline><black>Tout le serveur est dans le menu : <#7A3E00>accroupi + F</#7A3E00>, ou <#7A3E00>/menu</#7A3E00>.<newline><newline><dark_gray>Ce guide se relit avec /welcome, ou dans Paramètres du menu."
+  page-2: "<#7A3E00><b>Premiers pas</b></#7A3E00><newline><newline><black>Neuf étapes te guident : métier, maison, récompense du jour, quête... Chacune rapporte de l'argent.<newline><newline><dark_gray>La prochaine est dans « À faire maintenant » du menu."
+  page-3: "<#7A3E00><b>Métiers</b></#7A3E00><newline><newline><black>Ton vrai revenu. Choisis-en un auprès du chef de guilde du lobby, ou avec <#7A3E00>/job</#7A3E00>.<newline><newline>Chaque jour, des quêtes à livrer ; ton niveau monte et débloque des avantages."
+  page-4: "<#7A3E00><b>Monde ressource</b></#7A3E00><newline><newline><black>Un monde à miner, recréé régulièrement : n'y construis pas.<newline><newline>Pas de PvP, et tu gardes ton inventaire en mourant. <#7A3E00>/resource</#7A3E00>"
+  page-5: "<#7A3E00><b>Maison et clan</b></#7A3E00><newline><newline><black>Pose ta maison : <#7A3E00>/sethome</#7A3E00>, retrouve-les : <#7A3E00>/homes</#7A3E00>.<newline><newline>Un clan protège ses terres, partage une banque et grimpe au classement : <#7A3E00>/clan</#7A3E00>."
+  page-6: "<#7A3E00><b>Monstres</b></#7A3E00><newline><newline><black>Les monstres ont un rang, d'Ordinaire à Fléau : plus il est haut, plus ils frappent fort et rapportent.<newline><newline>Débutant, tu ne croises que les plus modérés."
+  page-7: "<#7A3E00><b>Besoin d'aide ?</b></#7A3E00><newline><newline><black><#7A3E00>/where</#7A3E00> : où tu es.<newline><#7A3E00>/report</#7A3E00> : prévenir le staff.<newline>Le <#7A3E00><click:open_url:'https://craft.eternom.fr/wiki'>wiki</click></#7A3E00>, ou demande dans le chat.<newline><newline>Les règles : <#7A3E00>/rules</#7A3E00>"
+
+rules:
+  title: "Règles"
+  page-1: "<#7A3E00><b>Règles</b></#7A3E00><newline><newline><black>Elles protègent le plaisir de tous. Le staff sanctionne selon la gravité : avertissement, mute, exclusion, bannissement.<newline><newline>Une sanction se conteste avec <#7A3E00>/appeal</#7A3E00>."
+  page-2: "<#7A3E00><b>Le chat</b></#7A3E00><newline><newline><black>• Pas d'insultes ni de menaces.<newline>• Pas de spam, de flood, ni de messages en majuscules.<newline>• Pas de publicité pour un autre serveur.<newline>• Pas de contenu choquant (pseudo, skin et constructions compris)."
+  page-3: "<#7A3E00><b>Le jeu</b></#7A3E00><newline><newline><black>• Pas de triche : client modifié, x-ray (repéré), macros.<newline>• Un bug ? Signale-le, ne l'exploite pas.<newline>• Pas de grief ni de vol chez les autres.<newline>• Pas de vente contre de l'argent réel."
+  page-4: "<#7A3E00><b>Sanctions</b></#7A3E00><newline><newline><black>• Ne contourne pas une sanction (autre compte...).<newline>• Gelé par le staff : reste connecté.<newline>• Un souci avec un joueur ? <#7A3E00>/report</#7A3E00> plutôt que de répondre.<newline><newline><#7A3E00>/rules accept</#7A3E00> : j'accepte."
+  remind: "<info>Lis les règles du serveur : <accent><click:run_command:'/rules'>[Lire les règles]</click></accent> <success><click:run_command:'/rules accept'>[J'accepte]</click></success>"
+  accepted: "<success>Merci, et bon jeu sur Eternom !"
