@@ -91,6 +91,8 @@ menu:
   # Page principale, rien que ce que tout le monde a (permissions par défaut) : les 5 catégories (2e ligne), puis 5
   # raccourcis vers ce qui sert le plus souvent (4e ligne). Au centre, les kits et Outils, qui n'apparaît qu'aux joueurs qui ont au
   # moins un outil (grade, pass). Le reste est dans les sous-menus : la page reste facile à lire.
+  # Un bouton ajouté ici dans une nouvelle version apparaît aussi sur un serveur qui garde son ancien fichier ; pour en
+  # cacher un : slot: -1.
   main:
     progression: { slot: 11, icon: EXPERIENCE_BOTTLE, menu: progression }
     travel: { slot: 12, icon: COMPASS, menu: travel }
@@ -112,6 +114,10 @@ menu:
       classement: { slot: 22, icon: GOLDEN_HELMET, command: "ranking" }
       pass: { slot: 23, icon: NETHER_STAR, command: "pass" }
       daily: { slot: 24, icon: CHEST, command: "daily" }
+      job: { slot: 30, icon: IRON_PICKAXE, command: "job" }
+      quests: { slot: 31, icon: WRITABLE_BOOK, command: "quests" }
+      stats: { slot: 32, icon: SPYGLASS, command: "stats" }
+      vote: { slot: 33, icon: SUNFLOWER, command: "vote" }
     travel:
       homes: { slot: 20, icon: RED_BED, command: "homes" }
       ressource: { slot: 21, icon: GRASS_BLOCK, command: "resource" }
@@ -130,10 +136,11 @@ menu:
       msg: { slot: 30, icon: WRITABLE_BOOK, command: "msg {player} {text}" }
       visibility: { slot: 31, icon: ENDER_EYE, command: "visibility" }
       appel: { slot: 32, icon: BOOK, command: "appeal" }
+      friends: { slot: 33, icon: PLAYER_HEAD, command: "friend" }
     economy:
       money: { slot: 20, icon: GOLD_NUGGET, command: "money" }
       pay: { slot: 22, icon: EMERALD, command: "pay {player} {amount}" }
-      richesse: { slot: 24, icon: GOLD_BLOCK, command: "ranking" }
+      richesse: { slot: 24, icon: GOLD_BLOCK, command: "ranking wealth" }
     tools:
       craft: { slot: 20, icon: CRAFTING_TABLE, command: "craft" }
       anvil: { slot: 21, icon: ANVIL, command: "anvil" }

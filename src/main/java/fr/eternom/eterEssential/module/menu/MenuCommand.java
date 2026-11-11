@@ -54,11 +54,26 @@ public class MenuCommand implements TabExecutor {
         pages.put(MAIN, buttons(plugin, plugin.getConfig().getConfigurationSection("menu.main"), "menu.main"));
         ConfigurationSection submenus = plugin.getConfig().getConfigurationSection("menu.submenus");
         if (submenus != null) {
-            for (String id : submenus.getKeys(false)) {
-                pages.put(id, buttons(plugin, submenus.getConfigurationSection(id), "menu.submenus." + id));
+            for (String id : keys(plugin, submenus, "menu.submenus")) {
+                pages.put(id, buttons(plugin, plugin.getConfig().getConfigurationSection("menu.submenus." + id), "menu.submenus." + id));
             }
         }
         return Map.copyOf(pages);
+    }
+
+    /**
+     * Les clés de la config du serveur, plus celles ajoutées depuis dans la config par défaut du plugin : un nouveau bouton
+     * apparaît aussi sur un serveur qui garde son ancien config.yml (pour en cacher un : slot: -1). Les valeurs absentes
+     * du fichier sont lues dans les défauts par Bukkit.
+     */
+    private static java.util.Set<String> keys(JavaPlugin plugin, ConfigurationSection section, String path) {
+        java.util.Set<String> keys = new java.util.LinkedHashSet<>(section.getKeys(false));
+        org.bukkit.configuration.Configuration defaults = plugin.getConfig().getDefaults();
+        ConfigurationSection fallback = defaults == null ? null : defaults.getConfigurationSection(path);
+        if (fallback != null) {
+            keys.addAll(fallback.getKeys(false));
+        }
+        return keys;
     }
 
     private static List<Button> buttons(JavaPlugin plugin, ConfigurationSection section, String path) {
@@ -66,7 +81,7 @@ public class MenuCommand implements TabExecutor {
         if (section == null) {
             return buttons;
         }
-        for (String id : section.getKeys(false)) {
+        for (String id : keys(plugin, section, path)) {
             String command = section.getString(id + ".command");
             String submenu = section.getString(id + ".menu");
             Material icon = Material.matchMaterial(section.getString(id + ".icon", "PAPER"));

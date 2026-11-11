@@ -390,7 +390,7 @@ menu:
   button:
     progression:
       name: "<primary>Progression"
-      lore: "<info>Succès, défis, classements, pass de saison, récompense du jour."
+      lore: "<info>Métier, quêtes, succès, défis, classements, pass, récompense du jour."
     travel:
       name: "<primary>Voyager"
       lore: "<info>Homes, monde ressource, téléportation, serveurs."
@@ -399,7 +399,7 @@ menu:
       lore: "<info>Ton clan, ses terres et sa banque."
     social:
       name: "<primary>Social"
-      lore: "<info>Chat, messages privés, signalements."
+      lore: "<info>Amis, chat, messages privés, signalements."
     tools:
       name: "<primary>Outils"
       lore: "<info>Établi, enclume, coffre de l'Ender, four portatif..."
@@ -507,6 +507,21 @@ menu:
     appel:
       name: "<accent>Mes appels"
       lore: "<info>Contester une sanction."
+    job:
+      name: "<accent>Mon métier"
+      lore: "<info>Quêtes du jour, guilde, avantages, classement."
+    quests:
+      name: "<accent>Journal des quêtes"
+      lore: "<info>Tes quêtes en cours et ta boîte de récupération."
+    stats:
+      name: "<accent>Statistiques"
+      lore: "<info>Temps de jeu, récoltes, combats : tout depuis le début."
+    vote:
+      name: "<accent>Voter pour le serveur"
+      lore: "<info>Une récompense en jeu à chaque vote."
+    friends:
+      name: "<accent>Mes amis"
+      lore: "<info>Qui est en ligne, les demandes, rejoindre un ami."
   profile:
     balance: "<info>Solde : <accent><value>"
     job: "<info>Métier : <accent><value>"

@@ -365,7 +365,7 @@ menu:
   button:
     progression:
       name: "<primary>Progression"
-      lore: "<info>Achievements, challenges, leaderboards, season pass, daily reward."
+      lore: "<info>Job, quests, achievements, challenges, leaderboards, pass, daily reward."
     travel:
       name: "<primary>Travel"
       lore: "<info>Homes, resource world, teleport, servers."
@@ -374,7 +374,7 @@ menu:
       lore: "<info>Your clan, its land and its bank."
     social:
       name: "<primary>Social"
-      lore: "<info>Chat, private messages, reports."
+      lore: "<info>Friends, chat, private messages, reports."
     tools:
       name: "<primary>Tools"
       lore: "<info>Crafting table, anvil, ender chest, portable furnace..."
@@ -482,6 +482,21 @@ menu:
     appel:
       name: "<accent>My appeals"
       lore: "<info>Contest a sanction."
+    job:
+      name: "<accent>My job"
+      lore: "<info>Daily quests, guild, perks, leaderboard."
+    quests:
+      name: "<accent>Quest journal"
+      lore: "<info>Your current quests and your pickup box."
+    stats:
+      name: "<accent>Statistics"
+      lore: "<info>Playtime, harvests, fights: everything since the start."
+    vote:
+      name: "<accent>Vote for the server"
+      lore: "<info>An in-game reward for each vote."
+    friends:
+      name: "<accent>My friends"
+      lore: "<info>Who is online, requests, join a friend."
   profile:
     balance: "<info>Balance: <accent><value>"
     job: "<info>Job: <accent><value>"
