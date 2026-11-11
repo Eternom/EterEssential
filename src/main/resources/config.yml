@@ -41,6 +41,9 @@ tpa:
 
 # /pay : seulement après ce temps de jeu actif (heures, temps de /stats d'EterSuccess, AFK exclu). Empêche un second
 # compte de récolter récompenses du jour, kits et votes pour tout envoyer au compte principal. 0 : pas de limite.
+# Astuces la première fois (premier lit, premier coffre hors terrain de clan, première récolte sans métier) ; false : aucune.
+tips: true
+
 pay:
   min-playtime-hours: 5
   # Confirmation (fenêtre) avant d'envoyer ce montant ou plus avec /pay ; 0 : jamais.

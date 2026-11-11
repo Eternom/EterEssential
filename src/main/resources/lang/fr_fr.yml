@@ -634,3 +634,8 @@ rules:
   page-4: "<#7A3E00><b>Sanctions</b></#7A3E00><newline><newline><black>• Ne contourne pas une sanction (autre compte...).<newline>• Gelé par le staff : reste connecté.<newline>• Un souci avec un joueur ? <#7A3E00>/report</#7A3E00> plutôt que de répondre.<newline><newline><#7A3E00>/rules accept</#7A3E00> : j'accepte."
   remind: "<info>Lis les règles du serveur : <accent><click:run_command:'/rules'>[Lire les règles]</click></accent> <success><click:run_command:'/rules accept'>[J'accepte]</click></success>"
   accepted: "<success>Merci, et bon jeu sur Eternom !"
+
+tip:
+  bed: "<info><accent>Astuce :</accent> pose ta maison ici avec <accent><click:run_command:'/sethome'>/sethome</click></accent> pour y revenir quand tu veux <dark_gray>(/homes)"
+  chest: "<info><accent>Astuce :</accent> ce coffre n'est pas sur le terrain d'un clan : n'importe qui peut l'ouvrir. Un clan protège ses terres : <accent><click:run_command:'/clan'>/clan</click></accent>"
+  job: "<info><accent>Astuce :</accent> ce que tu récoltes rapporterait avec un métier. <accent><click:run_command:'/job guild'>[Choisir un métier]</click></accent>"

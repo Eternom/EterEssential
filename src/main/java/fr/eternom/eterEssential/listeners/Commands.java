@@ -61,6 +61,7 @@ public class Commands {
         register(main, "welcome", books);
         register(main, "rules", books);
         main.getServer().getPluginManager().registerEvents(books, main);
+        main.getServer().getPluginManager().registerEvents(new fr.eternom.eterEssential.module.welcome.FirstTimeTips(main, messages), main);
         register(main, "where", new fr.eternom.eterEssential.module.info.WhereCommand(messages));
         register(main, "vote", new VoteCommand(messages, main.getConfig().getString("vote.page")));
 
