@@ -527,7 +527,7 @@ menu:
       lore: "<info>Accepter ou refuser les demandes de téléportation."
     tptoggle:
       name: "<accent>Qui peut me demander"
-      lore: "<info>Tout le monde, amis et clan, ou personne."
+      lore: "<info>Tout le monde, amis et clan, ou personne. <dark_gray>Accepter quelqu'un sans demander : /tpaauto <joueur> · /tpaauto clan"
     tpaclan:
       name: "<accent>Appeler mon clan"
       lore: "<info>Une demande à chaque membre connecté."

@@ -502,7 +502,7 @@ menu:
       lore: "<info>Accept or deny teleport requests."
     tptoggle:
       name: "<accent>Who can ask me"
-      lore: "<info>Everyone, friends and clan, or nobody."
+      lore: "<info>Everyone, friends and clan, or nobody. <dark_gray>Accept someone without asking: /tpaauto <player> · /tpaauto clan"
     tpaclan:
       name: "<accent>Call my clan"
       lore: "<info>A request to each online member."
