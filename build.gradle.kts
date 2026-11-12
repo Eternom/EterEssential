@@ -36,6 +36,8 @@ dependencies {
     compileOnly("com.github.Eternom:EterQuest:1.1.0")
     // Argent : l'API d'EterEconomy (chaque mouvement avec sa source)
     compileOnly("com.github.Eternom:EterEconomy:2.2.2")
+    // /ignore d'EterChat : un joueur ignoré ne peut pas envoyer de demande de téléportation (facultatif)
+    compileOnly("com.github.Eternom:EterChat:1.5.0")
 
     // Tests : les demandes de tpa (gradlew test), avec EterLib (RedisCache) sur le chemin des tests
     testImplementation("io.papermc.paper:paper-api:26.2.build.129-stable")

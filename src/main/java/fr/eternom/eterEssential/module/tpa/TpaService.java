@@ -194,7 +194,7 @@ public class TpaService {
                 return new Outcome(Kind2.NO_MONEY, 0, null, false);
             }
             Settings targetSettings = settings.get(target.uuid());
-            boolean ignored = lists.contains(target.uuid(), Kind.IGNORE, requesterId);
+            boolean ignored = lists.contains(target.uuid(), Kind.IGNORE, requesterId) || ChatIgnores.ignores(target.uuid(), requesterId);
             boolean friend = lists.contains(target.uuid(), Kind.AUTO, requesterId);
             boolean sameClan = (targetSettings.mode() == Mode.FRIENDS || targetSettings.autoClan()) && Clans.same(requesterId, target.uuid());
             if (!bypass) {
