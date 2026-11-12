@@ -383,6 +383,9 @@ menu:
   close: "<error>Close"
   back: "<accent>« Menu"
   button:
+    player-resource:
+      name: "<accent>Join them in the resource world"
+      lore: "<info>If they're on an open resource world (you need resource world time)."
     transactions:
       name: "<accent>My transactions"
       lore: "<info>Your last 15 money movements: who paid you, where your earnings come from."

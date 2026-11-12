@@ -408,6 +408,9 @@ menu:
   close: "<error>Fermer"
   back: "<accent>« Menu"
   button:
+    player-resource:
+      name: "<accent>Le rejoindre au monde ressource"
+      lore: "<info>S'il est sur un monde ressource ouvert (il te faut du temps de monde ressource)."
     transactions:
       name: "<accent>Mes transactions"
       lore: "<info>Les 15 derniers mouvements de ton argent : qui t'a payé, d'où viennent tes gains."

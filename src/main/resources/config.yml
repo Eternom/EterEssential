@@ -136,6 +136,7 @@ menu:
       player-find: { slot: 31, icon: MAP, command: "find {player}" }
       player-ignore: { slot: 32, icon: STRUCTURE_VOID, command: "ignore {player}" }
       player-report: { slot: 33, icon: REDSTONE_TORCH, command: "report {player}" }
+      player-resource: { slot: 34, icon: GRASS_BLOCK, command: "resource join {player}" }
     settings:
       chat: { slot: 20, icon: OAK_SIGN, command: "chat" }
       notifications: { slot: 21, icon: BELL, command: "notifications" }
