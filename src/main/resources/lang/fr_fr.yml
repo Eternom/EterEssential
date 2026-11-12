@@ -149,7 +149,7 @@ combat-log:
   reminder: "<error>Tu t'es déconnecté en plein combat contre <accent><opponent></accent> : tu es mort sur place, et tes affaires sont restées là-bas."
 
 death:
-  money-lost: "<error>Tu es mort : <accent><amount></accent> perdus <dark_gray>(<percent> % de ton argent)"
+  money-lost: "<error>Tu es mort : <accent><amount></accent> perdus <dark_gray>(<percent> % de l'argent sur toi)</dark_gray><newline><dark_gray>Ce que tu ranges sur ton compte de clan (<click:run_command:'/clan'>/clan</click> › Banque) est à l'abri de la mort."
   position: "<info>Tu es mort en <accent><x> <y> <z></accent> <dark_gray>(<world>)"
   position-back: "<info>Tu es mort en <accent><x> <y> <z></accent> <dark_gray>(<world>)</dark_gray><info> : <accent>/back</accent> pour y retourner."
   # Message public : une variante au hasard par cause. <player> = le mort, <killer> = le joueur ou la créature.
@@ -408,6 +408,9 @@ menu:
   close: "<error>Fermer"
   back: "<accent>« Menu"
   button:
+    transactions:
+      name: "<accent>Mes transactions"
+      lore: "<info>Les 15 derniers mouvements de ton argent : qui t'a payé, d'où viennent tes gains."
     rewards:
       name: "<primary>Récompenses"
       lore: "<info>Tout ce qui se réclame : jour, pass, colis, défis, vote, classements, parrainage."

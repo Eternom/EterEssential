@@ -184,6 +184,7 @@ menu:
       money: { slot: 20, icon: GOLD_NUGGET, command: "money" }
       pay: { slot: 22, icon: EMERALD, command: "pay {player} {amount}" }
       richesse: { slot: 24, icon: GOLD_BLOCK, command: "ranking wealth" }
+      transactions: { slot: 31, icon: PAPER, command: "transactions" }
     tools:
       craft: { slot: 20, icon: CRAFTING_TABLE, command: "craft" }
       anvil: { slot: 21, icon: ANVIL, command: "anvil" }

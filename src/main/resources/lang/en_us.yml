@@ -149,7 +149,7 @@ combat-log:
   reminder: "<error>You disconnected mid-fight against <accent><opponent></accent>: you died on the spot, and your stuff stayed there."
 
 death:
-  money-lost: "<error>You died: <accent><amount></accent> lost <dark_gray>(<percent> % of your money)"
+  money-lost: "<error>You died: <accent><amount></accent> lost <dark_gray>(<percent> % of the money on you)</dark_gray><newline><dark_gray>Money stored on your clan account (<click:run_command:'/clan'>/clan</click> › Bank) is safe from death."
   position: "<info>You died at <accent><x> <y> <z></accent> <dark_gray>(<world>)"
   position-back: "<info>You died at <accent><x> <y> <z></accent> <dark_gray>(<world>)</dark_gray><info>: <accent>/back</accent> to go back."
   # Public message: a random variant per cause. <player> = the dead player, <killer> = the player or creature.
@@ -383,6 +383,9 @@ menu:
   close: "<error>Close"
   back: "<accent>« Menu"
   button:
+    transactions:
+      name: "<accent>My transactions"
+      lore: "<info>Your last 15 money movements: who paid you, where your earnings come from."
     rewards:
       name: "<primary>Rewards"
       lore: "<info>Everything to claim: daily, pass, parcels, challenges, vote, rankings, referral."
