@@ -116,6 +116,7 @@ tpa:
 
 back:
   label: "Dernière position"
+  label-death: "L'endroit de ta mort"
   none: "<error>Aucune position où revenir."
 
 list:

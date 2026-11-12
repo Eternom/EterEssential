@@ -33,21 +33,21 @@ public class BackListener implements Listener {
     @EventHandler
     public void onTeleport(EterTeleportEvent event) {
         if (event.getPlayer().hasPermission(PERMISSION)) {
-            save(event.getPlayer(), event.getFrom());
+            save(event.getPlayer(), event.getFrom(), false);
         }
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onDeath(PlayerDeathEvent event) {
         if (event.getPlayer().hasPermission(DEATH_PERMISSION)) {
-            save(event.getPlayer(), event.getPlayer().getLocation());
+            save(event.getPlayer(), event.getPlayer().getLocation(), true);
         }
     }
 
-    private void save(Player player, Location from) {
+    private void save(Player player, Location from, boolean death) {
         Destination position = Destination.at(serverName, from.getWorld().getName(), from.getX(), from.getY(), from.getZ(),
                 from.getYaw(), from.getPitch(), "");
-        Tasks.async(plugin, () -> store.save(player.getUniqueId(), position), "Position de /back non enregistrée pour "
+        Tasks.async(plugin, () -> store.save(player.getUniqueId(), position, death), "Position de /back non enregistrée pour "
                 + player.getName());
     }
 }

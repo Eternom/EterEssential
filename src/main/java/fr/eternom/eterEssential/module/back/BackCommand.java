@@ -33,8 +33,10 @@ public class BackCommand implements CommandExecutor {
             return true;
         }
         UUID uuid = player.getUniqueId();
-        String destinationLabel = messages.plain(player, "back.label");
-        Tasks.async(plugin, player, () -> store.get(uuid, destinationLabel),
+        // Le libellé dit où l'on revient : l'endroit de sa mort, ou d'où l'on est parti
+        String deathLabel = messages.plain(player, "back.label-death");
+        String teleportLabel = messages.plain(player, "back.label");
+        Tasks.async(plugin, player, () -> store.get(uuid, store.isDeath(uuid) ? deathLabel : teleportLabel),
                 found -> found.ifPresentOrElse(destination -> teleports.teleport(player, destination),
                         () -> messages.send(player, "back.none")),
                 () -> messages.send(player, "error.generic"));

@@ -116,6 +116,7 @@ tpa:
 
 back:
   label: "Last location"
+  label-death: "Where you died"
   none: "<error>No location to go back to."
 
 list:

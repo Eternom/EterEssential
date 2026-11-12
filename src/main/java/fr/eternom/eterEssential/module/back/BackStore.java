@@ -22,7 +22,9 @@ public class BackStore {
         this.redis = redis;
     }
 
-    public void save(UUID player, Destination position) {
+    /** death : la position est celle d'une mort (sinon le départ d'une téléportation), pour le dire au retour. */
+    public void save(UUID player, Destination position, boolean death) {
+        redis.set(kindKey(player), death ? "death" : "teleport", TTL);
         redis.set(key(player), position.yaw() + ";" + position.pitch() + ";" + position.x() + ";" + position.y() + ";"
                 + position.z() + ";" + position.server() + ";" + position.world(), TTL);
     }
@@ -35,6 +37,15 @@ public class BackStore {
             return Destination.at(parts[5], parts[6], Double.parseDouble(parts[2]), Double.parseDouble(parts[3]),
                     Double.parseDouble(parts[4]), Float.parseFloat(parts[0]), Float.parseFloat(parts[1]), label);
         });
+    }
+
+    /** true si la dernière position est celle d'une mort. Bloquant. */
+    public boolean isDeath(UUID player) {
+        return redis.get(kindKey(player)).map("death"::equals).orElse(false);
+    }
+
+    private static String kindKey(UUID player) {
+        return "back:kind:" + player;
     }
 
     private static String key(UUID player) {
