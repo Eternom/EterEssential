@@ -118,7 +118,7 @@ commands:
     aliases: [regles]
     permission: eteressential.books
   where:
-    description: Où tu es : serveur, monde, coordonnées, biome, terrain.
+    description: "Où tu es : serveur, monde, coordonnées, biome, terrain."
     usage: /where
     aliases: [whereami]
     permission: eteressential.where
