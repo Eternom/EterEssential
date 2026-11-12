@@ -62,6 +62,11 @@ public class Commands {
         register(main, "rules", books);
         main.getServer().getPluginManager().registerEvents(books, main);
         main.getServer().getPluginManager().registerEvents(new fr.eternom.eterEssential.module.welcome.FirstTimeTips(main, messages), main);
+        // /help : les commandes de ce serveur par catégorie ; /news : les nouveautés (annoncées une fois à la connexion)
+        register(main, "help", new fr.eternom.eterEssential.module.help.HelpCommand(main, messages));
+        fr.eternom.eterEssential.module.help.News news = new fr.eternom.eterEssential.module.help.News(main, lib.getRedis(), messages);
+        register(main, "news", news);
+        main.getServer().getPluginManager().registerEvents(news, main);
         register(main, "where", new fr.eternom.eterEssential.module.info.WhereCommand(messages));
         register(main, "vote", new VoteCommand(messages, main.getConfig().getString("vote.page")));
 

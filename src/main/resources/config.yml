@@ -148,6 +148,7 @@ menu:
       welcome: { slot: 31, icon: ENCHANTED_BOOK, command: "welcome" }
       rules: { slot: 33, icon: WRITTEN_BOOK, command: "rules" }
       compact: { slot: 34, icon: ITEM_FRAME, command: "menu compact" }
+      language: { slot: 29, icon: WRITABLE_BOOK, command: "language" }
     progression:
       succes: { slot: 20, icon: GOLDEN_APPLE, command: "achievements" }
       defis: { slot: 21, icon: TARGET, command: "challenges" }
@@ -195,3 +196,19 @@ menu:
       enderchest: { slot: 30, icon: ENDER_CHEST, command: "enderchest" }
       four: { slot: 32, icon: FURNACE, command: "furnace" }
 
+
+# /help : les commandes montrées, par catégorie (dans cet ordre). Seules celles qui existent sur le serveur où l'on est,
+# et que le joueur a le droit d'utiliser, apparaissent. Noms des catégories et textes : lang/ help.
+help:
+  categories:
+    start: [menu, help, news, rules, language, achievements]
+    travel: [homes, sethome, spawn, lobby, rtp, tpa, tpahere, back, resource, servers, map]
+    jobs: [job, quests, challenges, daily, pass, ranking, stats]
+    social: [msg, friend, clan, c, chat, ignore, report, appeal, inbox]
+    economy: [money, pay, transactions]
+    tools: [kit, craft, enderchest, where, combat]
+
+# /news : changer cet id à chaque mise à jour (ex : la date) ; chaque joueur en est prévenu une fois à sa connexion.
+# Le texte des nouveautés : lang/ news.lines. Vide : pas d'annonce.
+news:
+  id: "2026-11-12"

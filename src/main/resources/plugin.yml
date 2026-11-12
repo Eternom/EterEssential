@@ -117,6 +117,16 @@ commands:
     usage: /rules [accept]
     aliases: [regles]
     permission: eteressential.books
+  help:
+    description: "Les commandes de ce serveur, par catégorie, cliquables."
+    usage: /help [catégorie]
+    aliases: [aide, commands]
+    permission: eteressential.help
+  news:
+    description: "Les nouveautés de la dernière mise à jour."
+    usage: /news
+    aliases: [nouveautes]
+    permission: eteressential.news
   where:
     description: "Où tu es : serveur, monde, coordonnées, biome, terrain."
     usage: /where
@@ -240,6 +250,10 @@ permissions:
   eteressential.list:
     default: op
   eteressential.where:
+    default: true
+  eteressential.help:
+    default: true
+  eteressential.news:
     default: true
   eteressential.books:
     default: true
