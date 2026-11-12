@@ -383,6 +383,12 @@ menu:
   close: "<error>Close"
   back: "<accent>« Menu"
   button:
+    rewards:
+      name: "<primary>Rewards"
+      lore: "<info>Everything to claim: daily, pass, parcels, challenges, vote, rankings, referral."
+    parcels:
+      name: "<accent>Pass box"
+      lore: "<info>Parcels waiting for you: pass rewards, daily reward leftovers."
     progression:
       name: "<primary>Progression"
       lore: "<info>Job, quests, achievements, challenges, leaderboards, pass, daily reward."

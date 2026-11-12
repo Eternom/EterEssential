@@ -408,6 +408,12 @@ menu:
   close: "<error>Fermer"
   back: "<accent>« Menu"
   button:
+    rewards:
+      name: "<primary>Récompenses"
+      lore: "<info>Tout ce qui se réclame : jour, pass, colis, défis, vote, classements, parrainage."
+    parcels:
+      name: "<accent>Boîte du pass"
+      lore: "<info>Les colis qui t'attendent : récompenses du pass, surplus de la récompense du jour."
     progression:
       name: "<primary>Progression"
       lore: "<info>Métier, quêtes, succès, défis, classements, pass, récompense du jour."

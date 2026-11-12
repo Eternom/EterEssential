@@ -106,6 +106,7 @@ menu:
     economy: { slot: 15, icon: GOLD_INGOT, menu: economy }
     kits: { slot: 21, icon: BARREL, command: "kit" }
     tools: { slot: 23, icon: BRUSH, menu: tools }
+    rewards: { slot: 19, icon: BUNDLE, menu: rewards }
     settings: { slot: 25, icon: COMPARATOR, menu: settings }
     homes: { slot: 29, icon: RED_BED, command: "homes" }
     spawn: { slot: 30, icon: BEACON, command: "spawn" }
@@ -114,6 +115,15 @@ menu:
     daily: { slot: 32, icon: CHEST, command: "daily" }
     pass: { slot: 33, icon: NETHER_STAR, command: "pass" }
   submenus:
+    # Centre des récompenses : tout ce qui se réclame, au même endroit
+    rewards:
+      daily: { slot: 20, icon: CHEST, command: "daily" }
+      pass: { slot: 21, icon: NETHER_STAR, command: "pass" }
+      parcels: { slot: 22, icon: CHEST_MINECART, command: "pass box" }
+      defis: { slot: 23, icon: TARGET, command: "challenges" }
+      vote: { slot: 24, icon: SUNFLOWER, command: "vote" }
+      classement: { slot: 30, icon: GOLDEN_HELMET, command: "ranking" }
+      sponsor: { slot: 32, icon: CAKE, command: "sponsor" }
     # Ce qu'on peut faire avec un joueur : /menu player <pseudo> (et l'API openPlayer, au clic sur un joueur dans un autre
     # menu) remplit {player} ; ouvert sans pseudo, le joueur est choisi au clic.
     player:

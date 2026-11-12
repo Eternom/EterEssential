@@ -110,10 +110,11 @@ public class MainMenu implements Menu {
         for (Map.Entry<Integer, Button> entry : shown.entrySet()) {
             Button button = entry.getValue();
             String command = button.command() == null ? "" : button.command().split(" ")[0];
-            boolean progression = "progression".equals(button.submenu());
+            boolean progression = "progression".equals(button.submenu()) || "rewards".equals(button.submenu());
             boolean waiting = info.dailyReady() && (command.equals("daily") || progression)
                     || (info.questBox() > 0 || info.questsReady() > 0) && (command.equals("quests") || progression)
                     || (info.passRewards() > 0 || info.parcels() > 0) && (command.equals("pass") || progression)
+                    || info.parcels() > 0 && button.command() != null && button.command().equals("pass box")
                     || info.firstStep() != null && (command.equals("achievements") || progression);
             ItemStack item = inventory.getItem(entry.getKey());
             if (!waiting || item == null) {
