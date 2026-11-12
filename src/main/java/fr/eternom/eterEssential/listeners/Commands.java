@@ -57,7 +57,7 @@ public class Commands {
         // Menu central (sous-menus)
         register(main, "menu", menus);
         register(main, "lobby", new LobbyCommand(main, messages));
-        fr.eternom.eterEssential.module.welcome.BooksCommand books = new fr.eternom.eterEssential.module.welcome.BooksCommand(main, messages);
+        fr.eternom.eterEssential.module.welcome.BooksCommand books = new fr.eternom.eterEssential.module.welcome.BooksCommand(main, lib.getRedis(), messages);
         register(main, "welcome", books);
         register(main, "rules", books);
         main.getServer().getPluginManager().registerEvents(books, main);

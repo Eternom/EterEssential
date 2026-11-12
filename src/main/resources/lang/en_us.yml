@@ -632,7 +632,8 @@ rules:
   page-2: "<#7A3E00><b>Chat</b></#7A3E00><newline><newline><black>• No insults or threats.<newline>• No spam, flood or all-caps messages.<newline>• No advertising for another server.<newline>• No shocking content (name, skin and builds included)."
   page-3: "<#7A3E00><b>Gameplay</b></#7A3E00><newline><newline><black>• No cheating: modified client, x-ray (detected), macros.<newline>• Found a bug? Report it, don't exploit it.<newline>• No griefing or stealing from others.<newline>• No selling for real money."
   page-4: "<#7A3E00><b>Sanctions</b></#7A3E00><newline><newline><black>• Don't dodge a sanction (another account...).<newline>• Frozen by the staff: stay connected.<newline>• Trouble with a player? <#7A3E00>/report</#7A3E00> rather than answering back.<newline><newline><#7A3E00>/rules accept</#7A3E00>: I accept."
-  remind: "<info>Read the server rules: <accent><click:run_command:'/rules'>[Read the rules]</click></accent> <success><click:run_command:'/rules accept'>[I accept]</click></success>"
+  remind: "<info>Read the server rules: <accent><click:run_command:'/rules'>[Read the rules]</click></accent> <success><click:run_command:'/rules accept'>[I have read and accept]</click></success>"
+  remind-again: "<info>Quick reminder: the rules change from time to time, there may be something new. Take a minute to read them again: <accent><click:run_command:'/rules'>[Read the rules]</click></accent> <success><click:run_command:'/rules accept'>[I have read and accept]</click></success>"
   accepted: "<success>Thanks, and have fun on Eternom!"
 
 tip:

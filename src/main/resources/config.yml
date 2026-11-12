@@ -212,3 +212,10 @@ help:
 # Le texte des nouveautés : lang/ news.lines. Vide : pas d'annonce.
 news:
   id: "2026-11-12"
+
+# Règles (/rules) : l'acceptation est gardée dans Redis, commune à tout le réseau (changer de serveur ne redemande rien).
+rules:
+  # Après ce nombre de jours (ou si Redis l'a perdue), un petit rappel propose de relire les règles et de les accepter.
+  reconfirm-days: 30
+  # Un rappel non suivi ne revient pas avant ce nombre d'heures, même en changeant de serveur.
+  remind-hours: 12
