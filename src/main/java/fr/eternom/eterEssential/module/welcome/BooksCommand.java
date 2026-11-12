@@ -161,6 +161,6 @@ public class BooksCommand implements TabExecutor, Listener {
         if (pages.isEmpty()) {
             return;
         }
-        player.openBook(Book.book(messages.get(player, book + ".title"), Component.text("Eternom"), pages));
+        player.openBook(Book.book(messages.get(player, book + ".title"), Component.text("EterCraft"), pages));
     }
 }

@@ -136,14 +136,14 @@ seen:
 newcomer:
   title: "<gradient:#FF7A00:#FFE0B2><bold>Bienvenue !</bold></gradient>"
   subtitle: "<info>Accroupis-toi et appuie sur <accent>F</accent> pour ouvrir le menu"
-  guide-intro: "<success>Bienvenue sur Eternom, <accent><player></accent> ! L'essentiel pour bien démarrer :"
+  guide-intro: "<success>Bienvenue sur EterCraft, <accent><player></accent> ! L'essentiel pour bien démarrer :"
   guide-menu: "<dark_gray>▸ <info>Le <accent>menu</accent> : accroupis-toi + <accent>F</accent>, ou <accent><click:run_command:'/menu'>/menu</click></accent>"
   guide-steps: "<dark_gray>▸ <info>Les <accent><click:run_command:'/achievements'>Premiers pas</click></accent> <info>te guident étape par étape, et rapportent de l'argent"
   guide-job: "<dark_gray>▸ <info>Choisis un <accent>métier</accent> auprès des PNJ du lobby : c'est le vrai revenu du serveur"
   guide-books: "<dark_gray>▸ <info>Le guide : <accent><click:run_command:'/welcome'>/welcome</click></accent>, les règles : <accent><click:run_command:'/rules'>/rules</click></accent>"
   guide-wiki: "<dark_gray>▸ <info>Une question ? Le <accent><click:open_url:'https://craft.eternom.fr/wiki'>wiki</click></accent>, ou demande dans le chat"
   # À tous : <player> = le nouveau
-  announce: "<success>✦ <accent><player></accent> <info>rejoint Eternom pour la première fois. Souhaitez-lui la bienvenue !"
+  announce: "<success>✦ <accent><player></accent> <info>rejoint EterCraft pour la première fois. Souhaitez-lui la bienvenue !"
 
 combat-log:
   # Au fuyard, à sa prochaine arrivée (<opponent> = l'adversaire fui)
@@ -643,7 +643,7 @@ where:
 # fond d'un livre est clair. <newline> : retour à la ligne.
 welcome:
   title: "Bienvenue"
-  page-1: "<#7A3E00><b>Bienvenue sur Eternom</b></#7A3E00><newline><newline><black>Tout le serveur est dans le menu : <#7A3E00>accroupi + F</#7A3E00>, ou <#7A3E00>/menu</#7A3E00>.<newline><newline><dark_gray>Ce guide se relit avec /welcome, ou dans Paramètres du menu."
+  page-1: "<#7A3E00><b>Bienvenue sur EterCraft</b></#7A3E00><newline><newline><black>Tout le serveur est dans le menu : <#7A3E00>accroupi + F</#7A3E00>, ou <#7A3E00>/menu</#7A3E00>.<newline><newline><dark_gray>Ce guide se relit avec /welcome, ou dans Paramètres du menu."
   page-2: "<#7A3E00><b>Premiers pas</b></#7A3E00><newline><newline><black>Neuf étapes te guident : métier, maison, récompense du jour, quête... Chacune rapporte de l'argent.<newline><newline><dark_gray>La prochaine est dans « À faire maintenant » du menu."
   page-3: "<#7A3E00><b>Métiers</b></#7A3E00><newline><newline><black>Ton vrai revenu. Choisis-en un auprès du chef de guilde du lobby, ou avec <#7A3E00>/job</#7A3E00>.<newline><newline>Chaque jour, des quêtes à livrer ; ton niveau monte et débloque des avantages."
   page-4: "<#7A3E00><b>Monde ressource</b></#7A3E00><newline><newline><black>Un monde à miner, recréé régulièrement : n'y construis pas.<newline><newline>Pas de PvP, et tu gardes ton inventaire en mourant. <#7A3E00>/resource</#7A3E00>"
@@ -659,7 +659,7 @@ rules:
   page-4: "<#7A3E00><b>Sanctions</b></#7A3E00><newline><newline><black>• Ne contourne pas une sanction (autre compte...).<newline>• Gelé par le staff : reste connecté.<newline>• Un souci avec un joueur ? <#7A3E00>/report</#7A3E00> plutôt que de répondre.<newline><newline><#7A3E00>/rules accept</#7A3E00> : j'accepte."
   remind: "<info>Lis les règles du serveur : <accent><click:run_command:'/rules'>[Lire les règles]</click></accent> <success><click:run_command:'/rules accept'>[J'ai lu et j'accepte]</click></success>"
   remind-again: "<info>Petit rappel : les règles évoluent parfois, il y a peut-être du nouveau. Prends une minute pour les relire : <accent><click:run_command:'/rules'>[Lire les règles]</click></accent> <success><click:run_command:'/rules accept'>[J'ai lu et j'accepte]</click></success>"
-  accepted: "<success>Merci, et bon jeu sur Eternom !"
+  accepted: "<success>Merci, et bon jeu sur EterCraft !"
 
 tip:
   bed: "<info><accent>Astuce :</accent> pose ta maison ici avec <accent><click:run_command:'/sethome'>/sethome</click></accent> pour y revenir quand tu veux <dark_gray>(/homes)"
